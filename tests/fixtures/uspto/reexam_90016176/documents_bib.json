@@ -1,0 +1,20 @@
+{
+  "count": 1,
+  "documentBag": [
+    {
+      "applicationNumberText": "90016176",
+      "directionCategory": "INTERNAL",
+      "documentCode": "BIB",
+      "documentCodeDescriptionText": "Bibliographic Data Sheet",
+      "documentIdentifier": "MO1EEHMN101X233",
+      "downloadOptionBag": [
+        {
+          "downloadUrl": "https://api.uspto.gov/api/v1/download/applications/90016176/MO1EEHMN101X233.pdf",
+          "mimeTypeIdentifier": "PDF",
+          "pageTotalQuantity": 1
+        }
+      ],
+      "officialDate": "2026-04-16T00:00:00.000-0400"
+    }
+  ]
+}

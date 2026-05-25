@@ -1,0 +1,275 @@
+{
+  "count": 18,
+  "documentBag": [
+    {
+      "applicationNumberText": "90016176",
+      "directionCategory": "OUTGOING",
+      "documentCode": "RXNREQFD",
+      "documentCodeDescriptionText": "Notice of reexamination request filing date",
+      "documentIdentifier": "MO0GTMBX64X74X6",
+      "downloadOptionBag": [
+        {
+          "downloadUrl": "https://api.uspto.gov/api/v1/download/applications/90016176/MO0GTMBX64X74X6.pdf",
+          "mimeTypeIdentifier": "PDF",
+          "pageTotalQuantity": 1
+        }
+      ],
+      "officialDate": "2026-04-16T00:00:00.000-0400"
+    },
+    {
+      "applicationNumberText": "90016176",
+      "directionCategory": "OUTGOING",
+      "documentCode": "RXNREQAU",
+      "documentCodeDescriptionText": "Notice of Assignment of Reexamination Request",
+      "documentIdentifier": "MO0GTMBZ64X74X6",
+      "downloadOptionBag": [
+        {
+          "downloadUrl": "https://api.uspto.gov/api/v1/download/applications/90016176/MO0GTMBZ64X74X6.pdf",
+          "mimeTypeIdentifier": "PDF",
+          "pageTotalQuantity": 1
+        }
+      ],
+      "officialDate": "2026-04-16T00:00:00.000-0400"
+    },
+    {
+      "applicationNumberText": "90016176",
+      "directionCategory": "INTERNAL",
+      "documentCode": "BIB",
+      "documentCodeDescriptionText": "Bibliographic Data Sheet",
+      "documentIdentifier": "MO1EEHMN101X233",
+      "downloadOptionBag": [
+        {
+          "downloadUrl": "https://api.uspto.gov/api/v1/download/applications/90016176/MO1EEHMN101X233.pdf",
+          "mimeTypeIdentifier": "PDF",
+          "pageTotalQuantity": 1
+        }
+      ],
+      "officialDate": "2026-04-16T00:00:00.000-0400"
+    },
+    {
+      "applicationNumberText": "90016176",
+      "directionCategory": "INTERNAL",
+      "documentCode": "RXTTLRPT",
+      "documentCodeDescriptionText": "Title Report",
+      "documentIdentifier": "MO0FXXYS101X233",
+      "downloadOptionBag": [
+        {
+          "downloadUrl": "https://api.uspto.gov/api/v1/download/applications/90016176/MO0FXXYS101X233.pdf",
+          "mimeTypeIdentifier": "PDF",
+          "pageTotalQuantity": 4
+        }
+      ],
+      "officialDate": "2026-04-15T00:00:00.000-0400"
+    },
+    {
+      "applicationNumberText": "90016176",
+      "directionCategory": "INTERNAL",
+      "documentCode": "RXLITSR",
+      "documentCodeDescriptionText": "Reexam Litigation Search Conducted",
+      "documentIdentifier": "MNSW8NFCX53X103",
+      "downloadOptionBag": [
+        {
+          "downloadUrl": "https://api.uspto.gov/api/v1/download/applications/90016176/MNSW8NFCX53X103.pdf",
+          "mimeTypeIdentifier": "PDF",
+          "pageTotalQuantity": 1
+        }
+      ],
+      "officialDate": "2026-04-10T00:00:00.000-0400"
+    },
+    {
+      "applicationNumberText": "90016176",
+      "directionCategory": "INTERNAL",
+      "documentCode": "RXLITSR",
+      "documentCodeDescriptionText": "Reexam Litigation Search Conducted",
+      "documentIdentifier": "MNSW8NFDX53X103",
+      "downloadOptionBag": [
+        {
+          "downloadUrl": "https://api.uspto.gov/api/v1/download/applications/90016176/MNSW8NFDX53X103.pdf",
+          "mimeTypeIdentifier": "PDF",
+          "pageTotalQuantity": 6
+        }
+      ],
+      "officialDate": "2026-04-10T00:00:00.000-0400"
+    },
+    {
+      "applicationNumberText": "90016176",
+      "directionCategory": "INCOMING",
+      "documentCode": "RXPATENT",
+      "documentCodeDescriptionText": "Copy of patent for which reexamination is requested",
+      "documentIdentifier": "MNRTNY3RX53X103",
+      "downloadOptionBag": [
+        {
+          "downloadUrl": "https://api.uspto.gov/api/v1/download/applications/90016176/MNRTNY3RX53X103.pdf",
+          "mimeTypeIdentifier": "PDF",
+          "pageTotalQuantity": 17
+        }
+      ],
+      "officialDate": "2026-04-09T14:32:01.000-0400"
+    },
+    {
+      "applicationNumberText": "90016176",
+      "directionCategory": "INCOMING",
+      "documentCode": "REF.OTHER",
+      "documentCodeDescriptionText": "Other reference-Patent/Application/Search Documents",
+      "documentIdentifier": "MNRTNY3TX53X103",
+      "downloadOptionBag": [
+        {
+          "downloadUrl": "https://api.uspto.gov/api/v1/download/applications/90016176/MNRTNY3TX53X103.pdf",
+          "mimeTypeIdentifier": "PDF",
+          "pageTotalQuantity": 21
+        }
+      ],
+      "officialDate": "2026-04-09T14:32:01.000-0400"
+    },
+    {
+      "applicationNumberText": "90016176",
+      "directionCategory": "INCOMING",
+      "documentCode": "REF.OTHER",
+      "documentCodeDescriptionText": "Other reference-Patent/Application/Search Documents",
+      "documentIdentifier": "MNRTNY3UX53X103",
+      "downloadOptionBag": [
+        {
+          "downloadUrl": "https://api.uspto.gov/api/v1/download/applications/90016176/MNRTNY3UX53X103.pdf",
+          "mimeTypeIdentifier": "PDF",
+          "pageTotalQuantity": 18
+        }
+      ],
+      "officialDate": "2026-04-09T14:32:01.000-0400"
+    },
+    {
+      "applicationNumberText": "90016176",
+      "directionCategory": "INCOMING",
+      "documentCode": "REF.OTHER",
+      "documentCodeDescriptionText": "Other reference-Patent/Application/Search Documents",
+      "documentIdentifier": "MNRTNY3VX53X103",
+      "downloadOptionBag": [
+        {
+          "downloadUrl": "https://api.uspto.gov/api/v1/download/applications/90016176/MNRTNY3VX53X103.pdf",
+          "mimeTypeIdentifier": "PDF",
+          "pageTotalQuantity": 18
+        }
+      ],
+      "officialDate": "2026-04-09T14:32:01.000-0400"
+    },
+    {
+      "applicationNumberText": "90016176",
+      "directionCategory": "INCOMING",
+      "documentCode": "REF.OTHER",
+      "documentCodeDescriptionText": "Other reference-Patent/Application/Search Documents",
+      "documentIdentifier": "MNRTNY3WX53X103",
+      "downloadOptionBag": [
+        {
+          "downloadUrl": "https://api.uspto.gov/api/v1/download/applications/90016176/MNRTNY3WX53X103.pdf",
+          "mimeTypeIdentifier": "PDF",
+          "pageTotalQuantity": 256
+        }
+      ],
+      "officialDate": "2026-04-09T14:32:01.000-0400"
+    },
+    {
+      "applicationNumberText": "90016176",
+      "directionCategory": "INCOMING",
+      "documentCode": "REF.OTHER",
+      "documentCodeDescriptionText": "Other reference-Patent/Application/Search Documents",
+      "documentIdentifier": "MNRTNY3XX53X103",
+      "downloadOptionBag": [
+        {
+          "downloadUrl": "https://api.uspto.gov/api/v1/download/applications/90016176/MNRTNY3XX53X103.pdf",
+          "mimeTypeIdentifier": "PDF",
+          "pageTotalQuantity": 17
+        }
+      ],
+      "officialDate": "2026-04-09T14:32:01.000-0400"
+    },
+    {
+      "applicationNumberText": "90016176",
+      "directionCategory": "INCOMING",
+      "documentCode": "RXIDS.R",
+      "documentCodeDescriptionText": "Reexam - Info Disclosure Statement Filed by 3rd Party",
+      "documentIdentifier": "MNRTNY3ZX53X103",
+      "downloadOptionBag": [
+        {
+          "downloadUrl": "https://api.uspto.gov/api/v1/download/applications/90016176/MNRTNY3ZX53X103.pdf",
+          "mimeTypeIdentifier": "PDF",
+          "pageTotalQuantity": 2
+        }
+      ],
+      "officialDate": "2026-04-09T14:32:01.000-0400"
+    },
+    {
+      "applicationNumberText": "90016176",
+      "directionCategory": "INCOMING",
+      "documentCode": "TRNA",
+      "documentCodeDescriptionText": "Transmittal of New Application",
+      "documentIdentifier": "MNRTNY40X53X103",
+      "downloadOptionBag": [
+        {
+          "downloadUrl": "https://api.uspto.gov/api/v1/download/applications/90016176/MNRTNY40X53X103.pdf",
+          "mimeTypeIdentifier": "PDF",
+          "pageTotalQuantity": 4
+        }
+      ],
+      "officialDate": "2026-04-09T14:32:01.000-0400"
+    },
+    {
+      "applicationNumberText": "90016176",
+      "directionCategory": "INCOMING",
+      "documentCode": "RXOSUB.R.40",
+      "documentCodeDescriptionText": "Receipt Original Ex Parte Reexamination by 3rd party fewer then 40 Pages Rule 1.20(C)(1)",
+      "documentIdentifier": "MNRTNY41X53X103",
+      "downloadOptionBag": [
+        {
+          "downloadUrl": "https://api.uspto.gov/api/v1/download/applications/90016176/MNRTNY41X53X103.pdf",
+          "mimeTypeIdentifier": "PDF",
+          "pageTotalQuantity": 39
+        }
+      ],
+      "officialDate": "2026-04-09T14:32:01.000-0400"
+    },
+    {
+      "applicationNumberText": "90016176",
+      "directionCategory": "INCOMING",
+      "documentCode": "RXC/M.",
+      "documentCodeDescriptionText": "Reexam Certificate of Mailing",
+      "documentIdentifier": "MNRTNY42X53X103",
+      "downloadOptionBag": [
+        {
+          "downloadUrl": "https://api.uspto.gov/api/v1/download/applications/90016176/MNRTNY42X53X103.pdf",
+          "mimeTypeIdentifier": "PDF",
+          "pageTotalQuantity": 1
+        }
+      ],
+      "officialDate": "2026-04-09T14:32:01.000-0400"
+    },
+    {
+      "applicationNumberText": "90016176",
+      "directionCategory": "OUTGOING",
+      "documentCode": "N417",
+      "documentCodeDescriptionText": "Electronic Filing System Acknowledgment Receipt",
+      "documentIdentifier": "MNRTNY43X53X103",
+      "downloadOptionBag": [
+        {
+          "downloadUrl": "https://api.uspto.gov/api/v1/download/applications/90016176/MNRTNY43X53X103.pdf",
+          "mimeTypeIdentifier": "PDF",
+          "pageTotalQuantity": 3
+        }
+      ],
+      "officialDate": "2026-04-09T14:32:01.000-0400"
+    },
+    {
+      "applicationNumberText": "90016176",
+      "directionCategory": "INCOMING",
+      "documentCode": "N417.PYMT",
+      "documentCodeDescriptionText": "Electronic Fee Payment",
+      "documentIdentifier": "MNRTNY44X53X103",
+      "downloadOptionBag": [
+        {
+          "downloadUrl": "https://api.uspto.gov/api/v1/download/applications/90016176/MNRTNY44X53X103.pdf",
+          "mimeTypeIdentifier": "PDF",
+          "pageTotalQuantity": 2
+        }
+      ],
+      "officialDate": "2026-04-09T14:32:01.000-0400"
+    }
+  ]
+}

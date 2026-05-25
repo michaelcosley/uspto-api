@@ -1,0 +1,10 @@
+{
+  "count": 1,
+  "requestIdentifier": "status-fixture",
+  "statusCodeDataBag": [
+    {
+      "applicationStatusCode": 150,
+      "applicationStatusDescriptionText": "Docketed New Case - Ready for Examination"
+    }
+  ]
+}

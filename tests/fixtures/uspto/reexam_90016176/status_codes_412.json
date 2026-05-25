@@ -1,0 +1,10 @@
+{
+  "count": 1,
+  "requestIdentifier": "d9952ef8-9f00-4a96-ade9-34b0d8524b01",
+  "statusCodeBag": [
+    {
+      "applicationStatusCode": 412,
+      "applicationStatusDescriptionText": "Reexam Assigned to Examiner for Determination"
+    }
+  ]
+}

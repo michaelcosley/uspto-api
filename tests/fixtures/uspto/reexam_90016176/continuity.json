@@ -1,0 +1,22 @@
+{
+  "count": 1,
+  "patentFileWrapperDataBag": [
+    {
+      "applicationNumberText": "90016176",
+      "parentContinuityBag": [
+        {
+          "childApplicationNumberText": "90016176",
+          "claimParentageTypeCode": "REX",
+          "claimParentageTypeCodeDescriptionText": "is a Re-examination of",
+          "firstInventorToFileIndicator": false,
+          "parentApplicationFilingDate": "2009-12-23",
+          "parentApplicationNumberText": "12645648",
+          "parentApplicationStatusCode": 150,
+          "parentApplicationStatusDescriptionText": "Patented Case",
+          "parentPatentNumber": "8374154"
+        }
+      ]
+    }
+  ],
+  "requestIdentifier": "257dee27-baa0-4fa1-9fab-a19a0ed4c020"
+}

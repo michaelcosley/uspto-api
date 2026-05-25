@@ -1,0 +1,44 @@
+<api-rate-limits>
+API rate limits
+Was this page helpful?
+ODP provides three types of APIs that have their own set of rate limits: Meta data retrieval APIs, Patent File Wrapper Documents API and Bulk Datasets Downloads API.
+
+Meta data retrieval APIs:
+For each data product there are a set of meta data retrievals-
+
+Patent File Wrapper API meta data retrieval includes Application Data, Continuity, Transactions, Patent Term Adjustment, Address and Attorney/Agent Information, Assignments, Foreign Priority and Associated Documents.
+
+Bulk Datasets API meta data retrieval includes Product Data.
+
+Final Petition Decisions API meta data retrieval includes Search, Document Data, and Download.
+
+Meta data retrievals are limited to 5 million calls per week for all the APIs in this category combined.
+
+Patent File Wrapper’s Documents API:
+The weekly limit for all the APIs under the Patent File Wrapper Documents API is 1,200,000. This means you can make 1.2 million calls per week for the APIs under this category.
+
+Bulk Datasets’ Downloads API:
+For the same file downloaded using the Bulk Datasets Downloads API, you are limited to 20 downloads per year using your API key, except for XML files which has a much higher limit
+
+You can download up to 5 files per 10 seconds from the same IP address.
+
+Our files are redirected and digitally signed with a signature expiring in 5 seconds, so be sure to start downloading any redirected files right way.
+
+API rate limit reset
+Your weekly quota for Meta data retrieval and Patent File Wrapper Documents APIs will reset on Sunday at midnight Greenwich Time (also known as UTC). After the reset, you will be able to use a full allocated quota again.
+
+We limit all API calls to one API call per API key. You will need to wait until an API call completed until starting a new one. We also advise against using the same API key in applications running in parallel: concurrent API calls with the same key are currently blocked.
+
+API request threshold
+Burst: This defines how many requests can be run in parallel per API Key. It is set to 1, meaning you should not run any requests in parallel at all for the same API key.
+
+Rate: This defines how many requests one can submit per second. It is set at 4 to 15, depending on the API call type. For example, if an API call takes 0.1 seconds, you can still submit 10 sequential calls even with the burst limit of 1.
+
+In general, you should design a system that waits for an API call to finish before making the next call using the same API key, as some of the calls require significant resources.
+
+If you submit more than one request at a time or exceed weekly quota, you will get the error message: “HTTP 429 Too Many Requests.” Therefore, it is “best practice” to handle an HTTP 429 error gracefully. We strongly discourage automatic retries, without at least 5 second delay, when you get a HTTP 429 response: this may exacerbate the problem.
+
+Please note these limits are subject to change. Check this page regularly for the most up-to-date information.
+
+If you have any questions or errors, please visit the Support page for assistance
+</api-rate-limits>

@@ -1,0 +1,103 @@
+U.S. flag
+An official website of the United States government
+
+United States Patent and Trademark Office
+Open Data Portal logo
+Home
+Data products 
+APIs 
+Support 
+MyODP 
+Register for ODP access 
+OPEN DATA PORTAL API
+
+Getting started
+API syntax examples
+API rate limits
+Search
+Application Data
+Continuity
+Documents
+Transactions
+Patent Term Adjustment
+Address and Attorney/Agent Information
+Assignments
+Foreign Priority
+Associated Documents
+Status Codes
+Swagger UI
+HomeAPIsPatent File Wrapper API - Patent Term Adjustment
+Patent Term Adjustment
+Was this page helpful?
+The Patent Term Adjustment section provides additional information concerning the patent term adjustment that has occurred for each patent. Use this endpoint when you want patent term adjustment data related to a specific patent application whose application number you know. You can test APIs right away in Swagger UI swagger icon.
+
+This dataset includes published patent applications and issued patent data filed after January 1, 2001. This data is refreshed daily.
+
+GET https://api.uspto.gov/api/v1/patent/applications/{applicationNumberText}/adjustment
+
+Returns adjustment data for supplied application number.
+
+Note: API Key is required. Obtain an API key.
+
+If you have any questions or errors, please visit the Support page for assistance.
+
+Response
+Internal server error.
+
+An unexpected condition has occurred on the server, and the server was unable to fulfill the request.
+
+If you have any questions or additional errors, please visit the Support section for assistance.
+
+ENDPOINT
+https://api.uspto.gov/api/v1/patent/applications/{applicationNumberText}/adjustment
+JSON RESPONSE SAMPLE
+{
+  "count": 1,
+  "patentFileWrapperDataBag": [
+    {
+      "applicationNumberText": "18045436",
+      "patentTermAdjustmentData": {
+        "applicantDayDelayQuantity": 74,
+        "overlappingDayQuantity": 0,
+        "ipOfficeAdjustmentDelayQuantity": 0,
+        "cDelayQuantity": 0,
+        "adjustmentTotalQuantity": 0,
+        "bDelayQuantity": 0,
+        "aDelayQuantity": 0,
+        "nonOverlappingDayQuantity": 0,
+        "patentTermAdjustmentHistoryDataBag": [
+          {
+            "eventDescriptionText": "PTA 36 Months",
+            "eventSequenceNumber": 69.5,
+            "originatingEventSequenceNumber": 0.5,
+            "ptaPTECode": "PTA",
+            "eventDate": "2024-06-04"
+          },
+          {
+            "eventDescriptionText": "Patent Issue Date Used in PTA Calculation",
+            "eventSequenceNumber": 69,
+            "originatingEventSequenceNumber": 0,
+            "ptaPTECode": "PTA",
+            "eventDate": "2024-06-04"
+          }
+        ]
+      }
+    }
+  ],
+  "requestIdentifier": "d2786e98-99dd-4134-bb23-e5f897631e87"
+}
+Receive updates from the USPTO
+Enter your email to subscribe or update your preferences
+your@email.com
+About the USPTOSearch for patentsSearch for trademarks
+US Department of Commerce
+Accessibility
+Privacy Policy
+Financial and Performance Data
+Freedom of Information Act
+Inspector General
+NoFEAR Act
+USA.gov
+Follow us
+
+Feedback

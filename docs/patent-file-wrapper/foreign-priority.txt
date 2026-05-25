@@ -1,0 +1,89 @@
+U.S. flag
+An official website of the United States government
+
+United States Patent and Trademark Office
+Open Data Portal logo
+Home
+Data products 
+APIs 
+Support 
+MyODP 
+Register for ODP access 
+OPEN DATA PORTAL API
+
+Getting started
+API syntax examples
+API rate limits
+Search
+Application Data
+Continuity
+Documents
+Transactions
+Patent Term Adjustment
+Address and Attorney/Agent Information
+Assignments
+Foreign Priority
+Associated Documents
+Status Codes
+Swagger UI
+HomeAPIsPatent File Wrapper API - Foreign Priority
+Foreign Priority
+Was this page helpful?
+The Foreign Priority section provides additional information concerning the foreign priority related to each patent. Use this endpoint when you want foreign priority information related to a specific patent application whose application number you know. You can test APIs right away in Swagger UI swagger icon.
+
+This dataset includes published patent applications and issued patent data filed after January 1, 2001. This data is refreshed daily.
+
+GET https://api.uspto.gov/api/v1/patent/applications/{applicationNumberText}/foreign-priority
+
+Returns foreign priority data for supplied application number.
+
+Note: API Key is required. Obtain an API key.
+
+If you have any questions or errors, please visit the Support page for assistance.
+
+Response
+Internal server error.
+
+An unexpected condition has occurred on the server, and the server was unable to fulfill the request.
+
+If you have any questions or additional errors, please visit the Support section for assistance.
+
+ENDPOINT
+https://api.uspto.gov/api/v1/patent/applications/{applicationNumberText}/foreign-priority
+JSON RESPONSE SAMPLE
+{
+  "count": 1,
+  "patentFileWrapperDataBag": [
+    {
+      "applicationNumberText": "16791270",
+      "foreignPriorityBag": [
+        {
+          "filingDate": "2019-03-21",
+          "applicationNumberText": "201910215976.3",
+          "ipOfficeName": "CHINA"
+        },
+        {
+          "filingDate": "2019-03-21",
+          "applicationNumberText": "201910215970.6",
+          "ipOfficeName": "CHINA"
+        }
+      ]
+    }
+  ],
+  "requestIdentifier": "65dc9ea7-8e0a-4ef3-aad7-a19251459cdb"
+}
+Receive updates from the USPTO
+Enter your email to subscribe or update your preferences
+your@email.com
+About the USPTOSearch for patentsSearch for trademarks
+US Department of Commerce
+Accessibility
+Privacy Policy
+Financial and Performance Data
+Freedom of Information Act
+Inspector General
+NoFEAR Act
+USA.gov
+Follow us
+
+Feedback

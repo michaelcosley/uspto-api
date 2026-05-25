@@ -1,0 +1,122 @@
+U.S. flag
+An official website of the United States government
+
+United States Patent and Trademark Office
+Open Data Portal logo
+Home
+Data products 
+APIs 
+Support 
+MyODP 
+Register for ODP access 
+OPEN DATA PORTAL API
+
+Getting started
+API syntax examples
+API rate limits
+Search
+Application Data
+Continuity
+Documents
+Transactions
+Patent Term Adjustment
+Address and Attorney/Agent Information
+Assignments
+Foreign Priority
+Associated Documents
+Status Codes
+Swagger UI
+HomeAPIsPatent File Wrapper API - Continuity
+Continuity
+Was this page helpful?
+The Continuity section contains continuity details for the patent, including parent and/or child continuity data. Continuity Data includes Parent Continuity Data and Child Continuity Data. Use this endpoint when you want continuity data for a specific patent application whose application number you know. You can test the API right away in Swagger UI swagger icon.
+
+This dataset includes published patent applications and issued patent data filed after January 1, 2001. This data is refreshed daily.
+
+GET https://api.uspto.gov/api/v1/patent/applications/{applicationNumberText}/continuity
+
+Returns a list of all patents and applications that match your search term.
+
+Note: API Key is required. Obtain an API key.
+
+If you have any questions or errors, please visit the Support page for assistance.
+
+Response
+Internal server error.
+
+An unexpected condition has occurred on the server, and the server was unable to fulfill the request.
+
+If you have any questions or additional errors, please visit the Support section for assistance.
+
+ENDPOINT
+https://api.uspto.gov/api/v1/patent/applications/{applicationNumberText}/continuity
+JSON RESPONSE SAMPLE
+{
+  "count": 1,
+  "patentFileWrapperDataBag": [
+    {
+      "applicationNumberText": "18045436",
+      "parentContinuityBag": [
+        {
+          "parentApplicationStatusCode": 150,
+          "firstInventorToFileIndicator": true,
+          "claimParentageTypeCode": "CON",
+          "claimParentageTypeCodeDescriptionText": "is a Continuation of",
+          "parentApplicationStatusDescriptionText": "Patented Case",
+          "parentApplicationNumberText": "17006669",
+          "parentApplicationFilingDate": "2020-08-28",
+          "childApplicationNumberText": "18045436",
+          "parentPatentNumber": "11466319"
+        },
+        {
+          "parentApplicationStatusCode": 150,
+          "firstInventorToFileIndicator": true,
+          "claimParentageTypeCode": "CON",
+          "claimParentageTypeCodeDescriptionText": "is a Continuation of",
+          "parentApplicationStatusDescriptionText": "Patented Case",
+          "parentApplicationNumberText": "15357966",
+          "parentApplicationFilingDate": "2016-11-21",
+          "childApplicationNumberText": "17006669",
+          "parentPatentNumber": "10781483"
+        },
+        {
+          "parentApplicationStatusCode": 159,
+          "claimParentageTypeCode": "PRO",
+          "claimParentageTypeCodeDescriptionText": "Claims priority from a provisional application",
+          "parentApplicationStatusDescriptionText": "Provisional Application Expired",
+          "parentApplicationNumberText": "62258416",
+          "parentApplicationFilingDate": "2015-11-20",
+          "childApplicationNumberText": "15357966"
+        }
+      ],
+      "childContinuityBag": [
+        {
+          "firstInventorToFileIndicator": true,
+          "childApplicationStatusDescriptionText": "Non Final Action Mailed",
+          "claimParentageTypeCode": "CON",
+          "childApplicationStatusCode": 41,
+          "claimParentageTypeCodeDescriptionText": "is a Continuation of",
+          "parentApplicationNumberText": "18045436",
+          "childApplicationFilingDate": "2024-05-28",
+          "childApplicationNumberText": "18675708"
+        }
+      ]
+    }
+  ],
+  "requestIdentifier": "7a4ca692-e9f3-497c-8440-59f8baed874c"
+}
+Receive updates from the USPTO
+Enter your email to subscribe or update your preferences
+your@email.com
+About the USPTOSearch for patentsSearch for trademarks
+US Department of Commerce
+Accessibility
+Privacy Policy
+Financial and Performance Data
+Freedom of Information Act
+Inspector General
+NoFEAR Act
+USA.gov
+Follow us
+
+Feedback

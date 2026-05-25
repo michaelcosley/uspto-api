@@ -1,0 +1,163 @@
+{
+  "count": 1,
+  "patentFileWrapperDataBag": [
+    {
+      "applicationMetaData": {
+        "applicationConfirmationNumber": 8648,
+        "applicationStatusCode": 412,
+        "applicationStatusDate": "2026-04-21",
+        "applicationStatusDescriptionText": "Reexam Assigned to Examiner for Determination",
+        "applicationTypeCategory": "REEXAM",
+        "applicationTypeCode": "UTL",
+        "applicationTypeLabelName": "Re-Examination",
+        "class": "370",
+        "customerNumber": 72517,
+        "docketNumber": "M82122523-154",
+        "effectiveFilingDate": "2026-04-09",
+        "entityStatusData": {
+          "businessEntityStatusCategory": "Regular Undiscounted",
+          "smallEntityStatusIndicator": false
+        },
+        "examinerNameText": "NASSER, ROBERT L",
+        "filingDate": "2026-04-09",
+        "firstInventorName": "8374154",
+        "firstInventorToFileIndicator": "N",
+        "groupArtUnitNumber": "3992",
+        "inventionTitle": "DEVICE, SYSTEM AND METHOD OF SIMULTANEOUSLY COMMUNICATING WITH A GROUP OF WIRELESS COMMUNICATION DEVICES",
+        "inventorBag": [
+          {
+            "correspondenceAddressBag": [
+              {
+                "nameLineOneText": "8374154",
+                "postalAddressCategory": "postal"
+              },
+              {
+                "cityName": "Miami",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "FL",
+                "geographicRegionName": "FLORIDA",
+                "nameLineOneText": "8374154",
+                "postalAddressCategory": "residence"
+              }
+            ],
+            "inventorNameText": "8374154",
+            "lastName": "8374154"
+          },
+          {
+            "correspondenceAddressBag": [
+              {
+                "cityName": "Miami",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "FL",
+                "geographicRegionName": "FLORIDA",
+                "postalAddressCategory": "postal"
+              }
+            ],
+            "firstName": "K.",
+            "inventorNameText": "K. Mizra LLC (PO)",
+            "lastName": "LLC (PO)",
+            "middleName": "Mizra"
+          },
+          {
+            "correspondenceAddressBag": [
+              {
+                "nameLineOneText": "Timothy  W. Markison (3rd Pty Req.)",
+                "postalAddressCategory": "postal"
+              },
+              {
+                "cityName": "Garland",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "TX",
+                "geographicRegionName": "TEXAS",
+                "nameLineOneText": "Timothy  W. Markison (3rd Pty Req.)",
+                "postalAddressCategory": "residence"
+              }
+            ],
+            "firstName": "Timothy",
+            "inventorNameText": "Timothy W. Markison (3rd Pty Req.)",
+            "lastName": "Markison (3rd Pty Req.)",
+            "middleName": "W."
+          },
+          {
+            "correspondenceAddressBag": [
+              {
+                "cityName": "Garland",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "TX",
+                "geographicRegionName": "TEXAS",
+                "nameLineOneText": "GARLICK & MARKISON (NXP-I-E)",
+                "postalAddressCategory": "postal"
+              }
+            ],
+            "inventorNameText": "GARLICK & MARKISON (NXP-I-E)",
+            "lastName": "GARLICK & MARKISON (NXP-I-E)"
+          },
+          {
+            "correspondenceAddressBag": [
+              {
+                "cityName": "Sunnyvale",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "CA",
+                "geographicRegionName": "CALIFORNIA",
+                "nameLineOneText": "Gong,Michelle,X.",
+                "postalAddressCategory": "residence"
+              },
+              {
+                "cityName": "Sunnyvale",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "CA",
+                "geographicRegionName": "CALIFORNIA",
+                "nameLineOneText": "Gong,Michelle,X.",
+                "postalAddressCategory": "postal"
+              }
+            ],
+            "firstName": "Michelle",
+            "inventorNameText": "Michelle X. Gong",
+            "lastName": "Gong",
+            "middleName": "X."
+          },
+          {
+            "correspondenceAddressBag": [
+              {
+                "cityName": "Portland",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "OR",
+                "geographicRegionName": "OREGON",
+                "nameLineOneText": "Stacey,Robert,J.",
+                "postalAddressCategory": "postal"
+              },
+              {
+                "cityName": "Portland",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "OR",
+                "geographicRegionName": "OREGON",
+                "nameLineOneText": "Stacey,Robert,J.",
+                "postalAddressCategory": "residence"
+              }
+            ],
+            "firstName": "Robert",
+            "inventorNameText": "Robert J. Stacey",
+            "lastName": "Stacey",
+            "middleName": "J."
+          }
+        ],
+        "nationalStageIndicator": false,
+        "publicationCategoryBag": [
+          "Other"
+        ],
+        "subclass": "334",
+        "uspcSymbolText": "370/334"
+      },
+      "applicationNumberText": "90016176"
+    }
+  ],
+  "requestIdentifier": "9bf3f778-f397-4c55-a695-09109488250f"
+}

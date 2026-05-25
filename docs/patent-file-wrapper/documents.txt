@@ -1,0 +1,118 @@
+U.S. flag
+An official website of the United States government
+
+United States Patent and Trademark Office
+Open Data Portal logo
+Home
+Data products 
+APIs 
+Support 
+MyODP 
+Register for ODP access 
+OPEN DATA PORTAL API
+
+Getting started
+API syntax examples
+API rate limits
+Search
+Application Data
+Continuity
+Documents
+Transactions
+Patent Term Adjustment
+Address and Attorney/Agent Information
+Assignments
+Foreign Priority
+Associated Documents
+Status Codes
+Swagger UI
+HomeAPIsPatent File Wrapper API - Documents
+Documents
+Was this page helpful?
+The Documents section contains details on documents attached to the patent application, as well as options for downloading the documents. This includes documents under all codes (Examiner’s Amendment Communication, Printer Rush, IDS Filed, Application is Now Complete, PTA 36 months). Use this endpoint when you want documents related to a specific patent application whose application number you know. You can test the API right away in Swagger UI swagger icon.
+
+This dataset includes published patent applications and issued patent data filed after January 1, 2001. This data is refreshed daily.
+
+GET https://api.uspto.gov/api/v1/patent/applications/{applicationNumberText}/documents
+
+Returns document meta-data along with document download URI for supplied application number.
+
+Note: API Key is required. Obtain an API key.
+
+If you have any questions or errors, please visit the Support page for assistance.
+
+Response
+Internal server error.
+
+An unexpected condition has occurred on the server, and the server was unable to fulfill the request.
+
+If you have any questions or additional errors, please visit the Support section for assistance.
+
+ENDPOINT
+https://api.uspto.gov/api/v1/patent/applications/{applicationNumberText}/documents
+JSON RESPONSE SAMPLE
+{
+  "count": 3,
+  "documentBag": [
+    {
+      "applicationNumberText": "18045436",
+      "officialDate": "2023-07-14T14:58:32.000-0400",
+      "documentIdentifier": "LK2Y0NWNGREENX2",
+      "documentCode": "XT/",
+      "documentCodeDescriptionText": "Extension of Time",
+      "directionCategory": "INCOMING",
+      "downloadOptionBag": [
+        {
+          "mimeTypeIdentifier": "PDF",
+          "downloadUrl": "https://api.uspto.gov/api/v1/download/applications/18045436/LK2Y0NWNGREENX2.pdf",
+          "pageTotalQuantity": 2
+        }
+      ]
+    },
+    {
+      "applicationNumberText": "18045436",
+      "officialDate": "2022-10-10T00:00:00.000-0400",
+      "documentIdentifier": "LCKEHTJ9XBLUEX3",
+      "documentCode": "SCORE",
+      "documentCodeDescriptionText": "Placeholder sheet indicating presence of supplemental content in Supplemental Complex Repository for Examiners(SCORE)",
+      "directionCategory": "INTERNAL",
+      "downloadOptionBag": [
+        {
+          "mimeTypeIdentifier": "PDF",
+          "downloadUrl": "https://api.uspto.gov/api/v1/download/applications/18045436/LCKEHTJ9XBLUEX3.pdf",
+          "pageTotalQuantity": 1
+        }
+      ]
+    },
+    {
+      "applicationNumberText": "18045436",
+      "officialDate": "2023-07-14T14:58:32.000-0400",
+      "documentIdentifier": "LK2Y0NWJGREENX2",
+      "documentCode": "PEFR",
+      "documentCodeDescriptionText": "Applicant Response to Pre-Exam Formalities Notice",
+      "directionCategory": "INCOMING",
+      "downloadOptionBag": [
+        {
+          "mimeTypeIdentifier": "PDF",
+          "downloadUrl": "https://api.uspto.gov/api/v1/download/applications/18045436/LK2Y0NWJGREENX2.pdf",
+          "pageTotalQuantity": 2
+        }
+      ]
+    }
+  ]
+}
+Receive updates from the USPTO
+Enter your email to subscribe or update your preferences
+your@email.com
+About the USPTOSearch for patentsSearch for trademarks
+US Department of Commerce
+Accessibility
+Privacy Policy
+Financial and Performance Data
+Freedom of Information Act
+Inspector General
+NoFEAR Act
+USA.gov
+Follow us
+
+Feedback

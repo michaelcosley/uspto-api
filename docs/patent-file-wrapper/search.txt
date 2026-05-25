@@ -1,0 +1,637 @@
+U.S. flag
+An official website of the United States government
+
+United States Patent and Trademark Office
+Open Data Portal logo
+Home
+Data products 
+APIs 
+Support 
+MyODP 
+Register for ODP access 
+OPEN DATA PORTAL API
+
+Getting started
+API syntax examples
+API rate limits
+Search
+Application Data
+Continuity
+Documents
+Transactions
+Patent Term Adjustment
+Address and Attorney/Agent Information
+Assignments
+Foreign Priority
+Associated Documents
+Status Codes
+Swagger UI
+HomeAPIsPatent File Wrapper API - Search
+Search
+Was this page helpful?
+Conduct a search of all patent application bibliographic/front page and patent relevant data fields. This data is refreshed daily.
+
+Use this endpoint if you are interested in searching across multiple patents or applications. For example, you want to return all patents and applications that match your search term, such as Utility or Design. You can also use multiple search terms, such as “Patented AND Abandoned.” You can use any combination of the 100+ data attributes available and documented below.
+
+Note: The other endpoints (such as Application Data, Continuity, etc.) should be used when you're using a specific application number to find more detailed information. For example, you want to return all the relevant application data about Application #14412875 or all continuity data for Application #10588979.
+
+Other details for using the Search endpoint:
+
+If you don’t specify the field in which you want us to look for this search term, we will look for it across all application data (inventionTitle, patentNumber, applicationTypeLabelName, correspondenceAddressBag etc.) and return any matching patents or applications.
+
+If you don’t specify which attributes you would like to see in the response related to the search term(s), it returns all data attributes.
+
+All search syntaxes are applicable to this endpoint, meaning any number of combinations is possible. Some example requests are below, but for more information, view the Simplified Syntax documentation that is linked in the Open Data Portal API page. You can also test the API right away in Swagger UI swagger icon.
+
+You can download the JSON Schema file to parse the JSON responses returned by the APIs.
+
+GET https://api.uspto.gov/api/v1/patent/applications/search
+
+Returns a list of all patents and applications that match your search term.
+
+Note: API Key is required. Obtain an API key.
+
+POST See Swagger documentation
+
+Returns a list of all patents and applications that match your search term.
+
+Note: API Key is required. Obtain an API key.
+
+If you have any questions or errors, please visit the Support page for assistance.
+
+Response
+Successful request.
+
+Data Property	Description	Type
+PatentFileWrapperDataBag	Patent File Wrapper data.	N/A
+  applicationNumberText	The unique number assigned by the USPTO to a patent application when it is filed.	String
+applicationMetaData	MetaData of the application.	N/A
+  firstInventorToFileIndicator	The first inventor to file (First Inventor to File- FITF) provision of the America Invents Act (AIA) transitions the U.S. to a first-inventor-to-file system from a first-to-invent system.	String
+  nationalStageIndicator	National Stage indicator.	Boolean
+  smallEntityStatusIndicator	Small entity status indicator.	Boolean
+  docketNumber	An identifier assigned by a non-USPTO interest to an application patent case. The identifier is assigned by the person filing the application (applicant or the legal representative of the applicant) to identify the application internally on customer side. It's optional for the customer.	String
+  firstApplicantName	Name of the Applicant with Rank One. Listed as first applicant in the patent application.	String
+  firstInventorName	Name of the inventor with Rank One. Listed as first inventor in the patent application.	String
+  applicationConfirmationNumber	A four-digit number that is assigned to each newly filed patent application. The confirmation number, in combination with the application number, is used to verify the accuracy of the application number placed on correspondence /filed with the office to avoid mis identification of an application due to a transposition error (misplaced digits) in the application number. The office recommends that applicants include the application's confirmation number (in addition to the application number) on all correspondence submitted to the office concerning the application.	Number
+  applicationStatusDate	Application status date.	Date
+  applicationStatusDescriptionText	Status of the application; values: new = new application	String
+  filingDate	Filing or 371(c) date on which a patent application was filed and received in the USPTO.	Date
+  effectiveFilingDate	The date according to USPTO criteria that the patent case qualified as having been 'filed'. The effective filing date is the same or later than the filingDate. The effectiveFilingDate is not the date of any priority or benefit claim to a prior filed application. For most applications the effectiveFilingDate is the date they filed electronically, or the date the USPTO received the mail in the USPTO mailroom.	Date
+  grantDate	The date a patent was granted.	Date
+  groupArtUnitNumber	A working unit responsible for a cluster of related patent art. Generally, staffed by one supervisory patent examiner (SPE) and a number of patent examiners who determine patentability on applications for a patent. Group Art Units are currently identified by a four digit number, i.e., 1642.	String
+  applicationTypeCode	The specific value that indicates if the received patent application is considered a domestic application at the National Stage or is submitted as a Patent Cooperative Treaty (PCT) application.	String
+  applicationTypeLabelName	The label for the application type.	String
+  applicationTypeCategory	The category of the application	String
+  inventionTitle	Title of invention/application: The clear and concise technical description of the invention as provided by the patent applicant.	String
+  patentNumber	The unique number assigned by the USPTO to a granted/issued patent. It is also the document number in the USTPO-published Redbook and the Official Gazette. This number can be for an originally-issued patent or a re-issued patent. It will not be for a Re-exam Certificate, a Correction Certificate, a SIR, or a notice of a request for a Re-exam or a Reissue. This number is equivalent to WIPO ST.9 as INID 11. 5012717.	String
+  applicationStatusCode	This data element classifies the application by its status relative to the total application process.	String
+  businessEntityStatusCategory	Status of business The large-or-small-entity payment status of the APPLICATION PATENT CASE at the time of the small entity status event and thereafter until the occurrence of a later small entity status event for the APPLICATION PATENT CASE. entity being established for the purpose of paying a fee such as a filing fee and a maintenance fee	String
+  earliestPublicationNumber	Earliest publication number.	String
+  earliestPublicationDate	Earliest publication date.	Date
+  pctPublicationNumber	PCT publication number	String
+  pctPublicationDate	PCT publication date	String
+publicationSequenceNumberBag	Contains a number assigned to the publication of patent applications filed on or after November 29, 2000. It includes the year, followed by a seven digit number, followed by a kind code. Example: 200011234567A1.	N/A
+correspondenceAddressBag	All address lines associated with applicant or inventor correspondence, depending on which bag it falls in.	N/A
+  nameLineOneText	First line of name associated with correspondence address.	String
+  nameLineTwoText	Second line of name associated with correspondence address, if applicable.	String
+  addressLineOneText	First line of address associated with correspondence address.	String
+  addressLineTwoText	Second line of address associated with correspondence address, if applicable.	String
+  geographicRegionName	Geographic Region Name, e.g., state.	String
+  geographicRegionCode	Geographic region code.	String
+  postalCode	Postal Code.	String
+  cityName	City Name.	String
+  countryCode	Country code.	String
+  countryName	Country name.	String
+  postalAddressCategory	Postal address category.	String
+customerNumber	A unique number created by the USPTO and is used in lieu of a physical address.	Number
+cpcClassificationBag	All the CPCs associated to application.	N/A
+applicantBag	All applicants associated to application.	N/A
+  applicantNameText	Applicant name	String
+  firstName	First Name.	String
+  middleName	Middle name.	String
+  lastName	Last Name.	String
+  preferredName	Preferred name.	String
+  namePrefix	Name prefix.	String
+  nameSuffix	Name suffix.	String
+  countryCode	Country code.	String
+correspondenceAddressBag	All address lines associated with applicant or inventor correspondence, depending on which bag it falls in.	N/A
+  nameLineOneText	First line of name associated with correspondence address.	String
+  nameLineTwoText	Second line of name associated with correspondence address, if applicable.	String
+  geographicRegionName	Geographic Region Name, e.g., state.	String
+  geographicRegionCode	Geographic region code.	String
+  cityName	City Name.	String
+  countryCode	Country code.	String
+  countryName	Country name.	String
+  postalAddressCategory	Postal address category.	String
+inventorBag	All the inventors associated to application.	N/A
+  firstName	First Name.	String
+  middleName	Middle name.	String
+  lastName	Last Name.	String
+  preferredName	Preferred name.	String
+  namePrefix	Name prefix.	String
+  nameSuffix	Name suffix.	String
+  countryCode	Country code.	String
+  inventorNameText	Inventor Name.	String
+correspondenceAddressBag	All address lines associated with applicant or inventor correspondence, depending on which bag it falls in.	N/A
+  nameLineOneText	First line of name associated with correspondence address.	String
+  nameLineTwoText	Second line of name associated with correspondence address, if applicable.	String
+  geographicRegionName	Geographic Region Name, e.g., state.	String
+  geographicRegionCode	Geographic region code.	String
+  cityName	City Name.	String
+  countryCode	Country code.	String
+  countryName	Country name.	String
+  postalAddressCategory	Postal address category.	String
+assignmentBag	The collection of assignment data	N/A
+  reelNumber	1-6 digit number identifies the reel number to be used to locate the assignment on microfilm.	Number
+  frameNumber	1-4 digit number that identifies the frame number to be used to locate the first image (page) of the assignment on microfilm.	Number
+  reelAndFrameNumber	1-6 digit number identifies the reel number to be used to locate the assignment on microfilm. / 1-4 digit number that identifies the frame number to be used to locate the first image (page) of the assignment on microfilm.	String
+  pageTotalQuantity	The total number of pages comprising the document	Number
+  assignmentDocumentLocationURI	The Document Location URI	String
+  assignmentReceivedDate	The date an assignment was received. Contains a date element with an 8-digit date in YYYY-MM-DD date format.	Date
+  assignmentRecordedDate	Identifies when the assignment was recorded in the USPTO. Contains a date element with an 8-digit date in YYYY-MM-DD date format.	Date
+  imageAvailableStatusCode	code to indicate the availability of the image	boolean
+  assignmentMailedDate	The date an assignment request was mailed to the office or received by the office. Contains a date element with an 8-digit date in YYYY-MM-DD date format.	Date
+  conveyanceText	Contains textual description of the interest conveyed or transaction recorded.	String
+assignorBag	Collection of assignors/details related to the assignor(s).	N/A
+  assignorName	A party that transfers its interest and right to the patent to the transferee (assignee) or the party receiving the patent.	String
+  executionDate	Identifies the date from the supporting legal documentation that the assignment was executed. Contains a date element with an 8-digit date in YYYY-MM-DD date format.	Date
+assigneeBag	Collection of assignees/details related to the assignee(s).	N/A
+  assigneeNameText	A person or entity that has the property rights to the patent, as a result of being the recipient of a transfer of a patent application or patent grant. Refers to ST.9 INID Code 73.	String
+assigneeAddress	Assignee address data.	N/A
+  addressLineOneText	First line of address.	String
+  addressLineTwoText	Second line of address.	String
+  addressLineThreeText	Third line of address associated with the assignee.	String
+  addressLineFourText	Fourth line of address associated with the assignee.	String
+  cityName	Name of the city	String
+  ictStateCode	International code for the state/region of the assignee (USPTO format)	String
+  ictCountryCode	International code for the country of the assignee (USPTO format)	String
+  geographicRegionName	Geographic region name.	String
+  geographicRegionCode	Geographic region code.	String
+  countryName	Country name.	String
+  postalCode	Postal code.	String
+correspondenceAddress	Correspondence data collection	N/A
+  correspondentNameText	The name of the correspondent	String
+  addressLineOneText	Address line one.	String
+  addressLineTwoText	Address line two.	String
+  addressLineThreeText	Address line three, if existing	String
+  addressLineFourText	Address line four, if existing	String
+domesticRepresentative	The address of the domestic representative	N/A
+  name	The domestic representative name.	String
+  addressLineOneText	First line of address associated with the correspondent.	String
+  addressLineTwoText	Second line of address associated with the correspondent.	String
+  addressLineThreeText	Third line of address associated with the correspondent.	String
+  addressLineFourText	Fourth line of address associated with the correspondent, if applicable.	String
+  cityName	Name of the city	String
+  postalCode	Postal code	String
+  geographicRegionName	Geographic region name	String
+  countryName	Country name.	String
+  emailAddress	Email address of the representative.	Date
+recordAttorney	Details of the attorney or agent associated with an application/patent.	N/A
+customerNumberCorrespondenceData	Correspondence Address of the application inherited from the Customer.	N/A
+  patronIdentifier	The unique identifier of the patron	String
+  organizationStandardName	Organization standard name	String
+powerOfAttorneyAddressBag	Power of attorney address data collection.	N/A
+  nameLineOneText	First line of name associated with attorney/agent correspondence address.	String
+  addressLineOneText	First line of the address	String
+  addressLineTwoText	Second line of the address	String
+  geographicRegionName	Geographic region name	String
+  geographicRegionCode	Geographic region code	String
+  postalCode	Postal code	String
+  cityName	City name	String
+  countryCode	Country code	String
+  countryName	Country name	String
+telecommunicationAddressBag	List of telecommunication addresses, such as the phone number(s) associated with the aforementioned attorney or agent.	N/A
+  telecommunicationNumber	Telecommunication number, such as the phone number associated with the aforementioned attorney or agent.	String
+  extensionNumber	Telephone extension number.	String
+  telecomTypeCode	Usage type category, such as the type of phone number associated with the aforementioned attorney or agent.	String
+attorneyBag	Data on file for all attorneys or agents associated with the application.	N/A
+  firstName	First Name.	String
+  middleName	Middle Name.	String
+  lastName	Last Name.	String
+  namePrefix	Name prefix.	String
+  nameSuffix	Name suffix.	String
+  registrationNumber	Registration number.	Number
+  activeIndicator	Status of whether attorney is active or inactive.	Boolean
+  registeredPractitionerCategory	Practitioner category	String
+telecommunicationAddressBag	List of telecommunication addresses, such as the phone number(s) associated with the aforementioned attorney or agent.	N/A
+  telecommunicationNumber	Telecommunication number, such as the phone number associated with the aforementioned attorney or agent.	String
+  extensionNumber	Telephone extension number.	Number
+  telecomTypeCode	Usage type category, such as the type of phone number associated with the aforementioned attorney or agent.	String
+foreignPriorityBag	Contains information about relevant foreign priority.	N/A
+  ipOfficeName	The complete, non abbreviated name of the ipOfficeName designated for a country according to the International Organization for Standardization (ISO) under International Standard 3166-1.	String
+  filingDate	The date on which a priority claim was filed.	Date
+  applicationNumberText	The unique number assigned by the USPTO to a patent application when it is filed.	String
+parentContinuityBag	All continuity details related to the parent application.	N/A
+  firstInventorToFileIndicator	America Invents Act (AIA) indicator, which indicates first inventor to file.	Boolean
+  parentApplicationStatusCode	This data element classifies the application by its status relative to the total application process.	Number
+  parentPatentNumber	The number that uniquely identifies an issued patent. It is also the document number in the USTPO-published Redbook and the Official Gazette. This number can be for an originally-issued patent or a re-issued patent. It will not be for a Re-exam Certificate, a Correction Certificate, a SIR, or a notice of a request for a Re-exam or a Reissue. This number is equivalent to WIPO ST.9 as INID 11. 5012717.	String
+  parentApplicationStatusDescriptionText	Status of the parent or child application, depending on which bag it falls under; values: new = new application, patented case, patent expired...	String
+  parentApplicationfilingDate	Date on which a patent application was filed and received in the USPTO.	Date
+  parentApplicationNumberText	Application number of the parent application, which is the unique value assigned by the USPTO to a patent application upon receipt.	String
+  childApplicationNumberText	Application number of the child application, which is the unique value assigned by the USPTO to a patent application upon receipt.	String
+  claimParentageTypeCode	Claim parentage type code.	String
+  claimParentageTypeCodeDescriptionText	Claim Parentage Type Code Description	String
+childContinuityBag	All continuity details related to the child application	N/A
+  childApplicationStatusCode	Application status code.	String
+  parentApplicationNumberText	Parent application number for this child application.	String
+  childApplicationNumberText	Application number of the child application, which is the unique value assigned by the USPTO to a patent application upon receipt.	String
+  childApplicationStatusDescriptionText	Status of the parent or child application, depending on which bag it falls under; values: new = new application, patented case, patent expired...	String
+  childApplicationfilingDate	Date on which a patent application was filed and received in the USPTO.	Date
+  firstInventorToFileIndicator	America Invents Act (AIA) indicator, which indicates first inventor to file.	Boolean
+  childPatentNumber	The number that uniquely identifies an issued patent. It is also the document number in the USTPO-published Redbook and the Official Gazette. This number can be for an originally-issued patent or a re-issued patent. It will not be for a Re-exam Certificate, a Correction Certificate, a SIR, or a notice of a request for a Re-exam or a Reissue. This number is equivalent to WIPO ST.9 as INID 11. 5012717.	String
+  claimParentageTypeCode	Claim parentage type code.	String
+  claimParentageTypeCodeDescriptionText	Description of claim parentage type	String
+patentTermAdjustmentData	Patent term adjustment data.	N/A
+    aDelayQuantity	This entry reflects adjustments to the term of the patent based upon USPTO delays pursuant to 35 U.S.C. § 154(b)(1)(A)(i)-(iv) and the implementing regulations 37 CFR 1.702(a) & 37 CFR 1.703(a). An "A" delay may occur prior to the notice of allowance and be included in the PTA determination accompanying the notice of allowance or may occur after the entry or mailing of the notice of allowance and be included in the PTA determination in the issue notification letter.	Number
+    adjustmentTotalQuantity	This entry reflects the summation of the following entries: NONOVERLAPPING USPTO DELAYS (+/or – USPTO MANUAL ADJUSTMENTS) – APPLICANT DELAYS. It is noted that the TOTAL PTA CALCULATION determined at the time of the notice of allowance will not reflect PALM entries that are entered after the entry or mailing of the notice of allowance.	Number
+    applicantDayDelayQuantity	This entry reflects adjustments of the patent term due to the Applicant's failure to engage in reasonable efforts to conclude prosecution of the application for the cumulative period in excess of three months. See 35 U.S.C. § 154(b)(2)(C)(ii) and implementing regulation 37 CFR 1.704(b). The entry also reflects additional Applicant's failure to engage in reasonable efforts to conclude prosecution of the application. See 35 U.S.C. § 154(b)(2)(C)(iii) and implementing regulations 37 CFR 1.704(c)(1)-(11).	Number
+    bDelayQuantity	This entry reflects adjustments to the term of the patent based upon the patent failing to issue within three years of the actual filing date of the application in the United States. See 35 U.S.C. § 154(b) and implementing regulations 37 CFR 1.702(b) & 1.703(b). "B" delay is always calculated at the time that the issue notification letter is generated and an issue date has been established.	Number
+    cDelayQuantity	This entry reflects adjustments to the term of the patent based upon USPTO delays pursuant to 35 U.S.C. § 154(C)(i)-(iii) and implementing regulations 37 CFR 1.702 (c)-(e) & 1.703(c)-(e). These delays include delays caused by interference proceedings, secrecy orders, and successful appellate reviews.	Number
+    overlappingDayQuantity	Patent term adjustment overlapping days quantity number that reflects the calculation of overlapping delays consistent with the federal circuit's interpretation.	Number
+  nonOverlappingDayQuantity	Patent term adjustment non overlapping days quantity number of overall summation of the USPTO delays minus any overlapping days.	Number
+    patentTermAdjustmentHistoryDataBag	The recordation of patent case actions that are involved in the patent term adjustment calculation.	N/A
+    applicantDayDelayQuantity	This entry reflects adjustments of the patent term due to the Applicant's failure to engage in reasonable efforts to conclude prosecution of the application for the cumulative period in excess of three months. See 35 U.S.C. § 154(b)(2)(C)(ii) and implementing regulation 37 CFR 1.704(b). The entry also reflects additional Applicant's failure to engage in reasonable efforts to conclude prosecution of the application. See 35 U.S.C. § 154(b)(2)(C)(iii) and implementing regulations 37 CFR 1.704(c)(1)-(11).	Number
+      eventDate	The date that the symbol was assigned to the patent document.	Date
+      eventDescriptionText	event description.	String
+      eventSequenceNumber	Case action sequence number.	Number
+      ipOfficeDayDelayQuantity	Number of days the UPSTO personnel adjusting the calculation to increase or decrease the patent term adjustment based upon a request for reconsideration of the patent term adjustment.	Number
+      originatingEventSequenceNumber	Start sequence number.	Number
+      ptaPTECode	PTA or PTE code	String
+eventDataBag	Details of the contents of all transactions on an application/patent.	N/A
+  eventCode	The unique reference value (number and letters) for an application/patent transaction.	String
+  eventDescriptionText	Description of the Transaction's code.	String
+  eventDate	The date the patent case action was recorded.	Date
+pgpubDocumentMetaData	Details of PgPub document meta data.	N/A
+  zipFileName	Zip file name	String
+  productIdentifier	Product identifier.	String
+  fileLocationURI	File location URI.	String
+  fileCreateDateTime	The date file was created.	Date
+  xmlFileName	XML file name.	String
+grantDocumentMetaData	Grant document meta data.	N/A
+  zipFileName	Zip file name	String
+  productIdentifier	Product identifier.	String
+  fileLocationURI	File location URI.	String
+  fileCreateDateTime	The date file was created.	Date
+  xmlFileName	XML file name.	String
+lastIngestionDateTime	Date time when application was last modified.	Date
+ENDPOINT
+https://api.uspto.gov/api/v1/patent/applications/search
+JSON RESPONSE SAMPLE
+{
+  "count": 1,
+  "patentFileWrapperDataBag": [
+    {
+      "applicationNumberText": "18045436",
+      "grantDocumentMetaData": {
+        "productIdentifier": "PTGRXML",
+        "zipFileName": "ipg240604.zip",
+        "fileCreateDateTime": "2024-09-30T17:48:45",
+        "xmlFileName": "18045436_12000000.xml",
+        "fileLocationURI": "https://api.uspto.gov/api/v1/datasets/products/files/PTGRXML-SPLT/2024/ipg240604/18045436_12000000.xml"
+      },
+      "eventDataBag": [
+        {
+          "eventCode": "CRFA",
+          "eventDescriptionText": "Sequence Moved to Public Database",
+          "eventDate": "2024-06-12"
+        },
+        {
+          "eventCode": "PGM/",
+          "eventDescriptionText": "Recordation of Patent Grant Mailed",
+          "eventDate": "2024-06-04"
+        }
+      ],
+      "applicationMetaData": {
+        "firstInventorToFileIndicator": "Y",
+        "applicationStatusCode": 150,
+        "applicationTypeCode": "UTL",
+        "entityStatusData": {
+          "smallEntityStatusIndicator": false,
+          "businessEntityStatusCategory": "Regular Undiscounted"
+        },
+        "filingDate": "2022-10-10",
+        "uspcSymbolText": "530/358",
+        "nationalStageIndicator": false,
+        "firstInventorName": "Lubomir SEBO",
+        "cpcClassificationBag": [
+          "C07H19/207",
+          "C12Q2563/107",
+          "C07K19/00",
+          "C12Q1/6869",
+          "C12Q2525/113",
+          "C09B69/105",
+          "C07H19/10"
+        ],
+        "effectiveFilingDate": "2022-10-10",
+        "publicationDateBag": [
+          "2023-11-16"
+        ],
+        "publicationSequenceNumberBag": [
+          "0366018"
+        ],
+        "earliestPublicationDate": "2023-11-16",
+        "applicationTypeLabelName": "Utility",
+        "applicationStatusDate": "2024-05-15",
+        "class": "530",
+        "applicationTypeCategory": "REGULAR",
+        "inventorBag": [
+          {
+            "firstName": "Lubomir",
+            "lastName": "SEBO",
+            "countryCode": "US",
+            "inventorNameText": "Lubomir SEBO",
+            "correspondenceAddressBag": [
+              {
+                "cityName": "Redwood City",
+                "geographicRegionName": "CALIFORNIA",
+                "geographicRegionCode": "CA",
+                "countryCode": "US",
+                "nameLineOneText": "SEBO, Lubomir",
+                "countryName": "UNITED STATES",
+                "postalAddressCategory": "residence"
+              },
+              {
+                "cityName": "Redwood City",
+                "geographicRegionName": "CALIFORNIA",
+                "geographicRegionCode": "CA",
+                "countryCode": "US",
+                "nameLineOneText": "Lubomir  SEBO",
+                "countryName": "UNITED STATES",
+                "postalAddressCategory": "postal"
+              }
+            ]
+          },
+          {
+            "firstName": "Gene",
+            "lastName": "SHEN",
+            "countryCode": "US",
+            "inventorNameText": "Gene SHEN",
+            "correspondenceAddressBag": [
+              {
+                "cityName": "Santa Clara",
+                "geographicRegionName": "CALIFORNIA",
+                "geographicRegionCode": "CA",
+                "countryCode": "US",
+                "nameLineOneText": "SHEN, Gene",
+                "countryName": "UNITED STATES",
+                "postalAddressCategory": "residence"
+              },
+              {
+                "cityName": "Santa Clara",
+                "geographicRegionName": "CALIFORNIA",
+                "geographicRegionCode": "CA",
+                "countryCode": "US",
+                "nameLineOneText": "Gene  SHEN",
+                "countryName": "UNITED STATES",
+                "postalAddressCategory": "postal"
+              }
+            ]
+          }
+        ],
+        "applicationStatusDescriptionText": "Patented Case",
+        "patentNumber": "12000000",
+        "grantDate": "2024-06-04",
+        "applicantBag": [
+          {
+            "applicantNameText": "Pacific Biosciences of California, Inc.",
+            "correspondenceAddressBag": [
+              {
+                "cityName": "Menlo Park",
+                "geographicRegionName": "CALIFORNIA",
+                "geographicRegionCode": "CA",
+                "countryCode": "US",
+                "postalCode": "94025",
+                "countryName": "UNITED STATES",
+                "postalAddressCategory": "postal"
+              }
+            ]
+          }
+        ],
+        "firstApplicantName": "Pacific Biosciences of California, Inc.",
+        "customerNumber": 57770,
+        "groupArtUnitNumber": "1637",
+        "earliestPublicationNumber": "US20230366018A1",
+        "inventionTitle": "LABELED NUCLEOTIDE ANALOGS, REACTION MIXTURES, AND METHODS AND SYSTEMS FOR SEQUENCING",
+        "applicationConfirmationNumber": 2251,
+        "examinerNameText": "RILEY, JEZIA",
+        "subclass": "358",
+        "publicationCategoryBag": [
+          "Granted/Issued",
+          "Pre-Grant Publications - PGPub"
+        ],
+        "docketNumber": "1407-00-014U03"
+      },
+      "parentContinuityBag": [
+        {
+          "parentApplicationStatusCode": 150,
+          "firstInventorToFileIndicator": true,
+          "claimParentageTypeCode": "CON",
+          "claimParentageTypeCodeDescriptionText": "is a Continuation of",
+          "parentApplicationStatusDescriptionText": "Patented Case",
+          "parentApplicationNumberText": "17006669",
+          "parentApplicationFilingDate": "2020-08-28",
+          "childApplicationNumberText": "18045436",
+          "parentPatentNumber": "11466319"
+        },
+        {
+          "parentApplicationStatusCode": 150,
+          "firstInventorToFileIndicator": true,
+          "claimParentageTypeCode": "CON",
+          "claimParentageTypeCodeDescriptionText": "is a Continuation of",
+          "parentApplicationStatusDescriptionText": "Patented Case",
+          "parentApplicationNumberText": "15357966",
+          "parentApplicationFilingDate": "2016-11-21",
+          "childApplicationNumberText": "17006669",
+          "parentPatentNumber": "10781483"
+        }
+      ],
+      "patentTermAdjustmentData": {
+        "applicantDayDelayQuantity": 74,
+        "overlappingDayQuantity": 0,
+        "ipOfficeAdjustmentDelayQuantity": 0,
+        "cDelayQuantity": 0,
+        "adjustmentTotalQuantity": 0,
+        "bDelayQuantity": 0,
+        "aDelayQuantity": 0,
+        "nonOverlappingDayQuantity": 0,
+        "patentTermAdjustmentHistoryDataBag": [
+          {
+            "eventDescriptionText": "PTA 36 Months",
+            "eventSequenceNumber": 69.5,
+            "originatingEventSequenceNumber": 0.5,
+            "ptaPTECode": "PTA",
+            "eventDate": "2024-06-04"
+          },
+          {
+            "eventDescriptionText": "Patent Issue Date Used in PTA Calculation",
+            "eventSequenceNumber": 69,
+            "originatingEventSequenceNumber": 0,
+            "ptaPTECode": "PTA",
+            "eventDate": "2024-06-04"
+          }
+        ]
+      },
+      "assignmentBag": [
+        {
+          "assignmentReceivedDate": "2024-01-09",
+          "assignorBag": [
+            {
+              "executionDate": "2016-11-29",
+              "assignorName": "SHEN, GENE"
+            },
+            {
+              "executionDate": "2016-11-29",
+              "assignorName": "SEBO, LUBOMIR"
+            }
+          ],
+          "frameNumber": 442,
+          "reelAndFrameNumber": "066070/0442",
+          "assignmentDocumentLocationURI": "https://assignmentcenter.uspto.gov/ipas/search/api/v2/public/download/patent/066070/0442",
+          "assignmentRecordedDate": "2024-01-09",
+          "conveyanceText": "ASSIGNMENT OF ASSIGNORS INTEREST (SEE DOCUMENT FOR DETAILS).",
+           "imageAvailableStatusCode": true,          
+          "pageTotalQuantity": 5,
+          "assigneeBag": [
+            {
+              "assigneeAddress": {
+                "cityName": "MENLO PARK",
+                "geographicRegionCode": "CA",
+                "postalCode": "94025",
+                "addressLineOneText": "1380 WILLOW ROAD"
+              },
+              "assigneeNameText": "PACIFIC BIOSCIENCES OF CALIFORNIA, INC."
+            }
+          ],
+          "assignmentMailedDate": "2024-01-11",
+          "reelNumber": 66070,
+          "correspondenceAddress": [
+            {
+              "addressLineOneText": "555 BRYANT STREET, SUITE 820",
+              "correspondentNameText": "VLP LAW GROUP LLP/DAVID A. ROISE",
+              "addressLineTwoText": "PALO ALTO, CA 94301"
+            }
+          ]
+        }
+      ],
+      "pgpubDocumentMetaData": {
+        "productIdentifier": "APPXML",
+        "zipFileName": "ipa231116.zip",
+        "fileCreateDateTime": "2024-09-30T11:13:08",
+        "xmlFileName": "18045436_20230366018.xml",
+        "fileLocationURI": "https://api.uspto.gov/api/v1/datasets/products/files/APPXML-SPLT/2023/ipa231116/18045436_20230366018.xml"
+      },
+      "childContinuityBag": [
+        {
+          "firstInventorToFileIndicator": true,
+          "childApplicationStatusDescriptionText": "Non Final Action Mailed",
+          "claimParentageTypeCode": "CON",
+          "childApplicationStatusCode": 41,
+          "claimParentageTypeCodeDescriptionText": "is a Continuation of",
+          "parentApplicationNumberText": "18045436",
+          "childApplicationFilingDate": "2024-05-28",
+          "childApplicationNumberText": "18675708"
+        }
+      ],
+      "lastIngestionDateTime": "2025-01-29T23:32:15",
+      "recordAttorney": {
+        "powerOfAttorneyBag": [
+          {
+            "activeIndicator": "ACTIVE",
+            "firstName": "DIANNE",
+            "lastName": "REED",
+            "registrationNumber": "31292",
+            "attorneyAddressBag": [
+              {
+                "cityName": "PORTOLA VALLEY",
+                "geographicRegionName": "CALIFORNIA",
+                "geographicRegionCode": "CA",
+                "countryCode": "US",
+                "postalCode": "94028",
+                "nameLineOneText": "VLP LAW GROUP LLP",
+                "countryName": "UNITED STATES",
+                "addressLineOneText": "4107 ALPINE ROAD"
+              }
+            ],
+            "telecommunicationAddressBag": [
+              {
+                "telecommunicationNumber": "650-446-3320",
+                "telecomTypeCode": "TEL"
+              }
+            ],
+            "registeredPractitionerCategory": "ATTNY"
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "firstName": "BRENDA",
+            "lastName": "CONNER",
+            "registrationNumber": "55082",
+            "attorneyAddressBag": [
+              {
+                "cityName": "IRVINE",
+                "geographicRegionName": "CALIFORNIA",
+                "geographicRegionCode": "CA",
+                "countryCode": "US",
+                "postalCode": "92614-825",
+                "nameLineOneText": "ORRICK, HERRINGTON & SUTCLIFFE, LLP",
+                "countryName": "UNITED STATES",
+                "addressLineOneText": "2050 MAIN STREET",
+                "addressLineTwoText": "SUITE 1100"
+              }
+            ],
+            "telecommunicationAddressBag": [
+              {
+                "telecommunicationNumber": "949-567-6700",
+                "telecomTypeCode": "TEL"
+              }
+            ],
+            "registeredPractitionerCategory": "AGENT"
+          }
+        ],
+        "customerNumberCorrespondenceData": {
+          "powerOfAttorneyAddressBag": [
+            {
+              "cityName": "Palo Alto",
+              "geographicRegionName": "CALIFORNIA",
+              "geographicRegionCode": "CA",
+              "countryCode": "US",
+              "postalCode": "94301",
+              "nameLineOneText": "VLP Law Group LLP",
+              "countryName": "UNITED STATES",
+              "addressLineOneText": "555 Bryant Street",
+              "addressLineTwoText": "Suite 820"
+            }
+          ],
+          "patronIdentifier": 86012
+        }
+      },
+      "correspondenceAddressBag": [
+        {
+          "cityName": "Menlo Park",
+          "geographicRegionName": "CALIFORNIA",
+          "geographicRegionCode": "CA",
+          "countryCode": "US",
+          "postalCode": "94025",
+          "nameLineOneText": "Pacific Biosciences of California, Inc.",
+          "countryName": "UNITED STATES",
+          "addressLineOneText": "1305 O' Brien Drive"
+        }
+      ]
+    }
+  ],
+  "requestIdentifier": "ff386887-1a12-4c26-bd65-b07b4b3b53ef"
+}
+Receive updates from the USPTO
+Enter your email to subscribe or update your preferences
+your@email.com
+About the USPTOSearch for patentsSearch for trademarks
+US Department of Commerce
+Accessibility
+Privacy Policy
+Financial and Performance Data
+Freedom of Information Act
+Inspector General
+NoFEAR Act
+USA.gov
+Follow us
+
+Feedback

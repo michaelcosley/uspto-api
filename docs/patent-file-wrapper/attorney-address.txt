@@ -1,0 +1,200 @@
+U.S. flag
+An official website of the United States government
+
+United States Patent and Trademark Office
+Open Data Portal logo
+Home
+Data products 
+APIs 
+Support 
+MyODP 
+Register for ODP access 
+OPEN DATA PORTAL API
+
+Getting started
+API syntax examples
+API rate limits
+Search
+Application Data
+Continuity
+Documents
+Transactions
+Patent Term Adjustment
+Address and Attorney/Agent Information
+Assignments
+Foreign Priority
+Associated Documents
+Status Codes
+Swagger UI
+HomeAPIsPatent File Wrapper API - Address and Attorney/Agent Information
+Address and Attorney/Agent Information
+Was this page helpful?
+The Address and Attorney/Agent Information section provides additional information concerning the attorney/agent related to a patent, including the associated attorney/agent's address. Use this endpoint when you want address and attorney/agent information related to a specific patent application whose application number you know. You can test APIs right away in Swagger UI swagger icon.
+
+This dataset includes published patent applications and issued patent data filed after January 1, 2001. This data is refreshed daily.
+
+GET https://api.uspto.gov/api/v1/patent/applications/{applicationNumberText}/attorney
+
+Returns attorney/agent data for supplied application number.
+
+Note: API Key is required. Obtain an API key.
+
+If you have any questions or errors, please visit the Support page for assistance.
+
+Response
+Internal server error.
+
+An unexpected condition has occurred on the server, and the server was unable to fulfill the request.
+
+If you have any questions or additional errors, please visit the Support section for assistance.
+
+ENDPOINT
+https://api.uspto.gov/api/v1/patent/applications/{applicationNumberText}/attorney
+JSON RESPONSE SAMPLE
+{
+  "count": 1,
+  "patentFileWrapperDataBag": [
+    {
+      "applicationNumberText": "18045436",
+      "recordAttorney": {
+        "powerOfAttorneyBag": [
+          {
+            "activeIndicator": "ACTIVE",
+            "firstName": "DIANNE",
+            "lastName": "REED",
+            "registrationNumber": "31292",
+            "attorneyAddressBag": [
+              {
+                "cityName": "PORTOLA VALLEY",
+                "geographicRegionName": "CALIFORNIA",
+                "geographicRegionCode": "CA",
+                "countryCode": "US",
+                "postalCode": "94028",
+                "nameLineOneText": "VLP LAW GROUP LLP",
+                "countryName": "UNITED STATES",
+                "addressLineOneText": "4107 ALPINE ROAD"
+              }
+            ],
+            "telecommunicationAddressBag": [
+              {
+                "telecommunicationNumber": "650-446-3320",
+                "telecomTypeCode": "TEL"
+              }
+            ],
+            "registeredPractitionerCategory": "ATTNY"
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "firstName": "BENJAMIN",
+            "lastName": "CARROLL",
+            "registrationNumber": "76510",
+            "attorneyAddressBag": [
+              {
+                "cityName": "SALT LAKE CITY",
+                "geographicRegionName": "UTAH",
+                "geographicRegionCode": "UT",
+                "countryCode": "US",
+                "postalCode": "84111",
+                "nameLineOneText": "PATENT LAW WORKS",
+                "countryName": "UNITED STATES",
+                "addressLineOneText": "201 SOUTH MAIN STREET, SUITE 250"
+              }
+            ],
+            "telecommunicationAddressBag": [
+              {
+                "telecommunicationNumber": "801-258-9817",
+                "telecomTypeCode": "TEL"
+              }
+            ],
+            "registeredPractitionerCategory": "ATTNY"
+          }
+        ],
+        "attorneyBag": [
+          {
+            "activeIndicator": "ACTIVE",
+            "firstName": "MONICIA",
+            "lastName": "ELROD-ERICKSON",
+            "registrationNumber": "51651",
+            "attorneyAddressBag": [
+              {
+                "cityName": "MENLO PARK",
+                "geographicRegionName": "CALIFORNIA",
+                "geographicRegionCode": "CA",
+                "countryCode": "US",
+                "postalCode": "94025",
+                "nameLineOneText": "PACIFIC BIOSCIENCES OF CALIFORNIA, INC.",
+                "countryName": "UNITED STATES",
+                "addressLineOneText": "1380 WILLOW ROAD"
+              }
+            ],
+            "telecommunicationAddressBag": [
+              {
+                "telecommunicationNumber": "650-521-8124",
+                "telecomTypeCode": "TEL"
+              }
+            ],
+            "registeredPractitionerCategory": "AGENT"
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "firstName": "PATRICK",
+            "lastName": "MORRIS",
+            "registrationNumber": "53351",
+            "attorneyAddressBag": [
+              {
+                "cityName": "SAN FRANCISCO",
+                "geographicRegionName": "CALIFORNIA",
+                "geographicRegionCode": "CA",
+                "countryCode": "US",
+                "postalCode": "94105",
+                "nameLineOneText": "PERKINS COIE, LLP",
+                "countryName": "UNITED STATES",
+                "addressLineOneText": "505 HOWARD STREET",
+                "addressLineTwoText": "SUITE 1000"
+              }
+            ],
+            "telecommunicationAddressBag": [
+              {
+                "telecommunicationNumber": "415-344-7105",
+                "telecomTypeCode": "TEL"
+              }
+            ],
+            "registeredPractitionerCategory": "ATTNY"
+          }
+        ],
+        "customerNumberCorrespondenceData": {
+          "powerOfAttorneyAddressBag": [
+            {
+              "cityName": "Palo Alto",
+              "geographicRegionName": "CALIFORNIA",
+              "geographicRegionCode": "CA",
+              "countryCode": "US",
+              "postalCode": "94301",
+              "nameLineOneText": "VLP Law Group LLP",
+              "countryName": "UNITED STATES",
+              "addressLineOneText": "555 Bryant Street",
+              "addressLineTwoText": "Suite 820"
+            }
+          ],
+          "patronIdentifier": 86012
+        }
+      }
+    }
+  ],
+  "requestIdentifier": "5eedff35-af64-46ee-9134-a40517dd062b"
+}
+Receive updates from the USPTO
+Enter your email to subscribe or update your preferences
+your@email.com
+About the USPTOSearch for patentsSearch for trademarks
+US Department of Commerce
+Accessibility
+Privacy Policy
+Financial and Performance Data
+Freedom of Information Act
+Inspector General
+NoFEAR Act
+USA.gov
+Follow us
+
+Feedback

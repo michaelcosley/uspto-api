@@ -1,0 +1,106 @@
+{
+  "count": 1,
+  "patentFileWrapperDataBag": [
+    {
+      "applicationNumberText": "90016176",
+      "eventDataBag": [
+        {
+          "eventCode": "DOCK",
+          "eventDate": "2026-04-21",
+          "eventDescriptionText": "Case Docketed to Examiner in GAU"
+        },
+        {
+          "eventCode": "RXPCOM",
+          "eventDate": "2026-04-15",
+          "eventDescriptionText": "Completion of Preprocessing - Released to Assigned GAU"
+        },
+        {
+          "eventCode": "COMP",
+          "eventDate": "2026-04-16",
+          "eventDescriptionText": "Application Is Now Complete"
+        },
+        {
+          "eventCode": "MRXN",
+          "eventDate": "2026-04-16",
+          "eventDescriptionText": "Reexamination Formalities Notice Mailed"
+        },
+        {
+          "eventCode": "MRXN",
+          "eventDate": "2026-04-16",
+          "eventDescriptionText": "Reexamination Formalities Notice Mailed"
+        },
+        {
+          "eventCode": "BIG.",
+          "eventDate": "2026-04-15",
+          "eventDescriptionText": "Entity Status Set To Undiscounted (Initial Default Setting or Status Change)"
+        },
+        {
+          "eventCode": "RXNREQFD",
+          "eventDate": "2026-04-15",
+          "eventDescriptionText": "Notice of reexamination request filing date"
+        },
+        {
+          "eventCode": "RXNREQAU",
+          "eventDate": "2026-04-15",
+          "eventDescriptionText": "Notice of assignment of reexamination request"
+        },
+        {
+          "eventCode": "RXTTLRPT",
+          "eventDate": "2026-04-15",
+          "eventDescriptionText": "Title Report"
+        },
+        {
+          "eventCode": "SMAL",
+          "eventDate": "2026-04-15",
+          "eventDescriptionText": "Applicant Has Filed a Verified Statement of Small Entity Status in Compliance with 37 CFR 1.27"
+        },
+        {
+          "eventCode": "PRXR",
+          "eventDate": "2026-04-10",
+          "eventDescriptionText": "Paralegal Reexam Review Complete"
+        },
+        {
+          "eventCode": "RXRLF",
+          "eventDate": "2026-04-10",
+          "eventDescriptionText": "ReExam Litigation Found"
+        },
+        {
+          "eventCode": "RXLITSR",
+          "eventDate": "2026-04-10",
+          "eventDescriptionText": "Reexam Litigation Search Conducted"
+        },
+        {
+          "eventCode": "RXIDS.R",
+          "eventDate": "2026-04-09",
+          "eventDescriptionText": "Reexam  - Information Disclosure Statement Filed by Third Party Requester"
+        },
+        {
+          "eventCode": "RXC/SR",
+          "eventDate": "2026-04-09",
+          "eventDescriptionText": "Certificate of Service"
+        },
+        {
+          "eventCode": "RXO_40.R",
+          "eventDate": "2026-04-09",
+          "eventDescriptionText": "Receipt of Orig. Ex Parte Request by Third Party Less Than 40 Pages - Rule 1.20(c )(1)"
+        },
+        {
+          "eventCode": "FTFI",
+          "eventDate": "2026-04-10",
+          "eventDescriptionText": "FITF set to NO - revise initial setting"
+        },
+        {
+          "eventCode": "BIG.",
+          "eventDate": "2026-04-09",
+          "eventDescriptionText": "Entity Status Set To Undiscounted (Initial Default Setting or Status Change)"
+        },
+        {
+          "eventCode": "RXOSUB",
+          "eventDate": "2026-04-09",
+          "eventDescriptionText": "Receipt of Original Ex Parte Reexam Request"
+        }
+      ]
+    }
+  ],
+  "requestIdentifier": "2d4392d5-3505-4d5c-a496-4f600a498280"
+}

@@ -1,0 +1,1098 @@
+{
+  "count": 1,
+  "patentFileWrapperDataBag": [
+    {
+      "applicationNumberText": "90016176",
+      "recordAttorney": {
+        "attorneyBag": [
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "16 WINCOTT DRIVE",
+                "cityName": "MELVILLE",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "NY",
+                "geographicRegionName": "NEW YORK",
+                "nameLineOneText": "ASPERAS ASSOCIATES",
+                "postalCode": "11747"
+              }
+            ],
+            "firstName": "IGNACIO",
+            "lastName": "ASPERAS",
+            "middleName": "M",
+            "registeredPractitionerCategory": "AGENT",
+            "registrationNumber": "37274",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "732-321-3012"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "6913 CORTE MONTEREY",
+                "cityName": "PLEASANTON",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "CA",
+                "geographicRegionName": "CALIFORNIA",
+                "nameLineOneText": "INTEL CORPORATION",
+                "postalCode": "94566-578"
+              }
+            ],
+            "firstName": "MATTHEW",
+            "lastName": "FAGAN",
+            "registeredPractitionerCategory": "ATTNY",
+            "registrationNumber": "37542",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "408-765-4056"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "111 THEORY, SUITE 100",
+                "cityName": "IRVINE",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "CA",
+                "geographicRegionName": "CALIFORNIA",
+                "nameLineOneText": "INTEL CORPORATION",
+                "postalCode": "92612"
+              }
+            ],
+            "firstName": "SHARON",
+            "lastName": "WONG",
+            "registeredPractitionerCategory": "ATTNY",
+            "registrationNumber": "37760",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "310-502-5277"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "2200 MISSION COLLEGE BLVD.",
+                "cityName": "SANTA CLARA",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "CA",
+                "geographicRegionName": "CALIFORNIA",
+                "nameLineOneText": "INTEL CORPORATION",
+                "postalCode": "95052"
+              }
+            ],
+            "firstName": "JEFFREY",
+            "lastName": "DRAEGER",
+            "registeredPractitionerCategory": "ATTNY",
+            "registrationNumber": "41000",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "408-765-5935"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "2200 MISSION COLLEGE BOULEVARD, RNB-4-150",
+                "cityName": "SANTA CLARA",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "CA",
+                "geographicRegionName": "CALIFORNIA",
+                "nameLineOneText": "INTEL CORPORATION",
+                "postalCode": "95054"
+              }
+            ],
+            "firstName": "MICHAEL",
+            "lastName": "PLIMIER",
+            "registeredPractitionerCategory": "ATTNY",
+            "registrationNumber": "43004",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "408-765-7857"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "2000 SEAPORT BOULEVARD",
+                "addressLineTwoText": "SUITE 400",
+                "cityName": "REDWOOD CITY",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "CA",
+                "geographicRegionName": "CALIFORNIA",
+                "nameLineOneText": "HEALTH HERO NETWORK, INC.",
+                "postalCode": "94063"
+              },
+              {
+                "addressLineOneText": "M.S. D-106",
+                "cityName": "MILPITAS,",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "CA",
+                "geographicRegionName": "CALIFORNIA",
+                "nameLineOneText": "L S I LOGIC CORPORATION",
+                "nameLineTwoText": "1551 MC CARTHY BLVD.",
+                "postalCode": "950350000"
+              }
+            ],
+            "firstName": "SANDEEP",
+            "lastName": "JAGGI",
+            "registeredPractitionerCategory": "ATTNY",
+            "registrationNumber": "43331",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "650-779-9105"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "40 NAGOG PARK",
+                "cityName": "ACTON",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "MA",
+                "geographicRegionName": "MASSACHUSETTS",
+                "nameLineOneText": "INTEL AMERICAS",
+                "postalCode": "01720"
+              }
+            ],
+            "firstName": "ROBERT",
+            "lastName": "GREENBERG",
+            "registeredPractitionerCategory": "ATTNY",
+            "registrationNumber": "44133",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "978-760-3189"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "JF3-147",
+                "addressLineTwoText": "2111 NE 25TH AVENUE",
+                "cityName": "HILLSBORO",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "OR",
+                "geographicRegionName": "OREGON",
+                "nameLineOneText": "INTEL",
+                "postalCode": "97124"
+              }
+            ],
+            "firstName": "KERRY",
+            "lastName": "TWEET",
+            "registeredPractitionerCategory": "ATTNY",
+            "registrationNumber": "45959",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "503-712-3206"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "3000 NE SHUTE ROAD",
+                "cityName": "HILLSBORO",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "OR",
+                "geographicRegionName": "OREGON",
+                "nameLineOneText": "INTEL CORPORATION",
+                "postalCode": "97124"
+              }
+            ],
+            "firstName": "JOHN",
+            "lastName": "HARROUN",
+            "registeredPractitionerCategory": "ATTNY",
+            "registrationNumber": "46339",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "703-633-0926"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "1300 SOUTH MOPAC EXPRESSWAY",
+                "cityName": "AUSTIN",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "TX",
+                "geographicRegionName": "TEXAS",
+                "nameLineOneText": "INTEL CORPORATION",
+                "postalCode": "78746"
+              }
+            ],
+            "firstName": "RAHUL",
+            "lastName": "ENGINEER",
+            "registeredPractitionerCategory": "ATTNY",
+            "registrationNumber": "47548",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "512-362-3687"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "4500 S. DOBSON RD.",
+                "addressLineTwoText": "OC2-157",
+                "cityName": "CHANDLER",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "AZ",
+                "geographicRegionName": "ARIZONA",
+                "nameLineOneText": "INTEL CORPORATION",
+                "postalCode": "85248"
+              }
+            ],
+            "firstName": "KENNETH",
+            "lastName": "NELSON",
+            "registeredPractitionerCategory": "ATTNY",
+            "registrationNumber": "48677",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "480-715-0655"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "4500 S. DOBSON RD.",
+                "addressLineTwoText": "MS OC2-157",
+                "cityName": "CHANDLER",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "AZ",
+                "geographicRegionName": "ARIZONA",
+                "nameLineOneText": "INTEL CORPORATION",
+                "postalCode": "85248"
+              }
+            ],
+            "firstName": "SCOTT",
+            "lastName": "LANE",
+            "registeredPractitionerCategory": "ATTNY",
+            "registrationNumber": "50236",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "480-715-5432"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "1211 SW 5TH AVE.",
+                "addressLineTwoText": "SUITES 1900",
+                "cityName": "PORTLAND",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "OR",
+                "geographicRegionName": "OREGON",
+                "nameLineOneText": "SCHWABE WILLIAMSON & WYATT, P.C.",
+                "postalCode": "97204"
+              }
+            ],
+            "firstName": "CHARLES",
+            "lastName": "BURRELL",
+            "registeredPractitionerCategory": "ATTNY",
+            "registrationNumber": "55031",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "503-796-2099"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "RS5-105",
+                "addressLineTwoText": "3100 NE SHUTE ROAD",
+                "cityName": "HILLSBORO",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "OR",
+                "geographicRegionName": "OREGON",
+                "nameLineOneText": "INTEL CORPORATION",
+                "postalCode": "97124"
+              }
+            ],
+            "firstName": "ROBERT",
+            "lastName": "HINCHLIFFE",
+            "registeredPractitionerCategory": "ATTNY",
+            "registrationNumber": "55268",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "971-214-7066"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "1300 S MPAC EXPRESSWAY",
+                "cityName": "AUSTIN",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "TX",
+                "geographicRegionName": "TEXAS",
+                "postalCode": "78746"
+              }
+            ],
+            "firstName": "WING",
+            "lastName": "MOK",
+            "registeredPractitionerCategory": "ATTNY",
+            "registrationNumber": "56237",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "--"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "AZRIELI BUSINESS CENTER",
+                "addressLineTwoText": "132 MENACHEM BEGIN BLVD., TRIANGLE TOWER, 38TH FLO",
+                "cityName": "TEL AVIV",
+                "nameLineOneText": "SHICHRUR & CO.,",
+                "nameLineTwoText": "ATTORNEYS AND PATENT ATTORNEYS",
+                "postalCode": "6701101"
+              }
+            ],
+            "firstName": "NAIM",
+            "lastName": "SHICHRUR",
+            "registeredPractitionerCategory": "AGENT",
+            "registrationNumber": "56248",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "845-335-4230"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "2111 N.E. 25TH AVE., M.S. JF3-147",
+                "cityName": "HILLSBORO",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "OR",
+                "geographicRegionName": "OREGON",
+                "nameLineOneText": "INTEL CORP.",
+                "postalCode": "97124"
+              }
+            ],
+            "firstName": "GUOJUN",
+            "lastName": "ZHOU",
+            "registeredPractitionerCategory": "ATTNY",
+            "registrationNumber": "56478",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "503-264-1700"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "1030 RAMONA STREET",
+                "cityName": "PALO ALTO",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "CA",
+                "geographicRegionName": "CALIFORNIA",
+                "postalCode": "94301"
+              }
+            ],
+            "firstName": "ALYSSA",
+            "lastName": "LIANG",
+            "middleName": "Y.",
+            "registeredPractitionerCategory": "AGENT",
+            "registrationNumber": "59179",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "650-996-7068"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "121 SOUTH 8TH STREET",
+                "addressLineTwoText": "SUITE 1600",
+                "cityName": "MINNEAPOLIS",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "MN",
+                "geographicRegionName": "MINNESOTA",
+                "nameLineOneText": "SCHWEGMAN LUNDBERG & WOESSNER",
+                "postalCode": "55402"
+              }
+            ],
+            "firstName": "ERIC",
+            "lastName": "HIPONIA",
+            "registeredPractitionerCategory": "ATTNY",
+            "registrationNumber": "62002",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "612-373-6900"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "2200 MISSION COLLEGE BLVD.",
+                "cityName": "SANTA CLARA",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "CA",
+                "geographicRegionName": "CALIFORNIA",
+                "nameLineOneText": "INTEL CORPORATION",
+                "postalCode": "95054-154"
+              }
+            ],
+            "firstName": "FENGLING",
+            "lastName": "LI",
+            "registeredPractitionerCategory": "ATTNY",
+            "registrationNumber": "62962",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "408-765-7794"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "921 FERNGROVE DRIVE",
+                "cityName": "CUPERTINO",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "CA",
+                "geographicRegionName": "CALIFORNIA",
+                "postalCode": "95014"
+              }
+            ],
+            "firstName": "GORDON",
+            "lastName": "CHIN",
+            "registeredPractitionerCategory": "AGENT",
+            "registrationNumber": "73324",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "408-772-9958"
+              }
+            ]
+          }
+        ],
+        "customerNumberCorrespondenceData": {
+          "patronIdentifier": 72517,
+          "powerOfAttorneyAddressBag": [
+            {
+              "addressLineOneText": "Horowitz Tower",
+              "addressLineTwoText": "2 Moti Kind St., Suite 521",
+              "cityName": "Rehovot",
+              "countryCode": "IL",
+              "countryName": "ISRAEL",
+              "nameLineOneText": "Shichrur & Co.",
+              "postalCode": "7638523"
+            }
+          ]
+        },
+        "powerOfAttorneyBag": [
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "40 NAGOG PARK",
+                "cityName": "ACTON",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "MA",
+                "geographicRegionName": "MASSACHUSETTS",
+                "nameLineOneText": "INTEL AMERICAS",
+                "postalCode": "01720"
+              }
+            ],
+            "firstName": "ROBERT",
+            "lastName": "GREENBERG",
+            "registeredPractitionerCategory": "ATTNY",
+            "registrationNumber": "44133",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "978-760-3189"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "1211 SW 5TH AVE.",
+                "addressLineTwoText": "SUITES 1900",
+                "cityName": "PORTLAND",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "OR",
+                "geographicRegionName": "OREGON",
+                "nameLineOneText": "SCHWABE WILLIAMSON & WYATT, P.C.",
+                "postalCode": "97204"
+              }
+            ],
+            "firstName": "CHARLES",
+            "lastName": "BURRELL",
+            "registeredPractitionerCategory": "ATTNY",
+            "registrationNumber": "55031",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "503-796-2099"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "4500 S. DOBSON RD.",
+                "addressLineTwoText": "OC2-157",
+                "cityName": "CHANDLER",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "AZ",
+                "geographicRegionName": "ARIZONA",
+                "nameLineOneText": "INTEL CORPORATION",
+                "postalCode": "85248"
+              }
+            ],
+            "firstName": "KENNETH",
+            "lastName": "NELSON",
+            "registeredPractitionerCategory": "ATTNY",
+            "registrationNumber": "48677",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "480-715-0655"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "JF3-147",
+                "addressLineTwoText": "2111 NE 25TH AVENUE",
+                "cityName": "HILLSBORO",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "OR",
+                "geographicRegionName": "OREGON",
+                "nameLineOneText": "INTEL",
+                "postalCode": "97124"
+              }
+            ],
+            "firstName": "KERRY",
+            "lastName": "TWEET",
+            "registeredPractitionerCategory": "ATTNY",
+            "registrationNumber": "45959",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "503-712-3206"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "3000 NE SHUTE ROAD",
+                "cityName": "HILLSBORO",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "OR",
+                "geographicRegionName": "OREGON",
+                "nameLineOneText": "INTEL CORPORATION",
+                "postalCode": "97124"
+              }
+            ],
+            "firstName": "JOHN",
+            "lastName": "HARROUN",
+            "registeredPractitionerCategory": "ATTNY",
+            "registrationNumber": "46339",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "703-633-0926"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "2200 MISSION COLLEGE BLVD.",
+                "cityName": "SANTA CLARA",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "CA",
+                "geographicRegionName": "CALIFORNIA",
+                "nameLineOneText": "INTEL CORPORATION",
+                "postalCode": "95054-154"
+              }
+            ],
+            "firstName": "FENGLING",
+            "lastName": "LI",
+            "registeredPractitionerCategory": "ATTNY",
+            "registrationNumber": "62962",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "408-765-7794"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "921 FERNGROVE DRIVE",
+                "cityName": "CUPERTINO",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "CA",
+                "geographicRegionName": "CALIFORNIA",
+                "postalCode": "95014"
+              }
+            ],
+            "firstName": "GORDON",
+            "lastName": "CHIN",
+            "registeredPractitionerCategory": "AGENT",
+            "registrationNumber": "73324",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "408-772-9958"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "2200 MISSION COLLEGE BLVD.",
+                "cityName": "SANTA CLARA",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "CA",
+                "geographicRegionName": "CALIFORNIA",
+                "nameLineOneText": "INTEL CORPORATION",
+                "postalCode": "95052"
+              }
+            ],
+            "firstName": "JEFFREY",
+            "lastName": "DRAEGER",
+            "registeredPractitionerCategory": "ATTNY",
+            "registrationNumber": "41000",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "408-765-5935"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "2200 MISSION COLLEGE BOULEVARD, RNB-4-150",
+                "cityName": "SANTA CLARA",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "CA",
+                "geographicRegionName": "CALIFORNIA",
+                "nameLineOneText": "INTEL CORPORATION",
+                "postalCode": "95054"
+              }
+            ],
+            "firstName": "MICHAEL",
+            "lastName": "PLIMIER",
+            "registeredPractitionerCategory": "ATTNY",
+            "registrationNumber": "43004",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "408-765-7857"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "4500 S. DOBSON RD.",
+                "addressLineTwoText": "MS OC2-157",
+                "cityName": "CHANDLER",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "AZ",
+                "geographicRegionName": "ARIZONA",
+                "nameLineOneText": "INTEL CORPORATION",
+                "postalCode": "85248"
+              }
+            ],
+            "firstName": "SCOTT",
+            "lastName": "LANE",
+            "registeredPractitionerCategory": "ATTNY",
+            "registrationNumber": "50236",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "480-715-5432"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "1300 S MPAC EXPRESSWAY",
+                "cityName": "AUSTIN",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "TX",
+                "geographicRegionName": "TEXAS",
+                "postalCode": "78746"
+              }
+            ],
+            "firstName": "WING",
+            "lastName": "MOK",
+            "registeredPractitionerCategory": "ATTNY",
+            "registrationNumber": "56237",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "--"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "AZRIELI BUSINESS CENTER",
+                "addressLineTwoText": "132 MENACHEM BEGIN BLVD., TRIANGLE TOWER, 38TH FLO",
+                "cityName": "TEL AVIV",
+                "nameLineOneText": "SHICHRUR & CO.,",
+                "nameLineTwoText": "ATTORNEYS AND PATENT ATTORNEYS",
+                "postalCode": "6701101"
+              }
+            ],
+            "firstName": "NAIM",
+            "lastName": "SHICHRUR",
+            "registeredPractitionerCategory": "AGENT",
+            "registrationNumber": "56248",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "845-335-4230"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "2000 SEAPORT BOULEVARD",
+                "addressLineTwoText": "SUITE 400",
+                "cityName": "REDWOOD CITY",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "CA",
+                "geographicRegionName": "CALIFORNIA",
+                "nameLineOneText": "HEALTH HERO NETWORK, INC.",
+                "postalCode": "94063"
+              }
+            ],
+            "firstName": "SANDEEP",
+            "lastName": "JAGGI",
+            "registeredPractitionerCategory": "ATTNY",
+            "registrationNumber": "43331",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "650-779-9105"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "2111 N.E. 25TH AVE., M.S. JF3-147",
+                "cityName": "HILLSBORO",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "OR",
+                "geographicRegionName": "OREGON",
+                "nameLineOneText": "INTEL CORP.",
+                "postalCode": "97124"
+              }
+            ],
+            "firstName": "GUOJUN",
+            "lastName": "ZHOU",
+            "registeredPractitionerCategory": "ATTNY",
+            "registrationNumber": "56478",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "503-264-1700"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "16 WINCOTT DRIVE",
+                "cityName": "MELVILLE",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "NY",
+                "geographicRegionName": "NEW YORK",
+                "nameLineOneText": "ASPERAS ASSOCIATES",
+                "postalCode": "11747"
+              }
+            ],
+            "firstName": "IGNACIO",
+            "lastName": "ASPERAS",
+            "middleName": "M",
+            "registeredPractitionerCategory": "AGENT",
+            "registrationNumber": "37274",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "732-321-3012"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "1300 SOUTH MOPAC EXPRESSWAY",
+                "cityName": "AUSTIN",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "TX",
+                "geographicRegionName": "TEXAS",
+                "nameLineOneText": "INTEL CORPORATION",
+                "postalCode": "78746"
+              }
+            ],
+            "firstName": "RAHUL",
+            "lastName": "ENGINEER",
+            "registeredPractitionerCategory": "ATTNY",
+            "registrationNumber": "47548",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "512-362-3687"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "6913 CORTE MONTEREY",
+                "cityName": "PLEASANTON",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "CA",
+                "geographicRegionName": "CALIFORNIA",
+                "nameLineOneText": "INTEL CORPORATION",
+                "postalCode": "94566-578"
+              }
+            ],
+            "firstName": "MATTHEW",
+            "lastName": "FAGAN",
+            "registeredPractitionerCategory": "ATTNY",
+            "registrationNumber": "37542",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "408-765-4056"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "121 SOUTH 8TH STREET",
+                "addressLineTwoText": "SUITE 1600",
+                "cityName": "MINNEAPOLIS",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "MN",
+                "geographicRegionName": "MINNESOTA",
+                "nameLineOneText": "SCHWEGMAN LUNDBERG & WOESSNER",
+                "postalCode": "55402"
+              }
+            ],
+            "firstName": "ERIC",
+            "lastName": "HIPONIA",
+            "registeredPractitionerCategory": "ATTNY",
+            "registrationNumber": "62002",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "612-373-6900"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "1030 RAMONA STREET",
+                "cityName": "PALO ALTO",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "CA",
+                "geographicRegionName": "CALIFORNIA",
+                "postalCode": "94301"
+              }
+            ],
+            "firstName": "ALYSSA",
+            "lastName": "LIANG",
+            "middleName": "Y.",
+            "registeredPractitionerCategory": "AGENT",
+            "registrationNumber": "59179",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "650-996-7068"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "111 THEORY, SUITE 100",
+                "cityName": "IRVINE",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "CA",
+                "geographicRegionName": "CALIFORNIA",
+                "nameLineOneText": "INTEL CORPORATION",
+                "postalCode": "92612"
+              }
+            ],
+            "firstName": "SHARON",
+            "lastName": "WONG",
+            "registeredPractitionerCategory": "ATTNY",
+            "registrationNumber": "37760",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "310-502-5277"
+              }
+            ]
+          },
+          {
+            "activeIndicator": "ACTIVE",
+            "attorneyAddressBag": [
+              {
+                "addressLineOneText": "RS5-105",
+                "addressLineTwoText": "3100 NE SHUTE ROAD",
+                "cityName": "HILLSBORO",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "geographicRegionCode": "OR",
+                "geographicRegionName": "OREGON",
+                "nameLineOneText": "INTEL CORPORATION",
+                "postalCode": "97124"
+              }
+            ],
+            "firstName": "ROBERT",
+            "lastName": "HINCHLIFFE",
+            "registeredPractitionerCategory": "ATTNY",
+            "registrationNumber": "55268",
+            "telecommunicationAddressBag": [
+              {
+                "telecomTypeCode": "TEL",
+                "telecommunicationNumber": "971-214-7066"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "requestIdentifier": "42d8cc58-4e33-4716-9c2f-e5118155c738"
+}

@@ -1,0 +1,201 @@
+U.S. flag
+An official website of the United States government
+
+United States Patent and Trademark Office
+Open Data Portal logo
+Home
+Data products 
+APIs 
+Support 
+MyODP 
+Register for ODP access 
+OPEN DATA PORTAL API
+
+Getting started
+API syntax examples
+API rate limits
+Search
+Application Data
+Continuity
+Documents
+Transactions
+Patent Term Adjustment
+Address and Attorney/Agent Information
+Assignments
+Foreign Priority
+Associated Documents
+Status Codes
+Swagger UI
+HomeAPIsPatent File Wrapper API - Application Data
+Application Data
+Was this page helpful?
+The Application Data section contains key bibliographic information found on the front page of granted patents and published patent applications. Use this endpoint when you want application data for a specific patent application whose application number you know. You can test APIs right away in Swagger UI swagger icon.
+
+This dataset includes published patent applications and issued patent data filed after January 1, 2001. This data is refreshed daily.
+
+GET https://api.uspto.gov/api/v1/patent/applications/{applicationNumberText}/meta-data
+
+e.g. https://api.uspto.gov/api/v1/patent/applications/16330077/meta-data
+
+Returns application data for application number
+
+Note: API Key is required. Obtain an API key.
+
+If you have any questions or errors, please visit the Support page for assistance.
+
+Response
+Internal server error.
+
+An unexpected condition has occurred on the server, and the server was unable to fulfill the request.
+
+If you have any questions or additional errors, please visit the Support section for assistance.
+
+ENDPOINT
+https://api.uspto.gov/api/v1/patent/applications/{applicationNumberText}/meta-data
+JSON RESPONSE SAMPLE
+{
+  "count": 1,
+  "patentFileWrapperDataBag": [
+    {
+      "applicationNumberText": "18045436",
+      "applicationMetaData": {
+        "firstInventorToFileIndicator": "Y",
+        "applicationStatusCode": 150,
+        "applicationTypeCode": "UTL",
+        "entityStatusData": {
+          "smallEntityStatusIndicator": false,
+          "businessEntityStatusCategory": "Regular Undiscounted"
+        },
+        "filingDate": "2022-10-10",
+        "uspcSymbolText": "530/358",
+        "nationalStageIndicator": false,
+        "firstInventorName": "Lubomir SEBO",
+        "cpcClassificationBag": [
+          "C07H19/207",
+          "C12Q2563/107",
+          "C07K19/00",
+          "C12Q1/6869",
+          "C12Q2525/113",
+          "C09B69/105",
+          "C07H19/10"
+        ],
+        "effectiveFilingDate": "2022-10-10",
+        "publicationDateBag": [
+          "2023-11-16"
+        ],
+        "publicationSequenceNumberBag": [
+          "0366018"
+        ],
+        "earliestPublicationDate": "2023-11-16",
+        "applicationTypeLabelName": "Utility",
+        "applicationStatusDate": "2024-05-15",
+        "class": "530",
+        "applicationTypeCategory": "REGULAR",
+        "inventorBag": [
+          {
+            "firstName": "Lubomir",
+            "lastName": "SEBO",
+            "countryCode": "US",
+            "inventorNameText": "Lubomir SEBO",
+            "correspondenceAddressBag": [
+              {
+                "cityName": "Redwood City",
+                "geographicRegionName": "CALIFORNIA",
+                "geographicRegionCode": "CA",
+                "countryCode": "US",
+                "nameLineOneText": "SEBO, Lubomir",
+                "countryName": "UNITED STATES",
+                "postalAddressCategory": "residence"
+              },
+              {
+                "cityName": "Redwood City",
+                "geographicRegionName": "CALIFORNIA",
+                "geographicRegionCode": "CA",
+                "countryCode": "US",
+                "postalCode": "94061",
+                "nameLineOneText": "Lubomir  SEBO",
+                "countryName": "UNITED STATES",
+                "postalAddressCategory": "postal"
+              }
+            ]
+          },
+          {
+            "firstName": "Gene",
+            "lastName": "SHEN",
+            "countryCode": "US",
+            "inventorNameText": "Gene SHEN",
+            "correspondenceAddressBag": [
+              {
+                "cityName": "Santa Clara",
+                "geographicRegionName": "CALIFORNIA",
+                "geographicRegionCode": "CA",
+                "countryCode": "US",
+                "nameLineOneText": "SHEN, Gene",
+                "countryName": "UNITED STATES",
+                "postalAddressCategory": "residence"
+              },
+              {
+                "cityName": "Santa Clara",
+                "geographicRegionName": "CALIFORNIA",
+                "geographicRegionCode": "CA",
+                "countryCode": "US",
+                "postalCode": "95051",
+                "nameLineOneText": "Gene  SHEN",
+                "countryName": "UNITED STATES",
+                "postalAddressCategory": "postal"
+              }
+            ]
+          }
+        ],
+        "applicationStatusDescriptionText": "Patented Case",
+        "patentNumber": "12000000",
+        "grantDate": "2024-06-04",
+        "applicantBag": [
+          {
+            "applicantNameText": "Pacific Biosciences of California, Inc.",
+            "correspondenceAddressBag": [
+              {
+                "cityName": "Menlo Park",
+                "geographicRegionName": "CALIFORNIA",
+                "geographicRegionCode": "CA",
+                "countryCode": "US",
+                "postalCode": "94025",
+                "countryName": "UNITED STATES",
+                "postalAddressCategory": "postal"
+              }
+            ]
+          }
+        ],
+        "firstApplicantName": "Pacific Biosciences of California, Inc.",
+        "customerNumber": 57770,
+        "groupArtUnitNumber": "1637",
+        "earliestPublicationNumber": "US20230366018A1",
+        "inventionTitle": "LABELED NUCLEOTIDE ANALOGS, REACTION MIXTURES, AND METHODS AND SYSTEMS FOR SEQUENCING",
+        "applicationConfirmationNumber": 2251,
+        "examinerNameText": "RILEY, JEZIA",
+        "subclass": "358",
+        "publicationCategoryBag": [
+          "Granted/Issued",
+          "Pre-Grant Publications - PGPub"
+        ],
+        "docketNumber": "1407-00-014U03"
+      }
+    }
+  ],
+  "requestIdentifier": "ebdd573b-52c4-4316-8709-140d58d3dd2d"
+}
+Receive updates from the USPTO
+Enter your email to subscribe or update your preferences
+your@email.com
+About the USPTOSearch for patentsSearch for trademarks
+US Department of Commerce
+Accessibility
+Privacy Policy
+Financial and Performance Data
+Freedom of Information Act
+Inspector General
+NoFEAR Act
+USA.gov
+Follow us
+
+Feedback

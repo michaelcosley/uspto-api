@@ -1,0 +1,192 @@
+[
+  {
+    "count": 1,
+    "file": "search.json",
+    "method": "GET",
+    "params": {
+      "limit": 1,
+      "q": "applicationNumberText:90016176"
+    },
+    "path": "/api/v1/patent/applications/search",
+    "status_code": 200,
+    "top_level_keys": [
+      "count",
+      "patentFileWrapperDataBag",
+      "requestIdentifier"
+    ]
+  },
+  {
+    "count": null,
+    "file": "download_search_results.json",
+    "method": "GET",
+    "params": {
+      "format": "json",
+      "limit": 1,
+      "q": "applicationNumberText:90016176"
+    },
+    "path": "/api/v1/patent/applications/search/download",
+    "status_code": 200,
+    "top_level_keys": [
+      "patentdata"
+    ]
+  },
+  {
+    "count": 1,
+    "file": "get.json",
+    "method": "GET",
+    "params": {},
+    "path": "/api/v1/patent/applications/90016176",
+    "status_code": 200,
+    "top_level_keys": [
+      "count",
+      "patentFileWrapperDataBag",
+      "requestIdentifier"
+    ]
+  },
+  {
+    "count": 1,
+    "file": "metadata.json",
+    "method": "GET",
+    "params": {},
+    "path": "/api/v1/patent/applications/90016176/meta-data",
+    "status_code": 200,
+    "top_level_keys": [
+      "count",
+      "patentFileWrapperDataBag",
+      "requestIdentifier"
+    ]
+  },
+  {
+    "count": 1,
+    "file": "adjustment.json",
+    "method": "GET",
+    "params": {},
+    "path": "/api/v1/patent/applications/90016176/adjustment",
+    "status_code": 200,
+    "top_level_keys": [
+      "count",
+      "patentFileWrapperDataBag",
+      "requestIdentifier"
+    ]
+  },
+  {
+    "count": 1,
+    "file": "assignment.json",
+    "method": "GET",
+    "params": {},
+    "path": "/api/v1/patent/applications/90016176/assignment",
+    "status_code": 200,
+    "top_level_keys": [
+      "count",
+      "patentFileWrapperDataBag",
+      "requestIdentifier"
+    ]
+  },
+  {
+    "count": 1,
+    "file": "attorney.json",
+    "method": "GET",
+    "params": {},
+    "path": "/api/v1/patent/applications/90016176/attorney",
+    "status_code": 200,
+    "top_level_keys": [
+      "count",
+      "patentFileWrapperDataBag",
+      "requestIdentifier"
+    ]
+  },
+  {
+    "count": 1,
+    "file": "continuity.json",
+    "method": "GET",
+    "params": {},
+    "path": "/api/v1/patent/applications/90016176/continuity",
+    "status_code": 200,
+    "top_level_keys": [
+      "count",
+      "patentFileWrapperDataBag",
+      "requestIdentifier"
+    ]
+  },
+  {
+    "count": 1,
+    "file": "foreign_priority.json",
+    "method": "GET",
+    "params": {},
+    "path": "/api/v1/patent/applications/90016176/foreign-priority",
+    "status_code": 200,
+    "top_level_keys": [
+      "count",
+      "patentFileWrapperDataBag",
+      "requestIdentifier"
+    ]
+  },
+  {
+    "count": 1,
+    "file": "transactions.json",
+    "method": "GET",
+    "params": {},
+    "path": "/api/v1/patent/applications/90016176/transactions",
+    "status_code": 200,
+    "top_level_keys": [
+      "count",
+      "patentFileWrapperDataBag",
+      "requestIdentifier"
+    ]
+  },
+  {
+    "count": 18,
+    "file": "documents.json",
+    "method": "GET",
+    "params": {},
+    "path": "/api/v1/patent/applications/90016176/documents",
+    "status_code": 200,
+    "top_level_keys": [
+      "count",
+      "documentBag"
+    ]
+  },
+  {
+    "count": 1,
+    "file": "documents_bib.json",
+    "method": "GET",
+    "params": {
+      "documentCodes": "BIB"
+    },
+    "path": "/api/v1/patent/applications/90016176/documents",
+    "status_code": 200,
+    "top_level_keys": [
+      "count",
+      "documentBag"
+    ]
+  },
+  {
+    "count": 1,
+    "file": "associated_documents.json",
+    "method": "GET",
+    "params": {},
+    "path": "/api/v1/patent/applications/90016176/associated-documents",
+    "status_code": 200,
+    "top_level_keys": [
+      "count",
+      "patentFileWrapperDataBag",
+      "requestIdentifier"
+    ]
+  },
+  {
+    "count": 1,
+    "file": "status_codes_412.json",
+    "method": "GET",
+    "params": {
+      "limit": 1,
+      "q": "412"
+    },
+    "path": "/api/v1/patent/status-codes",
+    "status_code": 200,
+    "top_level_keys": [
+      "count",
+      "requestIdentifier",
+      "statusCodeBag"
+    ]
+  }
+]

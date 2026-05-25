@@ -1,0 +1,119 @@
+U.S. flag
+An official website of the United States government
+
+United States Patent and Trademark Office
+Open Data Portal logo
+Home
+Data products 
+APIs 
+Support 
+MyODP 
+Register for ODP access 
+OPEN DATA PORTAL API
+
+Getting started
+API syntax examples
+API rate limits
+Search
+Application Data
+Continuity
+Documents
+Transactions
+Patent Term Adjustment
+Address and Attorney/Agent Information
+Assignments
+Foreign Priority
+Associated Documents
+Status Codes
+Swagger UI
+HomeAPIsPatent File Wrapper API - Assignments
+Assignments
+Was this page helpful?
+The Assignments section provides additional information concerning the assignments of each patent. Use this endpoint when you want assignments data related to a specific patent application whose application number you know. You can test the API right away in Swagger UI swagger icon.
+
+This dataset includes published patent applications and issued patent data filed after January 1, 2001. This data is refreshed daily.
+
+GET https://api.uspto.gov/api/v1/patent/applications/{applicationNumberText}/assignment
+
+Returns assignment data for supplied application number.
+
+Note: API Key is required. Obtain an API key.
+
+If you have any questions or errors, please visit the Support page for assistance.
+
+Response
+Internal server error.
+
+An unexpected condition has occurred on the server, and the server was unable to fulfill the request.
+
+If you have any questions or additional errors, please visit the Support section for assistance.
+
+ENDPOINT
+https://api.uspto.gov/api/v1/patent/applications/{applicationNumberText}/assignment
+JSON RESPONSE SAMPLE
+{
+  "count": 1,
+  "patentFileWrapperDataBag": [
+    {
+      "applicationNumberText": "18045436",
+      "assignmentBag": [
+        {
+          "assignmentReceivedDate": "2024-01-09",
+          "assignorBag": [
+            {
+              "executionDate": "2016-11-29",
+              "assignorName": "SHEN, GENE"
+            },
+            {
+              "executionDate": "2016-11-29",
+              "assignorName": "SEBO, LUBOMIR"
+            }
+          ],
+          "reelNumber": 66070,
+          "frameNumber": 442,
+          "reelAndFrameNumber": "066070/0442",
+          "assignmentDocumentLocationURI": "https://assignmentcenter.uspto.gov/ipas/search/api/v2/public/download/patent/066070/0442",
+          "assignmentRecordedDate": "2024-01-09",
+          "conveyanceText": "ASSIGNMENT OF ASSIGNORS INTEREST (SEE DOCUMENT FOR DETAILS).",
+           "imageAvailableStatusCode": true,
+          "pageTotalQuantity": 5,
+          "assigneeBag": [
+            {
+              "assigneeNameText": "PACIFIC BIOSCIENCES OF CALIFORNIA, INC.",
+              "assigneeAddress": {
+                "addressLineOneText": "1380 WILLOW ROAD",
+                "cityName": "MENLO PARK",
+                "geographicRegionCode": "CA",
+                "postalCode": "94025"
+              }
+            }
+          ],
+          "assignmentMailedDate": "2024-01-11",
+          "correspondenceAddress": [
+            {
+              "correspondentNameText": "VLP LAW GROUP LLP/DAVID A. ROISE",
+              "addressLineOneText": "555 BRYANT STREET, SUITE 820",
+              "addressLineTwoText": "PALO ALTO, CA 94301"
+            }
+          ]
+        }
+      ]      
+    }
+  ],
+  "requestIdentifier": "c0850c7d-d400-47ea-aacd-f9991bde94b6"
+}
+Receive updates from the USPTO
+Enter your email to subscribe or update your preferences
+your@email.com
+About the USPTOSearch for patentsSearch for trademarks
+US Department of Commerce
+Accessibility
+Privacy Policy
+Financial and Performance Data
+Freedom of Information Act
+Inspector General
+NoFEAR Act
+USA.gov
+Follow us
+
+Feedback

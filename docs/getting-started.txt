@@ -1,0 +1,19 @@
+Getting STarted:
+using your API Key to request patent data
+Once you have obtained your API key, you can start using the Open Data Portal APIs via the Open Data Portal API Syntax Examples page.
+Find resources and documentation depending on how you want to use the APIs:
+Simple use cases
+
+See the API Syntax Examples section for simplified syntax examples and a link to additional documentation.
+Advanced use cases
+
+See advanced syntax examples and documentation in Swagger UI swagger icon.
+Note that there are additional examples for each API endpoint under the ODP Patent Data section (such as Application Data, Continuity, etc.).
+Here is a sample format of where you should add your API key in the HTTP header:
+x-api-key as “x-api-key: < api-key >”
+
+-H 'X-API-KEY: <YOUR_API_KEY>'
+For example:
+curl -X 'GET' \  'https://api.uspto.gov/api/v1/patent/applications/search' \  
+-H 'accept: application/ json' \   -H 'X-API-KEY: <YOUR_API_KEY>'
+If you have any questions or errors, please visit the FAQs page for assistance.

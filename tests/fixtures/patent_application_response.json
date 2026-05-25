@@ -1,0 +1,13 @@
+{
+  "count": 1,
+  "requestIdentifier": "fixture-request",
+  "patentFileWrapperDataBag": [
+    {
+      "applicationNumberText": "16330077",
+      "applicationMetaData": {
+        "applicationTypeLabelName": "Utility",
+        "firstInventorName": "Example Inventor"
+      }
+    }
+  ]
+}

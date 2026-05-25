@@ -1,0 +1,92 @@
+documentCode,documentDescription,shorthand
+PD.TO.AUTH,Authorization or Rescission of Authorization to Access Application by Digital Access Service /Priority Document Exchange Office,Digital Access Authorization
+AMSB,Amendment Submitted/Entered with Filing of Continued Prosecution Application (CPA)/Request for Continued Examination(RCE),CPA - RCE Amendment
+SRFW,"Search information including classification, databases and other search related notes",Search Information
+IIFW,"Issue Information including classification, examiner, name, claim, renumbering, etc.",Issue Information
+STAT.DISCLMR,Statutory disclaimers per Manual of Patent Examining Procedure(MPEP) 1490.,Statutory Disclaimer
+OA.POSTCARD,A courtesy postcard sent by USPTO to users who opt-in for e-Office Action,e-Office Action Postcard
+ECOFC.PDF,Digitally signed official patent e-Certificate of Correction document,e-Certificate of Correction
+NRES,Letter Restarting Period for Response (i.e. Letter re: References),Restart Response Period Letter
+A...,Amendment/Request for Reconsideration – After Non-Final Rejection,Amendment and Reconsideration (NFOA)
+SES.LOSS.PC,Notification of loss of entitlement to small entity status via PC,Small Entity Status Loss
+1449,List of References cited by applicant and considered by examiner,IDS (Examiner Considered)
+SOL.NTC.SUIT,Report on filing or determination of action regarding a patent,Litigation Notice
+M327,Miscellaneous Communication to Applicant – No Action Count,Misc Comm
+RCE.NE,Request for Continued Examination (RCE) – Not Entered,RCE (Not Entered)
+COCOUT,Certificate of Correction – Post Issue Communication,Certificate of Correction
+IDS,Information Disclosure Statement (IDS) Form (SB08),IDS (Applicant Filed)
+N570,Communication - Re:  Power of Attorney (PTOL-308),Power of Attorney Comm
+PEFR,Applicant Response to Pre-Exam Formalities Notice,Pre-Exam Formalities Response
+REM,Applicant Arguments/Remarks Made in an Amendment,Argument and Remarks
+INTV.SUM.EX,Examiner-Initiated Interview Summary (PTOL-413B),Examiner Interview (Initiated)
+EGRANT.PDF,Digitally signed official patent eGrant document,Patent eGrant
+INTV.SUM.APP,Applicant Initiated Interview Summary (PTOL-413),Applicant Interview Summary
+PET.DEC.PUBS,Petition Decision routed to Publications Branch,Petition Decision (Publications)
+N417,Electronic Filing System Acknowledgment Receipt,EFS Acknowledgment Receipt
+136A,Authorization for Extension of Time all replies,Extension of Time Authorization
+SA..,Supplemental Response or Supplemental Amendment,Supplemental Amendment
+A.NA,Amendment after Notice of Allowance (Rule 312),Post-Allowance Amendment
+R3.73,Assignee showing of ownership per 37 CFR 3.73,Ownership Statement (3.73)
+EXIN,Examiner Interview Summary Record (PTOL-413),Examiner Interview
+ANE.I,Amendment After Final / Rule 312 (Initialed),Amendment After Final
+TRIAL.TRMFWD,Trial Termination or Final Written Decision,Trial Termination
+DISQ.E.FILE,Terminal Disclaimer – Approved (Electronic),Terminal Disclaimer (Approved)
+DRW,Drawings-only black and white line drawings,Drawings
+NOA,Notice of Allowance and Fees Due (PTOL-85),Notice of Allowance
+PET.OP,Petition for Review by Office of Petitions,Petition for Review
+ELC.,Response to Election / Restriction Filed,Response to Election
+DIST.E.FILE,Terminal Disclaimer – Filed (Electronic),Terminal Disclaimer (Filed)
+RCEX,Request for Continued Examination (RCE),RCE
+SRNT,Examiner's search strategy and results,Examiner Search Notes
+COCIN,Request for Certificate of Correction,Request for COC
+PET.OP.DEC,Office of Petitions Decision (PTO-90),Petitions Decision
+CTRS,Requirement for Restriction/Election,Req for Election
+N271,Response to Amendment under Rule 312,Rule 312 Response
+892,List of references cited by examiner,Examiner References (892)
+CFILE,Request for Corrected Filing Receipt,Corrected Filing Receipt Request
+IMIS,Miscellaneous Internal Document,Internal Memo
+ISSUE.WD.NTC,Notice of withdrawal from issue,Issue Withdrawal Notice
+TRNA,Transmittal of New Application,New Application Transmittal
+LET.,Miscellaneous Incoming Letter,Misc Incoming Letter
+NTC.MISS.PRT,Notice to File Missing Parts,Missing Parts Notice
+A.NE,Response After Final Action,Response After Final
+IFEE,Issue Fee Payment (PTO-85B),Issue Fee Payment
+EGRANT.NTF,eGrant day-of Notification,eGrant Notification
+CTAV,Advisory Action (PTOL-303),Advisory Action
+TRIAL.REQ.G,Request for Trial Granted,Trial Granted
+OATH,Oath or Declaration filed,Oath or Declaration
+TRACK1.GRANT,Track One request Granted,Track One Granted
+ECOFC.NTF,eCofC day-of Notification,eCofC Notification
+TRIAL.REQ.D,Request for Trial Denied,Trial Denied
+BIB,Bibliographic Data Sheet,Bibliographic Data
+ADS,Application Data Sheet,Application Data Sheet
+PET.DEC.AUTO,ePetition Grant Letter,ePetition Grant Letter
+PET.AUTO,ePetition Request Form,ePetition Request
+N417.PYMT,Electronic Fee Payment,Electronic Fee Payment
+OA.APPENDIX,Office Action Appendix,Office Action Appendix
+A.PE,Preliminary Amendment,Prelim Amendment
+NTC.PUB,Notice of Publication,Publication Notice
+WFEE,Fee Worksheet (SB06),Fee Worksheet
+CTNF,Non-Final Rejection,Non-Final Rejection
+TRAN.LET,Transmittal Letter,Transmittal Letter
+ISSUE.NTF,Issue Notification,Issue Notification
+XT/,Extension of Time,Extension of Time
+PETDEC,Petition Decision,Petition Decision
+FOR,Foreign Reference,Foreign Reference
+PA..,Power of Attorney,Power of Attorney
+TRACK1.REQ,Track One Request,Track One Request
+C.AD,Change of Address,Change of Address
+FWCLM,Index of Claims,Index of Claims
+CTFR,Final Rejection,Final Rejection
+RFNA,Refund Approved,Refund Approved
+APP.FILE.REC,Filing Receipt,Filing Receipt
+RFN.REQ,Refund Request,Refund Request
+SPEC,Specification,Specification
+ABN,Abandonment,Abandonment Notice
+ABST,Abstract,Abstract
+CLM,Claims,Claims
+M327,Miscellaneous Communication to Applicant - No Action Count,Misc Communication
+A...,Amendment/Request for Reconsideration-After Non-Final Rejection,Amendment and Reconsideration (NFOA)
+COCOUT,Certificate of Correction - Post Issue Communication,Certificate of Correction
+EXIN,Examiner Interview Summary Record (PTOL - 413),Examiner Interview Summary
+ANE.I,"Amendment After Final or under 37CFR 1.312, initialed by the examiner.",Amendment After Final

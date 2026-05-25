@@ -1,0 +1,245 @@
+U.S. flag
+An official website of the United States government
+
+United States Patent and Trademark Office
+Open Data Portal logo
+Home
+Data products 
+APIs 
+Support 
+MyODP 
+Register for ODP access 
+OPEN DATA PORTAL API
+
+Getting started
+API syntax examples
+API rate limits
+Search Proceedings
+Download Proceedings Search Results
+Search Proceedings by Trial Number
+Search Decisions
+Download Decisions Search Results
+Search Decisions by Trial Number
+Search Decisions by Document Identifier
+Search Documents
+Download Documents Search Results
+Search Documents by Trial Number
+Search Documents by Document Identifier
+Swagger UI
+HomeAPIsPTAB Trials API - Search Documents by Document Identifier
+Search Documents by Document Identifier
+Was this page helpful?
+Use this endpoint when you want to retrieve Trial Documents data for a specific document whose document identifier you know. A document identifier is a unique ID for each document. To locate a Trial document identifier please visit search by Trial number API. You can also test the API right away in Swagger UI swagger icon.
+
+GET https://api.uspto.gov/api/v1/patent/trials/documents/{documentIdentifier}
+
+e.g. https://api.uspto.gov/api/v1/patent/trials/documents/171179396
+
+Returns Trial Documents data for a document identifier. 
+
+Note: API Key is required. Obtain an API key.
+
+If you have any questions or errors, please visit the Support page for assistance.
+
+Response
+Successful request.
+
+Data Property	Description	Type
+patentTrialDocumentDataBag	Patent trial document data bag	Array/List
+  trialNumber	Unique identifier for each trial proceeding	String
+  lastModifiedDateTime	Time of the last ingetion	Date
+  trialDocumentCategory	Category of trial document	String
+trialMetaData	MetaData of the Trials	Object
+  trialTypeCode	List of trial categories such as IPR, PGR, CBM, or DER	String
+  trialStatusCategory	Current state of a trial proceeding	String
+  petitionFilingDate	Date the petition submission requirements were filed at PTAB	Date
+  institutionDecisionDate	Date on which PTAB grants or denies the institution of the petition	Date
+  terminationDate	Date a decision terminating the decision was entered	Date
+  accordedFilingDate	Official date assigned to the petition for trial decision when the petition is deemed complete and accepted for review	Date
+  trialLastModifiedDate	Date the petition or trial proceeding was last updated	Date
+  trialLastModifiedDateTime	Date the petition or trial proceeding was last updated	Date
+  latestDecisionDate	Date of the most recent document qualifying as a "decision"	Date
+patentOwnerData	Patent owner data	Object
+  counselName	The individual/organization appointed as counsel/representative by the patent owner or patent applicant	String
+  patentNumber	The unique number assigned by the USPTO to a granted/issued patent. It is also the document number in the USTPO-published Redbook and the Official Gazette. This number can be for an originally-issued patent or a re-issued patent. It will not be for a Re-exam Certificate, a Correction Certificate, a SIR, or a notice of a request for a Re-exam or a Reissue. This number is equivalent to WIPO ST.9 as INID 11. 5012717.	String
+  applicationNumberText	A unique number assigned to the Patent owner (PO)/Respondent's patent application upon filing at the USPTO	String
+  realPartyInInterestName	Patent owner or respondent; An assignee of the patent, patent application, patent owner or proxy of the patent owner	String
+  grantDate	The date the challenged patent was granted	Date
+  patentOwnerName	The individual(s) identified as the owners of the invention of the PO/Respondent's patent or patent application	String
+  inventorName	The individual(s) identified as the inventor(s) of the patent or patent application	String
+  technologyCenterNumber	The Technology Center or a working unit responsible for a cluster of related technologies associated with the patent or patent application challenged in the petition	String
+  groupArtUnitNumber	The Art Unit or a smaller working unit responsible for a cluster of related technologies within the technology center associated with the patent or patent application challenged in a petition	String
+regularPetitionerData	Regular petitioner data	Object
+  applicationNumberText	A unique number assigned to the Patent owner (PO)/Respondent's patent application upon filing at the USPTO	String
+  grantDate	The date the challenged patent was granted	Date
+  groupArtUnitNumber	The Art Unit or a smaller working unit responsible for a cluster of related technologies within the technology center associated with the patent or patent application challenged in a petition	String
+  inventorName	The individual(s) identified as the inventor(s) of the patent or patent application	String
+  patentNumber	The unique number assigned by the USPTO to a granted/issued patent. It is also the document number in the USTPO-published Redbook and the Official Gazette. This number can be for an originally-issued patent or a re-issued patent. It will not be for a Re-exam Certificate, a Correction Certificate, a SIR, or a notice of a request for a Re-exam or a Reissue. This number is equivalent to WIPO ST.9 as INID 11. 5012717.	String
+  patentOwnerName	The individual(s) identified as the owners of the invention of the PO/Respondent's patent or patent application	String
+  technologyCenterNumber	The Technology Center or a working unit responsible for a cluster of related technologies associated with the patent or patent application challenged in the petition	String
+  realPartyInInterestName	An individual/organization requesting review of a patent or, sometimes in the case of a derivation proceeding, a patent application	String
+  counselName	The individual/organization appointed as counsel/representative by the petitioner	String
+respondentData	Respondent data	Object
+  counselName	The individual/organization appointed as counsel/representative by the patent owner or patent applicant	String
+  patentNumber	The unique number assigned by the USPTO to a granted/issued patent. It is also the document number in the USTPO-published Redbook and the Official Gazette. This number can be for an originally-issued patent or a re-issued patent. It will not be for a Re-exam Certificate, a Correction Certificate, a SIR, or a notice of a request for a Re-exam or a Reissue. This number is equivalent to WIPO ST.9 as INID 11. 5012717.	String
+  applicationNumberText	A unique number assigned to the Patent owner (PO)/Respondent's patent application upon filing at the USPTO	String
+  realPartyInInterestName	Patent owner or respondent; An assignee of the patent, patent application, patent owner or proxy of the patent owner	String
+  grantDate	The date the challenged patent was granted	Date
+  patentOwnerName	The individual(s) identified as the owners of the invention of the PO/Respondent's patent or patent application	String
+  inventorName	The individual(s) identified as the inventor(s) of the patent or patent application	String
+  technologyCenterNumber	The Technology Center or a working unit responsible for a cluster of related technologies associated with the patent or patent application challenged in the petition	String
+  groupArtUnitNumber	The Art Unit or a smaller working unit responsible for a cluster of related technologies within the technology center associated with the patent or patent application challenged in a petition	String
+derivationPetitionerData	Derivation petitioner data	Object
+  applicationNumberText	A unique number assigned to the Patent owner (PO)/Respondent's patent application upon filing at the USPTO	String
+  patentNumber	The unique number assigned by the USPTO to a granted/issued patent. It is also the document number in the USTPO-published Redbook and the Official Gazette. This number can be for an originally-issued patent or a re-issued patent. It will not be for a Re-exam Certificate, a Correction Certificate, a SIR, or a notice of a request for a Re-exam or a Reissue. This number is equivalent to WIPO ST.9 as INID 11. 5012717.	String
+  grantDate	The petitioner's patent grant date of a patent (if any) associated with a petition for a derivation proceeding (only)	Date
+  realPartyInInterestName	An individual/organization requesting review of a patent or, sometimes in the case of a derivation proceeding, a patent application	String
+  patentOwnerName	The individual(s) identified as the owners of the invention of the Petitioner's patent or patent application	String
+  inventorName	The individual(s) identified as the inventor(s) of the patent or patent application (if any) in a derivation proceeding	String
+  counselName	The individual/organization appointed as counsel/representative by the petitioner	String
+  technologyCenterNumber	The Technology Center or a working unit responsible for a cluster of related technologies associated with a petitioner's patent or patent application in a derivation proceeding (only)	String
+  groupArtUnitNumber	The Art Unit or a smaller working unit responsible for a cluster of related technologies within the technology center associated with a petitioner's patent or patent application in a derivation proceeding (only)	String
+documentData	Document data	Object
+  documentIdentifier	A unique identifier for a document stored in the repository	String
+  documentName	Document file name	String
+  documentOCRText	Text OCRed/extracted from the document	String
+  documentCategory	Category of trial document	String
+  mimeTypeIdentifier	Document type identifier (e.g., PDF/XML/Docx)	String
+  documentSizeQuantity	Size of the document in bytes	Integer
+  documentTypeDescriptionText	Type of document entered (e.g., decision, motion, exhibit)	String
+  documentFilingDate	Date when the document was filed in the PTAB system	Date
+  documentNumber	Unique sequential number for a document assigned by PTAB	Integer
+  filingPartyCategory	Party who filed the document	String
+  documentTitleText	The document title text	String
+  fileDownloadURI	The document location URI	String
+decisionData	Decision data	Object
+  trialOutcomeCategory	A brief description of PTAB's decision outcome, e.g. dismissed, settled, institution granted, final written decision	String
+  decisionTypeCategory	Type of decision made on the petition for example, decision or rehearing decision	String
+  decisionIssueDate	Date when the decision was made by PTAB	Date
+  issueTypeBag	Statutory grounds mentioned in the decision	Array/List
+  statuteAndRuleBag	Statutes, rules, or other issues mentioned in the decision	Array/List
+  appealOutcomeCategory	PTAB's decision on the appeal, for example "Affirmed", "Reversed"	String
+ENDPOINT
+https://api.uspto.gov/api/v1/patent/trials/documents/{documentIdentifier}
+JSON RESPONSE SAMPLE
+{
+  "count": 1,
+  "patentTrialDocumentDataBag": [
+    {
+      "trialDocumentCategory": "document",
+      "lastModifiedDateTime": "2025-07-01T15:20:30Z",
+      "trialNumber": "IPR2024-00001",
+      "trialTypeCode": "IPR",
+      "trialMetaData": {
+        "accordedFilingDate": "2024-02-15",
+        "institutionDecisionDate": "2024-08-20",
+        "latestDecisionDate": "2025-01-12",
+        "petitionFilingDate": "2024-01-30",
+        "terminationDate": "2025-05-05",
+        "trialLastModifiedDateTime": "2025-05-05T10:22:11Z",
+        "trialStatusCategory": "Terminated"
+      },
+      "patentOwnerData": {
+        "applicationNumberText": "14412875",
+        "counselName": "Jane Q. Attorney",
+        "grantDate": "2019-09-10",
+        "groupArtUnitNumber": "3689",
+        "inventorName": "Liam Johnson",
+        "realPartyInInterestName": "ABC Corp.",
+        "patentNumber": "US9876543B2",
+        "patentOwnerName": "XYZ Holdings LLC",
+        "technologyCenterNumber": "3600"
+      },
+      "regularPetitionerData": {
+        "counselName": "John D. Counsel",
+        "realPartyInInterestName": "DEF Inc."
+      },
+      "respondentData": {
+        "applicationNumberText": "16123456",
+        "counselName": "Mary R. Lawyer",
+        "grantDate": "2020-03-22",
+        "groupArtUnitNumber": "1790",
+        "inventorName": "Emma Smith",
+        "realPartyInInterestName": "GHI LLC",
+        "patentNumber": "US10203040B2",
+        "patentOwnerName": "JKL Holdings",
+        "technologyCenterNumber": "1700"
+      },
+      "derivationPetitionerData": {
+        "applicationNumberText": "13112233",
+        "counselName": "Alex M. Advocate",
+        "grantDate": "2018-11-05",
+        "groupArtUnitNumber": "2876",
+        "inventorName": "Noah Davis",
+        "realPartyInInterestName": "MNO Partners",
+        "patentNumber": "US9001002B1",
+        "technologyCenterNumber": "2800",
+        "patentOwnerName": "PQR Ventures"
+      },
+      "documentData": {
+        "documentCategory": "Petition",
+        "documentFilingDate": "2024-04-12",
+        "documentIdentifier": "100012345",
+        "documentName": "petition.pdf",
+        "documentNumber": 1,
+        "documentSizeQuantity": 123456,
+        "documentOCRText": "…",
+        "documentTitleText": "Petition",
+        "documentTypeDescriptionText": "Petition Type",
+        "downloadURI": "https://ptab.uspto.gov/doc/100012345",
+        "filingPartyCategory": "Petitioner",
+        "mimeTypeIdentifier": "application/pdf"
+      },
+      "decisionData": {
+        "statuteAndRuleBag": [
+          "37 CFR 42.100",
+          "37 CFR 43.100"
+        ],
+        "decisionIssueDate": "2025-01-15",
+        "decisionTypeCategory": "Final Written Decision",
+        "issueTypeBag": [
+          "112",
+          "103"
+        ],
+        "trialOutcomeCategory": "Denied"
+      }
+    }
+  ],
+  "facets": [
+    {
+      "trialTypeCategory": [
+        {
+          "name": "IPR",
+          "quantity": 16951
+        }
+      ],
+      "trialStatusCategory": [
+        {
+          "name": "IPR",
+          "quantity": 16951
+        }
+      ],
+      "statuteAndRuleBag": [
+        {
+          "name": "IPR",
+          "quantity": 16951
+        }
+      ]
+    }
+  ]
+}
+Receive updates from the USPTO
+Enter your email to subscribe or update your preferences
+your@email.com
+About the USPTOSearch for patentsSearch for trademarks
+US Department of Commerce
+Accessibility
+Privacy Policy
+Financial and Performance Data
+Freedom of Information Act
+Inspector General
+NoFEAR Act
+USA.gov
+Follow us
+
+Feedback

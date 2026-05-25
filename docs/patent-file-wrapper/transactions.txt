@@ -1,0 +1,119 @@
+U.S. flag
+An official website of the United States government
+
+United States Patent and Trademark Office
+Open Data Portal logo
+Home
+Data products 
+APIs 
+Support 
+MyODP 
+Register for ODP access 
+OPEN DATA PORTAL API
+
+Getting started
+API syntax examples
+API rate limits
+Search
+Application Data
+Continuity
+Documents
+Transactions
+Patent Term Adjustment
+Address and Attorney/Agent Information
+Assignments
+Foreign Priority
+Associated Documents
+Status Codes
+Swagger UI
+HomeAPIsPatent File Wrapper API - Transactions
+Transactions
+Was this page helpful?
+The transactions section contains additional information concerning the transaction activity that has occurred for each patent application. This includes details on the date of the transaction, code (Examiner’s Amendment Communication, Printer Rush, IDS Filed, Application is Now Complete, PTA 36 months), and transaction description. Use this endpoint when you want transaction data related to a specific patent application whose application number you know. You can test the API right away in Swagger UI swagger icon.
+
+This dataset includes published patent applications and issued patent data filed after January 1, 2001. This data is refreshed daily.
+
+GET https://api.uspto.gov/api/v1/patent/applications/{applicationNumberText}/transactions
+
+Returns all transactions associated for supplied application.
+
+Note: API Key is required. Obtain an API key.
+
+If you have any questions or errors, please visit the Support page for assistance.
+
+Response
+Internal server error.
+
+An unexpected condition has occurred on the server, and the server was unable to fulfill the request.
+
+If you have any questions or additional errors, please visit the Support section for assistance.
+
+ENDPOINT
+https://api.uspto.gov/api/v1/patent/applications/{applicationNumberText}/transactions
+JSON RESPONSE SAMPLE
+{
+  "count": 1,
+  "patentFileWrapperDataBag": [
+    {
+      "applicationNumberText": "18045436",
+      "eventDataBag": [
+        {
+          "eventCode": "CRFA",
+          "eventDescriptionText": "Sequence Moved to Public Database",
+          "eventDate": "2024-06-12"
+        },
+        {
+          "eventCode": "PGM/",
+          "eventDescriptionText": "Recordation of Patent Grant Mailed",
+          "eventDate": "2024-06-04"
+        },
+        {
+          "eventCode": "EML_NTR",
+          "eventDescriptionText": "Email Notification",
+          "eventDate": "2024-06-04"
+        },
+        {
+          "eventCode": "MEPG_NTF",
+          "eventDescriptionText": "Mail Patent eGrant Notification",
+          "eventDate": "2024-06-04"
+        },
+        {
+          "eventCode": "EPG_NTF",
+          "eventDescriptionText": "Patent eGrant Notification",
+          "eventDate": "2024-06-04"
+        },
+        {
+          "eventCode": "EPG/",
+          "eventDescriptionText": "Recordation of Patent eGrant",
+          "eventDate": "2024-06-04"
+        },
+        {
+          "eventCode": "EML_NTR",
+          "eventDescriptionText": "Email Notification",
+          "eventDate": "2024-05-16"
+        },
+        {
+          "eventCode": "WPIR",
+          "eventDescriptionText": "Issue Notification Mailed",
+          "eventDate": "2024-05-15"
+        }
+      ]
+    }
+  ],
+  "requestIdentifier": "457b4e2e-38d5-486e-bb98-a35ee46c28b9"
+}
+Receive updates from the USPTO
+Enter your email to subscribe or update your preferences
+your@email.com
+About the USPTOSearch for patentsSearch for trademarks
+US Department of Commerce
+Accessibility
+Privacy Policy
+Financial and Performance Data
+Freedom of Information Act
+Inspector General
+NoFEAR Act
+USA.gov
+Follow us
+
+Feedback
