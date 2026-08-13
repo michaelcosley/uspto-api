@@ -1,0 +1,418 @@
+openapi: 3.0.3
+info:
+  title: USPTO PTAB AIA Trials - Implemented Client Contract
+  version: 0.2.0
+  description: >-
+    Self-contained contract for the PTAB trial operations implemented by
+    uspto-client. Reconstructed from USPTO ODP documentation and verified
+    against live responses on 2026-08-13.
+servers:
+  - url: https://api.uspto.gov
+security:
+  - apiKey: []
+paths:
+  /api/v1/patent/trials/proceedings/search:
+    get:
+      operationId: searchProceedings
+      parameters:
+        - $ref: '#/components/parameters/q'
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Matching trial proceedings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrialProceedingResponse'
+    post:
+      operationId: searchProceedingsPost
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
+      responses:
+        '200':
+          description: Matching trial proceedings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrialProceedingResponse'
+  /api/v1/patent/trials/proceedings/search/download:
+    get:
+      operationId: downloadProceedingsSearchResults
+      parameters:
+        - $ref: '#/components/parameters/q'
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchDownload'
+  /api/v1/patent/trials/proceedings/{trialNumber}:
+    get:
+      operationId: getProceeding
+      parameters:
+        - $ref: '#/components/parameters/trialNumber'
+      responses:
+        '200':
+          description: Proceeding for the requested trial number
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrialProceedingResponse'
+  /api/v1/patent/trials/documents/search:
+    get:
+      operationId: searchTrialDocuments
+      parameters:
+        - $ref: '#/components/parameters/q'
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Matching trial documents
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrialDocumentResponse'
+    post:
+      operationId: searchTrialDocumentsPost
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
+      responses:
+        '200':
+          description: Matching trial documents
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrialDocumentResponse'
+  /api/v1/patent/trials/documents/search/download:
+    get:
+      operationId: downloadTrialDocumentsSearchResults
+      parameters:
+        - $ref: '#/components/parameters/q'
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchDownload'
+  /api/v1/patent/trials/{trialNumber}/documents:
+    get:
+      operationId: getTrialDocuments
+      parameters:
+        - $ref: '#/components/parameters/trialNumber'
+      responses:
+        '200':
+          description: Documents for the requested trial number
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrialDocumentResponse'
+  /api/v1/patent/trials/documents/{documentIdentifier}:
+    get:
+      operationId: getTrialDocument
+      parameters:
+        - $ref: '#/components/parameters/documentIdentifier'
+      responses:
+        '200':
+          description: Document for the requested identifier
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrialDocumentResponse'
+  /api/v1/patent/trials/decisions/search:
+    get:
+      operationId: searchTrialDecisions
+      parameters:
+        - $ref: '#/components/parameters/q'
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Matching trial decisions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrialDecisionResponse'
+    post:
+      operationId: searchTrialDecisionsPost
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
+      responses:
+        '200':
+          description: Matching trial decisions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrialDecisionResponse'
+  /api/v1/patent/trials/decisions/search/download:
+    get:
+      operationId: downloadTrialDecisionsSearchResults
+      parameters:
+        - $ref: '#/components/parameters/q'
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchDownload'
+  /api/v1/patent/trials/{trialNumber}/decisions:
+    get:
+      operationId: getTrialDecisions
+      parameters:
+        - $ref: '#/components/parameters/trialNumber'
+      responses:
+        '200':
+          description: Decisions for the requested trial number
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrialDecisionResponse'
+  /api/v1/patent/trials/decisions/{documentIdentifier}:
+    get:
+      operationId: getTrialDecision
+      parameters:
+        - $ref: '#/components/parameters/documentIdentifier'
+      responses:
+        '200':
+          description: Decision for the requested document identifier
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrialDecisionResponse'
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+  parameters:
+    q:
+      name: q
+      in: query
+      schema:
+        type: string
+    offset:
+      name: offset
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    limit:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+    format:
+      name: format
+      in: query
+      required: true
+      schema:
+        type: string
+        enum: [json, csv]
+    trialNumber:
+      name: trialNumber
+      in: path
+      required: true
+      schema:
+        type: string
+      example: IPR2024-00001
+    documentIdentifier:
+      name: documentIdentifier
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    SearchDownload:
+      description: JSON or CSV attachment with a Content-Disposition filename
+      content:
+        application/json:
+          schema:
+            type: string
+            format: binary
+        text/csv:
+          schema:
+            type: string
+            format: binary
+  schemas:
+    SearchRequest:
+      type: object
+      additionalProperties: true
+      properties:
+        q:
+          type: string
+        filters:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        rangeFilters:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        pagination:
+          type: object
+          additionalProperties: true
+        sort:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+    ResponseBase:
+      type: object
+      properties:
+        count:
+          type: integer
+        requestIdentifier:
+          type: string
+        facets:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+    TrialMetadata:
+      type: object
+      additionalProperties: true
+      properties:
+        trialTypeCode:
+          type: string
+        trialStatusCategory:
+          type: string
+        petitionFilingDate:
+          type: string
+        institutionDecisionDate:
+          type: string
+        terminationDate:
+          type: string
+        fileDownloadURI:
+          type: string
+          format: uri
+    TrialPartyData:
+      type: object
+      additionalProperties: true
+      properties:
+        applicationNumberText:
+          type: string
+        patentNumber:
+          type: string
+        realPartyInInterestName:
+          type: string
+        patentOwnerName:
+          type: string
+        inventorName:
+          type: string
+        counselName:
+          type: string
+    TrialProceeding:
+      type: object
+      required: [trialNumber]
+      additionalProperties: true
+      properties:
+        trialNumber:
+          type: string
+        trialRecordIdentifier:
+          type: string
+        lastModifiedDateTime:
+          type: string
+        trialMetaData:
+          $ref: '#/components/schemas/TrialMetadata'
+        patentOwnerData:
+          $ref: '#/components/schemas/TrialPartyData'
+        regularPetitionerData:
+          $ref: '#/components/schemas/TrialPartyData'
+        respondentData:
+          $ref: '#/components/schemas/TrialPartyData'
+        derivationPetitionerData:
+          $ref: '#/components/schemas/TrialPartyData'
+    TrialDocumentData:
+      type: object
+      additionalProperties: true
+      properties:
+        documentIdentifier:
+          type: string
+        documentName:
+          type: string
+        documentOCRText:
+          type: string
+        documentNumber:
+          type: integer
+        fileDownloadURI:
+          type: string
+          format: uri
+    TrialDecisionData:
+      type: object
+      additionalProperties: true
+      properties:
+        decisionTypeCategory:
+          type: string
+        trialOutcomeCategory:
+          type: string
+        decisionIssueDate:
+          type: string
+        issueTypeBag:
+          type: array
+          items: {}
+        statuteAndRuleBag:
+          type: array
+          items: {}
+    TrialDocument:
+      type: object
+      required: [trialNumber]
+      additionalProperties: true
+      properties:
+        trialNumber:
+          type: string
+        trialDocumentCategory:
+          type: string
+        trialMetaData:
+          $ref: '#/components/schemas/TrialMetadata'
+        patentOwnerData:
+          $ref: '#/components/schemas/TrialPartyData'
+        regularPetitionerData:
+          $ref: '#/components/schemas/TrialPartyData'
+        respondentData:
+          $ref: '#/components/schemas/TrialPartyData'
+        derivationPetitionerData:
+          $ref: '#/components/schemas/TrialPartyData'
+        documentData:
+          $ref: '#/components/schemas/TrialDocumentData'
+        decisionData:
+          $ref: '#/components/schemas/TrialDecisionData'
+    TrialProceedingResponse:
+      allOf:
+        - $ref: '#/components/schemas/ResponseBase'
+        - type: object
+          properties:
+            patentTrialProceedingDataBag:
+              type: array
+              items:
+                $ref: '#/components/schemas/TrialProceeding'
+    TrialDocumentResponse:
+      allOf:
+        - $ref: '#/components/schemas/ResponseBase'
+        - type: object
+          properties:
+            patentTrialDocumentDataBag:
+              type: array
+              items:
+                $ref: '#/components/schemas/TrialDocument'
+    TrialDecisionResponse:
+      description: >-
+        Live responses use patentTrialDocumentDataBag. Some USPTO examples use
+        patentTrialDecisionDataBag; the Python model accepts both.
+      allOf:
+        - $ref: '#/components/schemas/TrialDocumentResponse'

@@ -122,15 +122,87 @@ APPLICATION_ENDPOINTS: tuple[Endpoint, ...] = (
     ),
 )
 
-FUTURE_ENDPOINTS: tuple[Endpoint, ...] = (
+PTAB_TRIAL_ENDPOINTS: tuple[Endpoint, ...] = (
     Endpoint(
-        "ptab.proceedings.search",
+        "ptab.trials.search_proceedings",
         ("GET", "POST"),
         "/api/v1/patent/trials/proceedings/search",
-        "future",
-        "docs/uspto-swagger-api.yaml",
-        "PTAB/AIA proceedings are future scope.",
+        "implemented",
+        "docs/ptab-trials/search-proceedings.txt",
     ),
+    Endpoint(
+        "ptab.trials.download_proceedings_search_results",
+        ("GET",),
+        "/api/v1/patent/trials/proceedings/search/download",
+        "implemented",
+        "docs/ptab-trials/download-proceeding-search-results.txt",
+    ),
+    Endpoint(
+        "ptab.trials.get_proceeding",
+        ("GET",),
+        "/api/v1/patent/trials/proceedings/{trialNumber}",
+        "implemented",
+        "docs/ptab-trials/search-proceedings-by-trial-number.txt",
+    ),
+    Endpoint(
+        "ptab.trials.search_documents",
+        ("GET", "POST"),
+        "/api/v1/patent/trials/documents/search",
+        "implemented",
+        "docs/ptab-trials/search-documents.txt",
+    ),
+    Endpoint(
+        "ptab.trials.download_documents_search_results",
+        ("GET",),
+        "/api/v1/patent/trials/documents/search/download",
+        "implemented",
+        "docs/ptab-trials/download-documents-search-results.txt",
+    ),
+    Endpoint(
+        "ptab.trials.get_documents",
+        ("GET",),
+        "/api/v1/patent/trials/{trialNumber}/documents",
+        "implemented",
+        "docs/ptab-trials/search-documents-by-trial-number.txt",
+    ),
+    Endpoint(
+        "ptab.trials.get_document",
+        ("GET",),
+        "/api/v1/patent/trials/documents/{documentIdentifier}",
+        "implemented",
+        "docs/ptab-trials/search-documents-by-document-identifier.txt",
+    ),
+    Endpoint(
+        "ptab.trials.search_decisions",
+        ("GET", "POST"),
+        "/api/v1/patent/trials/decisions/search",
+        "implemented",
+        "docs/ptab-trials/search-decisions.txt",
+    ),
+    Endpoint(
+        "ptab.trials.download_decisions_search_results",
+        ("GET",),
+        "/api/v1/patent/trials/decisions/search/download",
+        "implemented",
+        "docs/ptab-trials/download-decisions-search-results.txt",
+    ),
+    Endpoint(
+        "ptab.trials.get_decisions",
+        ("GET",),
+        "/api/v1/patent/trials/{trialNumber}/decisions",
+        "implemented",
+        "docs/ptab-trials/seach-decisions-by-trial-number.txt",
+    ),
+    Endpoint(
+        "ptab.trials.get_decision",
+        ("GET",),
+        "/api/v1/patent/trials/decisions/{documentIdentifier}",
+        "implemented",
+        "docs/ptab-trials/search-decisions-by-document-identifier.txt",
+    ),
+)
+
+FUTURE_ENDPOINTS: tuple[Endpoint, ...] = (
     Endpoint(
         "petition_decisions.search",
         ("GET", "POST"),
@@ -160,4 +232,9 @@ OUT_OF_SCOPE_ENDPOINTS: tuple[Endpoint, ...] = (
     ),
 )
 
-ALL_ENDPOINTS = APPLICATION_ENDPOINTS + FUTURE_ENDPOINTS + OUT_OF_SCOPE_ENDPOINTS
+ALL_ENDPOINTS = (
+    APPLICATION_ENDPOINTS
+    + PTAB_TRIAL_ENDPOINTS
+    + FUTURE_ENDPOINTS
+    + OUT_OF_SCOPE_ENDPOINTS
+)

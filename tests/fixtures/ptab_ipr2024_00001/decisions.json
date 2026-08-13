@@ -1,0 +1,23 @@
+{
+  "count": 1,
+  "requestIdentifier": "fixture-decision-request",
+  "patentTrialDocumentDataBag": [
+    {
+      "trialNumber": "IPR2024-00001",
+      "trialDocumentCategory": "decision",
+      "documentData": {
+        "documentIdentifier": "171359747",
+        "documentName": "institution-decision.pdf",
+        "fileDownloadURI": "https://api.uspto.gov/api/v1/patent/ptab-files/IPR/IPR2024-00001/171359747/institution-decision.pdf"
+      },
+      "decisionData": {
+        "decisionIssueDate": "2024-08-20",
+        "decisionTypeCategory": "Institution Decision",
+        "trialOutcomeCategory": "Institution Granted",
+        "statuteAndRuleBag": [
+          "35 U.S.C. 314"
+        ]
+      }
+    }
+  ]
+}

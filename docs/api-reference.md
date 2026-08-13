@@ -2,9 +2,9 @@
 
 ## Scope
 
-The initial supported API family is USPTO Patent File Wrapper / patent
-application data. Trademark APIs are out of scope. PTAB/AIA proceedings are
-future scope and are not implemented in v1.
+Supported API families are USPTO Patent File Wrapper / patent application data
+and PTAB AIA trial proceedings. Trademark APIs are out of scope. PTAB appeals
+and interferences remain future work.
 
 ## Authentication
 
@@ -45,6 +45,49 @@ fields so the client can tolerate additive USPTO response changes.
 | `client.applications.download_document(application_number, document_identifier, ...)` | GET | `/api/v1/download/applications/{applicationNumberText}/{documentIdentifier}.pdf` | Implemented | Live document metadata response |
 | `client.applications.get_associated_documents(application_number)` | GET | `/api/v1/patent/applications/{applicationNumberText}/associated-documents` | Implemented | `docs/uspto-swagger-api.yaml` |
 | `client.applications.search_status_codes(...)` | GET/POST | `/api/v1/patent/status-codes` | Implemented | `docs/uspto-swagger-api.yaml` |
+
+## PTAB AIA Trial Endpoints
+
+| Method | HTTP | Path |
+| --- | --- | --- |
+| `client.ptab.trials.search_proceedings(...)` | GET/POST | `/api/v1/patent/trials/proceedings/search` |
+| `client.ptab.trials.download_proceedings_search_results(...)` | GET | `/api/v1/patent/trials/proceedings/search/download` |
+| `client.ptab.trials.get_proceeding(trial_number)` | GET | `/api/v1/patent/trials/proceedings/{trialNumber}` |
+| `client.ptab.trials.search_documents(...)` | GET/POST | `/api/v1/patent/trials/documents/search` |
+| `client.ptab.trials.download_documents_search_results(...)` | GET | `/api/v1/patent/trials/documents/search/download` |
+| `client.ptab.trials.get_documents(trial_number)` | GET | `/api/v1/patent/trials/{trialNumber}/documents` |
+| `client.ptab.trials.get_document(document_identifier)` | GET | `/api/v1/patent/trials/documents/{documentIdentifier}` |
+| `client.ptab.trials.search_decisions(...)` | GET/POST | `/api/v1/patent/trials/decisions/search` |
+| `client.ptab.trials.download_decisions_search_results(...)` | GET | `/api/v1/patent/trials/decisions/search/download` |
+| `client.ptab.trials.get_decisions(trial_number)` | GET | `/api/v1/patent/trials/{trialNumber}/decisions` |
+| `client.ptab.trials.get_decision(document_identifier)` | GET | `/api/v1/patent/trials/decisions/{documentIdentifier}` |
+
+The implementation covers IPR, PGR, CBM, and DER trial data without enforcing
+a closed trial-type enum. Search endpoints support the shared USPTO GET syntax
+and structured POST bodies.
+
+### Verified PTAB response behavior
+
+Live verification on August 13, 2026 established the following response
+contracts:
+
+- Proceedings use `patentTrialProceedingDataBag`.
+- Documents use `patentTrialDocumentDataBag`.
+- Decisions also currently use `patentTrialDocumentDataBag`, although one USPTO
+  example uses `patentTrialDecisionDataBag`. `TrialDecisionResponse` accepts
+  both and serializes to the live form.
+- JSON search exports use `patentTrialData`; export methods therefore return
+  attachment bytes rather than a normal search response model.
+- Party bags and nested fields vary by trial type and record. PTAB models allow
+  additive fields and make non-universal bags optional.
+- Trial document `fileDownloadURI` values currently point to authenticated
+  `api.uspto.gov` file endpoints and can return PDFs as
+  `binary/octet-stream`.
+
+Representative non-live fixtures are under
+`tests/fixtures/ptab_ipr2024_00001/`. The corrected human-readable endpoint
+capture is `docs/ptab-trials/search-proceedings.txt`; the self-contained
+implemented contract is `docs/ptab-trials/openapi.yaml`.
 
 ## Search Request Payloads
 
@@ -290,6 +333,6 @@ Observed response-shape details:
 
 ## Future Documentation Work
 
-Before implementing PTAB/AIA proceedings, retrieve or reconstruct the missing
-OpenAPI component files referenced by `docs/uspto-swagger-api.yaml` and resolve
-the current `docs/ptab-trials/search-proceedings.txt` mismatch.
+The aggregate USPTO Swagger capture still references separate appeal and
+interference component files that are outside the current client scope. Add
+those contracts when those PTAB namespaces are implemented.

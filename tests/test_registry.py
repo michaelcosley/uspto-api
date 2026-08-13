@@ -4,6 +4,7 @@ from uspto_client.registry import (
     APPLICATION_ENDPOINTS,
     FUTURE_ENDPOINTS,
     OUT_OF_SCOPE_ENDPOINTS,
+    PTAB_TRIAL_ENDPOINTS,
 )
 
 
@@ -32,6 +33,25 @@ def test_initial_application_endpoint_inventory_is_complete() -> None:
 def test_trademark_endpoints_are_out_of_scope() -> None:
     assert all(endpoint.status == "out-of-scope" for endpoint in OUT_OF_SCOPE_ENDPOINTS)
     assert any("trademark" in endpoint.path for endpoint in OUT_OF_SCOPE_ENDPOINTS)
+
+
+def test_ptab_trial_endpoint_inventory_is_complete() -> None:
+    method_names = {endpoint.method_name for endpoint in PTAB_TRIAL_ENDPOINTS}
+
+    assert method_names == {
+        "ptab.trials.search_proceedings",
+        "ptab.trials.download_proceedings_search_results",
+        "ptab.trials.get_proceeding",
+        "ptab.trials.search_documents",
+        "ptab.trials.download_documents_search_results",
+        "ptab.trials.get_documents",
+        "ptab.trials.get_document",
+        "ptab.trials.search_decisions",
+        "ptab.trials.download_decisions_search_results",
+        "ptab.trials.get_decisions",
+        "ptab.trials.get_decision",
+    }
+    assert all(endpoint.status == "implemented" for endpoint in PTAB_TRIAL_ENDPOINTS)
 
 
 def test_future_endpoint_families_are_not_marked_implemented() -> None:

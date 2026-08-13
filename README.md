@@ -1,9 +1,9 @@
 # uspto-client
 
-`uspto-client` is a pure-Python, sync-first client library for USPTO patent
-application APIs. The initial scope is the USPTO Patent File Wrapper /
-patent application endpoints. PTAB/AIA proceedings are planned for a later
-phase; trademark APIs are out of scope.
+`uspto-client` is a pure-Python, sync-first client library for USPTO Patent
+File Wrapper and Patent Trial and Appeal Board APIs. It supports patent
+applications plus PTAB AIA trial proceedings, documents, and decisions.
+Trademark APIs are out of scope.
 
 ## Status
 
@@ -34,6 +34,35 @@ client.applications.download_document(
     output_path="downloads/",
     document=bib,
     filename_format="application_date_description",
+)
+```
+
+PTAB AIA trial operations live under `client.ptab.trials`:
+
+```python
+proceeding = client.ptab.trials.get_proceeding("IPR2024-00001")
+documents = client.ptab.trials.get_documents("IPR2024-00001")
+decisions = client.ptab.trials.get_decisions("IPR2024-00001")
+
+client.ptab.trials.download_document(
+    documents.documents[0],
+    output_path="downloads/",
+)
+```
+
+Search supports the same GET parameters and structured POST bodies as Patent
+File Wrapper searches:
+
+```python
+results = client.ptab.trials.search_proceedings(
+    q="trialMetaData.trialTypeCode:IPR",
+    limit=25,
+)
+
+client.ptab.trials.download_decisions_search_results(
+    q="trialNumber:IPR2024-00001",
+    format="csv",
+    output_path="exports/",
 )
 ```
 
@@ -131,6 +160,7 @@ Capture a sanitized live fixture intentionally:
 
 ```powershell
 python scripts/capture_fixture.py get-metadata 16330077 tests/fixtures/live/get_metadata_16330077.json
+python scripts/capture_fixture.py ptab-proceeding IPR2024-00001 tests/fixtures/live/ptab_proceeding.json
 ```
 
 Quality checks expected after each implementation phase:

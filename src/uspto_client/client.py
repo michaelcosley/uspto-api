@@ -4,8 +4,10 @@ from __future__ import annotations
 
 import time
 from collections.abc import Mapping
+from email.message import Message
 from pathlib import Path
 from typing import Any, TypeVar, overload
+from urllib.parse import unquote
 
 import httpx
 from pydantic import ValidationError
@@ -20,6 +22,7 @@ from uspto_client.errors import (
     UsptoServerError,
 )
 from uspto_client.models import DocumentDownload, UsptoResponse
+from uspto_client.ptab import PtabClient
 from uspto_client.rate_limit import (
     RetryConfig,
     SleepCallable,
@@ -61,6 +64,7 @@ class UsptoClient:
             },
         )
         self.applications = ApplicationsClient(self)
+        self.ptab = PtabClient(self)
 
     def close(self) -> None:
         """Close the underlying HTTP client."""
@@ -157,12 +161,7 @@ class UsptoClient:
         while True:
             attempts += 1
             with self._lock:
-                response = self._http.request(
-                    "GET",
-                    path,
-                    params=_clean_mapping(params),
-                    follow_redirects=True,
-                )
+                response = self._send_download_request(path, params=params)
 
             if response.status_code == 429 and self._should_retry_429(attempts):
                 delay = retry_after_delay(
@@ -175,7 +174,13 @@ class UsptoClient:
             if response.is_error:
                 raise _error_from_response(response)
 
-            resolved_filename = filename or _filename_from_path(path)
+            resolved_filename = _safe_filename(
+                filename
+                or _filename_from_content_disposition(
+                    response.headers.get("Content-Disposition")
+                )
+                or _filename_from_path(str(response.url))
+            )
             written_path = _write_download(
                 response.content,
                 output_path=output_path,
@@ -189,6 +194,42 @@ class UsptoClient:
                 content_type=response.headers.get("Content-Type"),
                 status_code=response.status_code,
             )
+
+    def _send_download_request(
+        self,
+        path: str,
+        *,
+        params: Mapping[str, Any] | None,
+        max_redirects: int = 20,
+    ) -> httpx.Response:
+        """GET binary content while limiting API-key headers to the API origin."""
+
+        url = httpx.URL(path)
+        if url.is_relative_url:
+            url = self._http.base_url.join(url)
+        cleaned_params = _clean_mapping(params)
+        for redirect_number in range(max_redirects + 1):
+            request = self._http.build_request(
+                "GET",
+                url,
+                params=cleaned_params if redirect_number == 0 else None,
+            )
+            if not _same_origin(request.url, self._http.base_url):
+                request.headers.pop("X-API-KEY", None)
+            response = self._http.send(request, follow_redirects=False)
+            if not response.has_redirect_location:
+                return response
+            if redirect_number == max_redirects:
+                response.close()
+                raise httpx.TooManyRedirects(
+                    "Exceeded maximum allowed redirects",
+                    request=request,
+                )
+            location = response.headers["Location"]
+            next_url = response.url.join(location)
+            response.close()
+            url = next_url
+        raise AssertionError("redirect loop terminated unexpectedly")
 
 
 def _clean_mapping(mapping: Mapping[str, Any] | None) -> dict[str, Any] | None:
@@ -242,8 +283,33 @@ def _message_from_body(body: Any) -> str | None:
 
 
 def _filename_from_path(path: str) -> str:
-    filename = path.rstrip("/").rsplit("/", maxsplit=1)[-1]
+    filename = unquote(httpx.URL(path).path.rstrip("/").rsplit("/", maxsplit=1)[-1])
     return filename or "document.pdf"
+
+
+def _filename_from_content_disposition(value: str | None) -> str | None:
+    if not value:
+        return None
+    message = Message()
+    message["Content-Disposition"] = value
+    return message.get_filename()
+
+
+def _safe_filename(value: str) -> str:
+    filename = Path(value.replace("\\", "/")).name
+    return filename or "document.pdf"
+
+
+def _same_origin(left: httpx.URL, right: httpx.URL) -> bool:
+    return (
+        left.scheme.casefold(),
+        left.host.casefold(),
+        left.port,
+    ) == (
+        right.scheme.casefold(),
+        right.host.casefold(),
+        right.port,
+    )
 
 
 def _write_download(

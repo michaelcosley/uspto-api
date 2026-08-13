@@ -46,5 +46,6 @@ endpoint matrix, rate-limit behavior, and internal LLM reference.
 
 ## Phase 8: Future Expansion Planning Only
 
-Document future PTAB/AIA namespaces without implementing them. Trademark APIs,
-bulk downloads, OpenAPI codegen, and async APIs are not part of v1.
+PTAB/AIA trial support was implemented in version 0.2.0 under
+`client.ptab.trials`. Trademark APIs, PTAB appeals and interferences, OpenAPI
+codegen, and async APIs remain future work.
