@@ -1,0 +1,23 @@
+{
+  "count": 1,
+  "requestIdentifier": "fixture-document-request",
+  "patentTrialDocumentDataBag": [
+    {
+      "trialNumber": "IPR2024-00001",
+      "lastModifiedDateTime": "2025-07-01T15:20:30Z",
+      "trialDocumentCategory": "document",
+      "trialMetaData": {
+        "trialTypeCode": "IPR",
+        "trialStatusCategory": "Terminated"
+      },
+      "documentData": {
+        "documentIdentifier": "171359735",
+        "documentName": "petition.pdf",
+        "documentNumber": 1,
+        "documentSizeQuantity": 296025,
+        "documentTitleText": "Petition",
+        "fileDownloadURI": "https://api.uspto.gov/api/v1/patent/ptab-files/IPR/IPR2024-00001/171359735/petition.pdf"
+      }
+    }
+  ]
+}

@@ -18,10 +18,14 @@
 
 - Use sync `httpx`.
 - Route all HTTP calls through the shared client request method.
-- Serialize requests by API key.
+- Serialize and pace requests by API key in-process. Defaults are 10 ms for
+  ordinary calls and 50 ms for downloads, both configurable.
 - Do not retry 429 responses by default.
 - If 429 retry is enabled, wait at least five seconds or `Retry-After`,
   whichever is longer.
+- Keep 5xx and transport retries opt-in and bounded.
+- Preserve HTTP 404 exceptions; do not silently convert search 404s to empty
+  results in the API client.
 
 ## Models
 

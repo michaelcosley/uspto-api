@@ -1,9 +1,9 @@
 # uspto-client
 
-`uspto-client` is a pure-Python, sync-first client library for USPTO patent
-application APIs. The initial scope is the USPTO Patent File Wrapper /
-patent application endpoints. PTAB/AIA proceedings are planned for a later
-phase; trademark APIs are out of scope.
+`uspto-client` is a pure-Python, sync-first client library for USPTO Patent
+File Wrapper and Patent Trial and Appeal Board APIs. It also includes a
+separate experimental client for the public Assignment Center patent search
+service. Trademark APIs are out of scope.
 
 ## Status
 
@@ -36,6 +36,67 @@ client.applications.download_document(
     filename_format="application_date_description",
 )
 ```
+
+PTAB AIA trial operations live under `client.ptab.trials`:
+
+```python
+proceeding = client.ptab.trials.get_proceeding("IPR2024-00001")
+documents = client.ptab.trials.get_documents("IPR2024-00001")
+decisions = client.ptab.trials.get_decisions("IPR2024-00001")
+
+client.ptab.trials.download_document(
+    documents.documents[0],
+    output_path="downloads/",
+)
+```
+
+Search supports the same GET parameters and structured POST bodies as Patent
+File Wrapper searches:
+
+```python
+results = client.ptab.trials.search_proceedings(
+    q="trialMetaData.trialTypeCode:IPR",
+    limit=25,
+)
+
+client.ptab.trials.download_decisions_search_results(
+    q="trialNumber:IPR2024-00001",
+    format="csv",
+    output_path="exports/",
+)
+```
+
+Search PTAB appearances using explicit party/counsel fields:
+
+```python
+from uspto_client import patent_owner_counsel_query, petitioner_counsel_query
+
+owner_side = client.ptab.trials.search_proceedings(
+    q=patent_owner_counsel_query("Latham & Watkins"),
+)
+petitioner_side = client.ptab.trials.search_proceedings(
+    q=petitioner_counsel_query("Latham & Watkins"),
+)
+```
+
+The Assignment Center service does not use the Open Data Portal API key:
+
+```python
+from uspto_client import AssignmentCenterClient
+
+with AssignmentCenterClient() as assignments:
+    response = assignments.search_exact_assignee("EXAMPLE COMPANY, INC.")
+    for result in response.results:
+        for patent in result.properties:
+            print(patent.patent_number, patent.application_number)
+```
+
+Assignment Center search results are recorded transactions, not a current-owner
+determination. They may include security interests, name changes, corrections,
+and other non-title events, and a party-name search may return the surrounding
+transaction history for matched properties. Ownership analysis belongs in the
+consuming project. See
+[`docs/assignment-center.md`](docs/assignment-center.md).
 
 Structured search payloads are supported:
 
@@ -102,8 +163,10 @@ USPTO documents a burst limit of `1` request per API key. This client serializes
 requests by API key in-process so calls made through clients sharing the same
 key do not run concurrently.
 
-HTTP 429 responses are surfaced as `UsptoRateLimitError`. Automatic retry is
-disabled by default.
+Ordinary calls are spaced by at least 10 ms and serial downloads by at least
+50 ms by default. Both are configurable with `PacingConfig`. HTTP 429 responses
+are surfaced as `UsptoRateLimitError`; retries for 429, 5xx, and interrupted
+transport operations are opt-in through `RetryConfig`.
 
 ## Development
 
@@ -131,6 +194,7 @@ Capture a sanitized live fixture intentionally:
 
 ```powershell
 python scripts/capture_fixture.py get-metadata 16330077 tests/fixtures/live/get_metadata_16330077.json
+python scripts/capture_fixture.py ptab-proceeding IPR2024-00001 tests/fixtures/live/ptab_proceeding.json
 ```
 
 Quality checks expected after each implementation phase:

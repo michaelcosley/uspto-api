@@ -1,5 +1,55 @@
 # Implementation Progress
 
+## 2026-09-04
+
+### Completed
+
+- Added `AssignmentCenterClient` as a separate experimental public-service
+  client with patent searches, advanced criteria, reel/frame lookup, the
+  advertised export route, and recorded-document downloads.
+- Live-verified patent-number search and reel/frame lookup and normalized the
+  service's object-for-one/list-for-many response behavior.
+- Added Patent File Wrapper assignment query helpers and PTAB counsel/party
+  query helpers.
+- Added configurable default pacing (10 ms calls, 50 ms downloads) shared by
+  matching clients in one process.
+- Added opt-in 429, 5xx, and transport retries with bounded backoff.
+- Added documentation, offline tests, CI, and the `use-uspto-client` skill.
+
+### Known service limitation
+
+- The public Assignment Center frontend advertises its patent export route, but
+  that route returned HTTP 404 during live verification. The wrapper preserves
+  the typed error and is documented as experimental.
+- Assignment Center recordations do not themselves determine current legal
+  ownership; that classification remains deliberately outside this client.
+
+## 2026-08-13
+
+### Completed
+
+- Added `client.ptab.trials` for all documented AIA trial proceeding,
+  document, and decision search, export, and record-lookup operations.
+- Added PTAB document downloads using returned `fileDownloadURI` metadata.
+- Added tolerant typed proceeding, party, trial metadata, document, and
+  decision models.
+- Accepted both decision bag names present in USPTO documentation and live
+  responses.
+- Added PTAB search field constants and filter helpers.
+- Added content-disposition export filenames and cross-origin API-key
+  protection for downloads and redirects.
+- Corrected the bad Search Proceedings documentation capture and added a
+  self-contained implemented OpenAPI contract.
+- Added representative fixtures, mocked tests, and opt-in live PTAB tests.
+
+### Live verification
+
+- Verified proceedings GET/POST search and trial-number lookup.
+- Verified document and decision search, trial-number lookup, and
+  document-identifier lookup.
+- Verified JSON and CSV search exports.
+- Verified a byte-range PTAB file request returned a PDF header.
+
 ## 2026-05-20
 
 ### Completed
@@ -53,6 +103,5 @@
 
 - Live tests are harnessed but not expected to run without a real
   `USPTO_API_KEY`.
-- Response models currently validate common wrappers and preserve extra fields;
-  deeper nested response models should be expanded after the missing USPTO
-  OpenAPI component YAML files are obtained.
+- Patent File Wrapper nested response models remain intentionally loose.
+- PTAB appeals and interferences remain outside the implemented namespace.

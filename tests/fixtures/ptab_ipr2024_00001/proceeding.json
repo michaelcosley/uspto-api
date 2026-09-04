@@ -1,0 +1,23 @@
+{
+  "count": 1,
+  "requestIdentifier": "fixture-proceeding-request",
+  "patentTrialProceedingDataBag": [
+    {
+      "trialNumber": "IPR2024-00001",
+      "lastModifiedDateTime": "2025-07-17T20:24:01",
+      "trialMetaData": {
+        "trialTypeCode": "IPR",
+        "trialStatusCategory": "Terminated",
+        "petitionFilingDate": "2024-01-30",
+        "institutionDecisionDate": "2024-08-20"
+      },
+      "patentOwnerData": {
+        "applicationNumberText": "14412875",
+        "patentNumber": "US9876543B2"
+      },
+      "regularPetitionerData": {
+        "realPartyInInterestName": "Example Petitioner"
+      }
+    }
+  ]
+}

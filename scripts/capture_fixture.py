@@ -13,14 +13,20 @@ from uspto_client.fixture_capture import sanitize_capture
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Capture sanitized USPTO patent application fixtures."
+        description="Capture sanitized USPTO patent and PTAB fixtures."
     )
     parser.add_argument(
         "method",
-        choices=["get", "get-metadata"],
-        help="Application method to capture.",
+        choices=[
+            "get",
+            "get-metadata",
+            "ptab-proceeding",
+            "ptab-document",
+            "ptab-decision",
+        ],
+        help="Client method to capture.",
     )
-    parser.add_argument("application_number")
+    parser.add_argument("identifier")
     parser.add_argument("output", type=Path)
     args = parser.parse_args()
 
@@ -31,15 +37,21 @@ def main() -> None:
 
     client = UsptoClient(api_key=api_key)
     if args.method == "get":
-        response = client.applications.get(args.application_number)
+        response = client.applications.get(args.identifier)
+    elif args.method == "get-metadata":
+        response = client.applications.get_metadata(args.identifier)
+    elif args.method == "ptab-proceeding":
+        response = client.ptab.trials.get_proceeding(args.identifier)
+    elif args.method == "ptab-document":
+        response = client.ptab.trials.get_document(args.identifier)
     else:
-        response = client.applications.get_metadata(args.application_number)
+        response = client.ptab.trials.get_decision(args.identifier)
 
     capture = sanitize_capture(
         {
             "request": {
                 "method": args.method,
-                "application_number": args.application_number,
+                "identifier": args.identifier,
                 "headers": {"X-API-KEY": api_key},
             },
             "response": response.raw_data,

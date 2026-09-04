@@ -195,6 +195,103 @@ client.applications.search_status_codes(q="412", limit=1)
 See `docs/api-reference.md` in this repository for endpoint paths, source docs,
 and response-shape notes.
 
+## PTAB AIA Trial Proceedings
+
+PTAB trial operations are grouped under `client.ptab.trials`. Public trial
+materials include IPR, PGR, CBM, and DER proceedings from September 2012
+forward.
+
+Retrieve one proceeding and its documents and decisions:
+
+```python
+proceeding = client.ptab.trials.get_proceeding("IPR2024-00001")
+documents = client.ptab.trials.get_documents("IPR2024-00001")
+decisions = client.ptab.trials.get_decisions("IPR2024-00001")
+
+print(proceeding.proceedings[0].trial_number)
+print(documents.documents[0].document_data.document_title_text)
+print(decisions.decisions[0].decision_data.decision_type_category)
+```
+
+Search proceedings, documents, or decisions with GET parameters:
+
+```python
+proceedings = client.ptab.trials.search_proceedings(
+    q="trialMetaData.trialTypeCode:IPR",
+    limit=25,
+)
+documents = client.ptab.trials.search_documents(
+    q="trialNumber:IPR2024-00001",
+    limit=25,
+)
+decisions = client.ptab.trials.search_decisions(
+    q="decisionData.decisionTypeCategory:\"Final Written Decision\"",
+    limit=25,
+)
+```
+
+The same `SearchRequest`, `SearchFilter`, `RangeFilter`, `SearchSort`, and
+`Pagination` models used for Patent File Wrapper searches can be passed as a
+structured POST body.
+
+Common PTAB filter helpers are available without restricting future values:
+
+```python
+from uspto_client import Pagination, SearchRequest, trial_status_filter, trial_type_filter
+
+request = SearchRequest(
+    filters=[
+        trial_type_filter("IPR", "PGR"),
+        trial_status_filter("Instituted"),
+    ],
+    pagination=Pagination(offset=0, limit=25),
+)
+
+client.ptab.trials.search_proceedings(body=request)
+```
+
+Available trial methods:
+
+```python
+client.ptab.trials.search_proceedings(...)
+client.ptab.trials.download_proceedings_search_results(...)
+client.ptab.trials.get_proceeding(trial_number)
+client.ptab.trials.search_documents(...)
+client.ptab.trials.download_documents_search_results(...)
+client.ptab.trials.get_documents(trial_number)
+client.ptab.trials.get_document(document_identifier)
+client.ptab.trials.search_decisions(...)
+client.ptab.trials.download_decisions_search_results(...)
+client.ptab.trials.get_decisions(trial_number)
+client.ptab.trials.get_decision(document_identifier)
+client.ptab.trials.download_document(document)
+```
+
+Search-result downloads use the USPTO `Content-Disposition` filename and return
+the same byte/path metadata as application-document downloads:
+
+```python
+export = client.ptab.trials.download_proceedings_search_results(
+    q="trialNumber:IPR2024-00001",
+    format="csv",
+    output_path="exports/",
+)
+```
+
+Download a trial PDF directly from a returned record:
+
+```python
+documents = client.ptab.trials.get_documents("IPR2024-00001")
+download = client.ptab.trials.download_document(
+    documents.documents[0],
+    output_path="downloads/",
+)
+```
+
+The API key is sent only to the configured USPTO API origin. If older metadata
+contains a download URL on another host, the client follows it without
+forwarding the key.
+
 ## Response Models
 
 Methods return Pydantic v2 models. Models allow extra fields because USPTO
@@ -330,8 +427,59 @@ requests by API key in the current Python process. If multiple projects or
 processes share the same API key, they can still collide externally, so avoid
 running live API jobs in parallel with the same key.
 
-HTTP 429 responses raise `UsptoRateLimitError` by default. Automatic retry is
-disabled unless configured explicitly.
+Ordinary calls are spaced by at least 10 ms and serial downloads by at least
+50 ms. Configure those intervals with `PacingConfig`. HTTP 429 responses raise
+`UsptoRateLimitError` by default. Retries for 429, 5xx, and transport failures
+are disabled unless configured explicitly with `RetryConfig`. See
+`docs/transport-and-retries.md`.
+
+## Patent assignment searches
+
+Patent File Wrapper can search nested assignment fields and retrieve assignment
+data for a known application:
+
+```python
+from uspto_client import UsptoClient, assignee_name_query
+
+client = UsptoClient(api_key="...")
+matches = client.applications.search(
+    q=assignee_name_query("EXAMPLE COMPANY, INC."),
+    limit=25,
+)
+history = client.applications.get_assignment("15776580")
+```
+
+For the dedicated public Assignment Center service, create the separate client
+without an API key:
+
+```python
+from uspto_client import AssignmentCenterClient
+
+with AssignmentCenterClient() as assignments:
+    response = assignments.search_exact_assignee("EXAMPLE COMPANY, INC.")
+```
+
+Use `response.results`, `result.assignment_records`, and `result.properties` to
+handle the service's normalized response shapes. Do not treat the newest row as
+an automatic current-owner conclusion; preserve conveyance types and the full
+recorded chain for project-specific analysis. See `docs/assignment-center.md`.
+
+## Searching PTAB appearances by counsel or party
+
+```python
+from uspto_client import patent_owner_counsel_query, petitioner_counsel_query
+
+owner_side = client.ptab.trials.search_proceedings(
+    q=patent_owner_counsel_query("Latham & Watkins"),
+)
+petitioner_side = client.ptab.trials.search_proceedings(
+    q=petitioner_counsel_query("Latham & Watkins"),
+)
+```
+
+The USPTO API can return HTTP 404 when a PTAB search has no matches. The client
+preserves that as `UsptoNotFoundError`; a consuming census workflow may catch
+that exception and interpret it as an empty result for that specific search.
 
 ## Testing In A Consuming Project
 
@@ -371,10 +519,10 @@ Live calls require `USPTO_API_KEY` in the environment or `.env`.
 ## Current Limitations
 
 - The client is sync-only.
-- Initial scope is Patent File Wrapper / patent application APIs.
-- PTAB/AIA proceedings are future scope.
+- Supported production families are Patent File Wrapper and PTAB AIA trials;
+  public Assignment Center patent search is experimental.
+- PTAB appeals and interferences are not yet exposed as client namespaces.
 - Trademark APIs are intentionally out of scope.
-- Document download currently supports PDF URLs exposed by USPTO document
-  metadata.
+- Document download supports file URLs exposed by USPTO document metadata.
 - Nested response models are still intentionally loose until more real USPTO
   response shapes are collected.

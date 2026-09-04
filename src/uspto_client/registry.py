@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Literal
 
-EndpointStatus = Literal["implemented", "future", "out-of-scope"]
+EndpointStatus = Literal["implemented", "experimental", "future", "out-of-scope"]
 
 
 @dataclass(frozen=True)
@@ -122,15 +122,120 @@ APPLICATION_ENDPOINTS: tuple[Endpoint, ...] = (
     ),
 )
 
-FUTURE_ENDPOINTS: tuple[Endpoint, ...] = (
+PTAB_TRIAL_ENDPOINTS: tuple[Endpoint, ...] = (
     Endpoint(
-        "ptab.proceedings.search",
+        "ptab.trials.search_proceedings",
         ("GET", "POST"),
         "/api/v1/patent/trials/proceedings/search",
-        "future",
-        "docs/uspto-swagger-api.yaml",
-        "PTAB/AIA proceedings are future scope.",
+        "implemented",
+        "docs/ptab-trials/search-proceedings.txt",
     ),
+    Endpoint(
+        "ptab.trials.download_proceedings_search_results",
+        ("GET",),
+        "/api/v1/patent/trials/proceedings/search/download",
+        "implemented",
+        "docs/ptab-trials/download-proceeding-search-results.txt",
+    ),
+    Endpoint(
+        "ptab.trials.get_proceeding",
+        ("GET",),
+        "/api/v1/patent/trials/proceedings/{trialNumber}",
+        "implemented",
+        "docs/ptab-trials/search-proceedings-by-trial-number.txt",
+    ),
+    Endpoint(
+        "ptab.trials.search_documents",
+        ("GET", "POST"),
+        "/api/v1/patent/trials/documents/search",
+        "implemented",
+        "docs/ptab-trials/search-documents.txt",
+    ),
+    Endpoint(
+        "ptab.trials.download_documents_search_results",
+        ("GET",),
+        "/api/v1/patent/trials/documents/search/download",
+        "implemented",
+        "docs/ptab-trials/download-documents-search-results.txt",
+    ),
+    Endpoint(
+        "ptab.trials.get_documents",
+        ("GET",),
+        "/api/v1/patent/trials/{trialNumber}/documents",
+        "implemented",
+        "docs/ptab-trials/search-documents-by-trial-number.txt",
+    ),
+    Endpoint(
+        "ptab.trials.get_document",
+        ("GET",),
+        "/api/v1/patent/trials/documents/{documentIdentifier}",
+        "implemented",
+        "docs/ptab-trials/search-documents-by-document-identifier.txt",
+    ),
+    Endpoint(
+        "ptab.trials.search_decisions",
+        ("GET", "POST"),
+        "/api/v1/patent/trials/decisions/search",
+        "implemented",
+        "docs/ptab-trials/search-decisions.txt",
+    ),
+    Endpoint(
+        "ptab.trials.download_decisions_search_results",
+        ("GET",),
+        "/api/v1/patent/trials/decisions/search/download",
+        "implemented",
+        "docs/ptab-trials/download-decisions-search-results.txt",
+    ),
+    Endpoint(
+        "ptab.trials.get_decisions",
+        ("GET",),
+        "/api/v1/patent/trials/{trialNumber}/decisions",
+        "implemented",
+        "docs/ptab-trials/seach-decisions-by-trial-number.txt",
+    ),
+    Endpoint(
+        "ptab.trials.get_decision",
+        ("GET",),
+        "/api/v1/patent/trials/decisions/{documentIdentifier}",
+        "implemented",
+        "docs/ptab-trials/search-decisions-by-document-identifier.txt",
+    ),
+)
+
+ASSIGNMENT_CENTER_ENDPOINTS: tuple[Endpoint, ...] = (
+    Endpoint(
+        "assignment_center.search_patents",
+        ("POST",),
+        "/ipas/search/api/v3/public/search/patent",
+        "experimental",
+        "official Assignment Center public web application",
+        "Supports single-field and advanced patent-recordation searches.",
+    ),
+    Endpoint(
+        "assignment_center.get_reel_frame",
+        ("POST",),
+        "/ipas/search/api/v3/public/search/patent",
+        "experimental",
+        "official Assignment Center public web application",
+    ),
+    Endpoint(
+        "assignment_center.download_recordation",
+        ("GET",),
+        "/ipas/search/api/v3/public/download/patent/{reel}/{frame}",
+        "experimental",
+        "official Assignment Center public web application",
+    ),
+    Endpoint(
+        "assignment_center.export_patent_data",
+        ("POST",),
+        "/ipas/search/api/v3/public/patent/exportPublicPatentData",
+        "experimental",
+        "official Assignment Center public web application",
+        "The advertised public route returned HTTP 404 during 2026-09-04 verification.",
+    ),
+)
+
+FUTURE_ENDPOINTS: tuple[Endpoint, ...] = (
     Endpoint(
         "petition_decisions.search",
         ("GET", "POST"),
@@ -160,4 +265,10 @@ OUT_OF_SCOPE_ENDPOINTS: tuple[Endpoint, ...] = (
     ),
 )
 
-ALL_ENDPOINTS = APPLICATION_ENDPOINTS + FUTURE_ENDPOINTS + OUT_OF_SCOPE_ENDPOINTS
+ALL_ENDPOINTS = (
+    APPLICATION_ENDPOINTS
+    + PTAB_TRIAL_ENDPOINTS
+    + ASSIGNMENT_CENTER_ENDPOINTS
+    + FUTURE_ENDPOINTS
+    + OUT_OF_SCOPE_ENDPOINTS
+)

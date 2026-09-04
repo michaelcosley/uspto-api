@@ -7,6 +7,9 @@ from uspto_client import (
     Pagination,
     SearchRequest,
     application_type_filter,
+    assignee_name_query,
+    assignment_conveyance_query,
+    assignor_name_query,
     business_entity_status_filter,
     filing_date_sort_desc,
     publication_category_filter,
@@ -73,3 +76,15 @@ def test_search_option_helpers_build_online_tool_payload_shape() -> None:
         "pagination": {"offset": 0, "limit": 25},
         "sort": [{"field": "applicationMetaData.filingDate", "order": "Desc"}],
     }
+
+
+def test_assignment_phrase_query_helpers_use_documented_field_paths() -> None:
+    assert assignee_name_query("Example Corp.") == (
+        'assignmentBag.assigneeBag.assigneeNameText:"Example Corp."'
+    )
+    assert assignor_name_query('Inventor "A"') == (
+        'assignmentBag.assignorBag.assignorName:"Inventor \\"A\\""'
+    )
+    assert assignment_conveyance_query("security interest") == (
+        'assignmentBag.conveyanceText:"security interest"'
+    )
