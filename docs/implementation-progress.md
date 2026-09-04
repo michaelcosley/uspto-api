@@ -1,5 +1,29 @@
 # Implementation Progress
 
+## 2026-09-04
+
+### Completed
+
+- Added `AssignmentCenterClient` as a separate experimental public-service
+  client with patent searches, advanced criteria, reel/frame lookup, the
+  advertised export route, and recorded-document downloads.
+- Live-verified patent-number search and reel/frame lookup and normalized the
+  service's object-for-one/list-for-many response behavior.
+- Added Patent File Wrapper assignment query helpers and PTAB counsel/party
+  query helpers.
+- Added configurable default pacing (10 ms calls, 50 ms downloads) shared by
+  matching clients in one process.
+- Added opt-in 429, 5xx, and transport retries with bounded backoff.
+- Added documentation, offline tests, CI, and the `use-uspto-client` skill.
+
+### Known service limitation
+
+- The public Assignment Center frontend advertises its patent export route, but
+  that route returned HTTP 404 during live verification. The wrapper preserves
+  the typed error and is documented as experimental.
+- Assignment Center recordations do not themselves determine current legal
+  ownership; that classification remains deliberately outside this client.
+
 ## 2026-08-13
 
 ### Completed

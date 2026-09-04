@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from uspto_client.registry import (
     APPLICATION_ENDPOINTS,
+    ASSIGNMENT_CENTER_ENDPOINTS,
     FUTURE_ENDPOINTS,
     OUT_OF_SCOPE_ENDPOINTS,
     PTAB_TRIAL_ENDPOINTS,
@@ -52,6 +53,20 @@ def test_ptab_trial_endpoint_inventory_is_complete() -> None:
         "ptab.trials.get_decision",
     }
     assert all(endpoint.status == "implemented" for endpoint in PTAB_TRIAL_ENDPOINTS)
+
+
+def test_assignment_center_inventory_is_explicitly_experimental() -> None:
+    method_names = {endpoint.method_name for endpoint in ASSIGNMENT_CENTER_ENDPOINTS}
+
+    assert method_names == {
+        "assignment_center.search_patents",
+        "assignment_center.get_reel_frame",
+        "assignment_center.download_recordation",
+        "assignment_center.export_patent_data",
+    }
+    assert all(
+        endpoint.status == "experimental" for endpoint in ASSIGNMENT_CENTER_ENDPOINTS
+    )
 
 
 def test_future_endpoint_families_are_not_marked_implemented() -> None:

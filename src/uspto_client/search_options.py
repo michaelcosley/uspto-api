@@ -34,6 +34,10 @@ BUSINESS_ENTITY_STATUS_CATEGORY_FIELD = (
     "applicationMetaData.entityStatusData.businessEntityStatusCategory"
 )
 FILING_DATE_FIELD = "applicationMetaData.filingDate"
+ASSIGNEE_NAME_FIELD = "assignmentBag.assigneeBag.assigneeNameText"
+ASSIGNOR_NAME_FIELD = "assignmentBag.assignorBag.assignorName"
+ASSIGNMENT_CONVEYANCE_FIELD = "assignmentBag.conveyanceText"
+ASSIGNMENT_RECORDED_DATE_FIELD = "assignmentBag.assignmentRecordedDate"
 
 APPLICATION_TYPE_LABEL_NAMES: tuple[ApplicationTypeLabelName, ...] = (
     "Utility",
@@ -86,3 +90,28 @@ def filing_date_sort_desc() -> SearchSort:
     """Build the common filing-date descending sort."""
 
     return SearchSort(field=FILING_DATE_FIELD, order="Desc")
+
+
+def assignee_name_query(name: str) -> str:
+    """Build a Patent File Wrapper phrase query for an assignee name."""
+
+    return _phrase_query(ASSIGNEE_NAME_FIELD, name)
+
+
+def assignor_name_query(name: str) -> str:
+    """Build a Patent File Wrapper phrase query for an assignor name."""
+
+    return _phrase_query(ASSIGNOR_NAME_FIELD, name)
+
+
+def assignment_conveyance_query(text: str) -> str:
+    """Build a Patent File Wrapper phrase query for conveyance text."""
+
+    return _phrase_query(ASSIGNMENT_CONVEYANCE_FIELD, text)
+
+
+def _phrase_query(field: str, value: str) -> str:
+    if not value:
+        raise ValueError("query value is required")
+    escaped = value.replace("\\", "\\\\").replace('"', '\\"')
+    return f'{field}:"{escaped}"'

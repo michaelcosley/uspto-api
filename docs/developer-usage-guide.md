@@ -427,8 +427,59 @@ requests by API key in the current Python process. If multiple projects or
 processes share the same API key, they can still collide externally, so avoid
 running live API jobs in parallel with the same key.
 
-HTTP 429 responses raise `UsptoRateLimitError` by default. Automatic retry is
-disabled unless configured explicitly.
+Ordinary calls are spaced by at least 10 ms and serial downloads by at least
+50 ms. Configure those intervals with `PacingConfig`. HTTP 429 responses raise
+`UsptoRateLimitError` by default. Retries for 429, 5xx, and transport failures
+are disabled unless configured explicitly with `RetryConfig`. See
+`docs/transport-and-retries.md`.
+
+## Patent assignment searches
+
+Patent File Wrapper can search nested assignment fields and retrieve assignment
+data for a known application:
+
+```python
+from uspto_client import UsptoClient, assignee_name_query
+
+client = UsptoClient(api_key="...")
+matches = client.applications.search(
+    q=assignee_name_query("EXAMPLE COMPANY, INC."),
+    limit=25,
+)
+history = client.applications.get_assignment("15776580")
+```
+
+For the dedicated public Assignment Center service, create the separate client
+without an API key:
+
+```python
+from uspto_client import AssignmentCenterClient
+
+with AssignmentCenterClient() as assignments:
+    response = assignments.search_exact_assignee("EXAMPLE COMPANY, INC.")
+```
+
+Use `response.results`, `result.assignment_records`, and `result.properties` to
+handle the service's normalized response shapes. Do not treat the newest row as
+an automatic current-owner conclusion; preserve conveyance types and the full
+recorded chain for project-specific analysis. See `docs/assignment-center.md`.
+
+## Searching PTAB appearances by counsel or party
+
+```python
+from uspto_client import patent_owner_counsel_query, petitioner_counsel_query
+
+owner_side = client.ptab.trials.search_proceedings(
+    q=patent_owner_counsel_query("Latham & Watkins"),
+)
+petitioner_side = client.ptab.trials.search_proceedings(
+    q=petitioner_counsel_query("Latham & Watkins"),
+)
+```
+
+The USPTO API can return HTTP 404 when a PTAB search has no matches. The client
+preserves that as `UsptoNotFoundError`; a consuming census workflow may catch
+that exception and interpret it as an empty result for that specific search.
 
 ## Testing In A Consuming Project
 
@@ -468,7 +519,8 @@ Live calls require `USPTO_API_KEY` in the environment or `.env`.
 ## Current Limitations
 
 - The client is sync-only.
-- Supported production families are Patent File Wrapper and PTAB AIA trials.
+- Supported production families are Patent File Wrapper and PTAB AIA trials;
+  public Assignment Center patent search is experimental.
 - PTAB appeals and interferences are not yet exposed as client namespaces.
 - Trademark APIs are intentionally out of scope.
 - Document download supports file URLs exposed by USPTO document metadata.

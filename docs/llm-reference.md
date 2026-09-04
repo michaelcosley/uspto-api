@@ -6,9 +6,10 @@ Use this file to orient future coding agents.
 
 Build a reusable pure-Python USPTO client library. The initial implementation
 supports USPTO Patent File Wrapper / patent application APIs and PTAB AIA
-trial proceedings, documents, decisions, exports, and document downloads.
-PTAB appeals and interferences are future scope. Trademark APIs are out of
-scope.
+trial proceedings, documents, decisions, exports, and document downloads. It
+also provides a separately hosted experimental `AssignmentCenterClient` for
+public patent recordation searches. PTAB appeals and interferences are future
+scope. Trademark APIs are out of scope.
 
 ## Source Documentation
 
@@ -43,8 +44,12 @@ Known documentation issues:
 - `src/uspto_client/ptab.py`: `client.ptab.trials.*` methods.
 - `src/uspto_client/ptab_models.py`: tolerant typed PTAB response models.
 - `src/uspto_client/ptab_search_options.py`: common PTAB filter field helpers.
+- `src/uspto_client/assignment.py`: experimental public Assignment Center
+  transport and methods.
+- `src/uspto_client/assignment_models.py`: tolerant Assignment Center models.
 - `src/uspto_client/errors.py`: typed exception hierarchy.
-- `src/uspto_client/rate_limit.py`: API-key serialization and retry config.
+- `src/uspto_client/rate_limit.py`: shared pacing, serialization, and retry
+  configuration.
 - `src/uspto_client/registry.py`: endpoint inventory used by docs/tests.
 - `tests/conftest.py`: normal-test network blocking and live-test guard.
 
@@ -56,3 +61,6 @@ Known documentation issues:
 - Do not add async APIs in v1.
 - Keep `client.applications.*` and `client.ptab.trials.*` as the public
   namespaces.
+- Keep Assignment Center separate from `UsptoClient`; never send the Open Data
+  Portal key to Assignment Center.
+- Do not add current-owner or conveyance-classification logic to this package.

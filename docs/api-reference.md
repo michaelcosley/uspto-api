@@ -2,25 +2,31 @@
 
 ## Scope
 
-Supported API families are USPTO Patent File Wrapper / patent application data
-and PTAB AIA trial proceedings. Trademark APIs are out of scope. PTAB appeals
-and interferences remain future work.
+Supported API families are USPTO Patent File Wrapper / patent application data,
+PTAB AIA trial proceedings, and the experimental public Assignment Center
+patent search service. Trademark APIs are out of scope. PTAB appeals and
+interferences remain future work.
 
 ## Authentication
 
-Every USPTO request requires the `X-API-KEY` header. Create a client with an
-explicit key:
+Open Data Portal requests require the `X-API-KEY` header. Create a client with
+an explicit key:
 
 ```python
 client = UsptoClient(api_key="...")
 ```
 
+`AssignmentCenterClient` uses a separate official public service and does not
+accept or send that API key.
+
 ## Rate Limits
 
 USPTO documents a burst limit of `1` request per API key and warns against
 parallel calls with the same key. The client serializes requests by API key in
-the current process. HTTP 429 responses raise `UsptoRateLimitError`; automatic
-retry is disabled by default.
+the current process and applies default minimum intervals of 10 ms for ordinary
+calls and 50 ms for downloads. HTTP 429 responses raise
+`UsptoRateLimitError`; all retries are disabled by default. See
+`docs/transport-and-retries.md`.
 
 ## Model Policy
 
@@ -88,6 +94,23 @@ Representative non-live fixtures are under
 `tests/fixtures/ptab_ipr2024_00001/`. The corrected human-readable endpoint
 capture is `docs/ptab-trials/search-proceedings.txt`; the self-contained
 implemented contract is `docs/ptab-trials/openapi.yaml`.
+
+## Assignment Center Public Patent Endpoints
+
+These methods are exposed on a separate `AssignmentCenterClient` and are marked
+experimental because the public web application API does not have a published,
+versioned Open Data Portal contract.
+
+| Method | HTTP | Path | Live status on 2026-09-04 |
+| --- | --- | --- | --- |
+| `search_patents(...)` / assignee conveniences | POST | `/ipas/search/api/v3/public/search/patent` | Verified |
+| `advanced_search(...)` | POST | `/ipas/search/api/v3/public/search/patent` | Contract verified from official UI; parsing covered offline |
+| `get_reel_frame(...)` | POST | `/ipas/search/api/v3/public/search/patent` | Verified |
+| `download_recordation(...)` | GET | `/ipas/search/api/v3/public/download/patent/{reel}/{frame}` | Endpoint live; interrupted-transfer retries are opt-in |
+| `export_patent_data(...)` | POST | `/ipas/search/api/v3/public/patent/exportPublicPatentData` | Official UI advertises route; route returned HTTP 404 |
+
+See `docs/assignment-center.md` for request examples, response normalization,
+and the important distinction between recorded transactions and current title.
 
 ## Search Request Payloads
 

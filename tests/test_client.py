@@ -17,7 +17,7 @@ from uspto_client import (
     UsptoRateLimitError,
     UsptoServerError,
 )
-from uspto_client.rate_limit import RetryConfig
+from uspto_client.rate_limit import PacingConfig, RetryConfig
 
 FIXTURES = Path(__file__).parent / "fixtures"
 
@@ -125,8 +125,13 @@ def test_configured_429_retry_waits_at_least_five_seconds() -> None:
 
     client = UsptoClient(
         api_key="test-key",
+        base_url="https://retry-five.example.test",
         transport=httpx.MockTransport(handler),
         retry_config=RetryConfig(retry_on_429=True, max_attempts=2),
+        pacing_config=PacingConfig(
+            request_interval_seconds=0,
+            download_interval_seconds=0,
+        ),
         sleep=delays.append,
     )
 
@@ -149,14 +154,86 @@ def test_429_retry_respects_longer_retry_after() -> None:
 
     client = UsptoClient(
         api_key="test-key",
+        base_url="https://retry-nine.example.test",
         transport=httpx.MockTransport(handler),
         retry_config=RetryConfig(retry_on_429=True, max_attempts=2),
+        pacing_config=PacingConfig(
+            request_interval_seconds=0,
+            download_interval_seconds=0,
+        ),
         sleep=delays.append,
     )
 
     client.request("GET", "/limited")
 
     assert delays == [9.0]
+
+
+def test_configured_5xx_retry_uses_exponential_backoff() -> None:
+    calls = 0
+    delays: list[float] = []
+
+    def handler(_request: httpx.Request) -> httpx.Response:
+        nonlocal calls
+        calls += 1
+        if calls < 3:
+            return httpx.Response(503, json={"error": "Unavailable"})
+        return httpx.Response(200, json={"count": 0})
+
+    client = UsptoClient(
+        api_key="retry-5xx-key",
+        base_url="https://retry-5xx.example.test",
+        transport=httpx.MockTransport(handler),
+        retry_config=RetryConfig(
+            retry_on_5xx=True,
+            max_attempts=3,
+            backoff_initial_seconds=0.25,
+        ),
+        pacing_config=PacingConfig(
+            request_interval_seconds=0,
+            download_interval_seconds=0,
+        ),
+        sleep=delays.append,
+    )
+
+    client.request("GET", "/unstable")
+
+    assert calls == 3
+    assert delays == [0.25, 0.5]
+
+
+def test_configured_transport_retry_recovers_from_interrupted_read() -> None:
+    calls = 0
+    delays: list[float] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        nonlocal calls
+        calls += 1
+        if calls == 1:
+            raise httpx.ReadError("interrupted", request=request)
+        return httpx.Response(200, content=b"%PDF")
+
+    client = UsptoClient(
+        api_key="retry-transport-key",
+        base_url="https://retry-transport.example.test",
+        transport=httpx.MockTransport(handler),
+        retry_config=RetryConfig(
+            retry_on_transport_error=True,
+            max_attempts=2,
+            backoff_initial_seconds=0.25,
+        ),
+        pacing_config=PacingConfig(
+            request_interval_seconds=0,
+            download_interval_seconds=0,
+        ),
+        sleep=delays.append,
+    )
+
+    download = client.download("/document.pdf")
+
+    assert calls == 2
+    assert download.content == b"%PDF"
+    assert delays == [0.25]
 
 
 def test_requests_with_same_api_key_are_serialized_across_clients() -> None:
@@ -196,3 +273,81 @@ def test_requests_with_same_api_key_are_serialized_across_clients() -> None:
 
     assert max_active_requests == 1
     assert order == ["/one", "/two"]
+
+
+class _FakeClock:
+    def __init__(self) -> None:
+        self.now = 0.0
+        self.delays: list[float] = []
+
+    def monotonic(self) -> float:
+        return self.now
+
+    def sleep(self, delay: float) -> None:
+        self.delays.append(delay)
+        self.now += delay
+
+
+def test_default_pacing_waits_ten_milliseconds_between_api_calls() -> None:
+    clock = _FakeClock()
+    client = UsptoClient(
+        api_key="paced-api-key",
+        base_url="https://pacing-api.example.test",
+        transport=httpx.MockTransport(
+            lambda _request: httpx.Response(200, json={"count": 0})
+        ),
+        sleep=clock.sleep,
+        monotonic=clock.monotonic,
+    )
+
+    client.request("GET", "/one")
+    client.request("GET", "/two")
+
+    assert clock.delays == [pytest.approx(0.010)]
+
+
+def test_default_pacing_waits_fifty_milliseconds_between_downloads() -> None:
+    clock = _FakeClock()
+    client = UsptoClient(
+        api_key="paced-download-key",
+        base_url="https://pacing-download.example.test",
+        transport=httpx.MockTransport(
+            lambda _request: httpx.Response(200, content=b"pdf")
+        ),
+        sleep=clock.sleep,
+        monotonic=clock.monotonic,
+    )
+
+    client.download("/one.pdf")
+    client.download("/two.pdf")
+
+    assert clock.delays == [pytest.approx(0.050)]
+
+
+def test_pacing_intervals_are_configurable() -> None:
+    clock = _FakeClock()
+    client = UsptoClient(
+        api_key="custom-paced-key",
+        base_url="https://custom-pacing.example.test",
+        transport=httpx.MockTransport(
+            lambda _request: httpx.Response(200, json={"count": 0})
+        ),
+        pacing_config=PacingConfig(
+            request_interval_seconds=0.125,
+            download_interval_seconds=0.250,
+        ),
+        sleep=clock.sleep,
+        monotonic=clock.monotonic,
+    )
+
+    client.request("GET", "/one")
+    client.request("GET", "/two")
+
+    assert clock.delays == [pytest.approx(0.125)]
+
+
+def test_pacing_config_rejects_negative_intervals() -> None:
+    with pytest.raises(ValueError, match="request interval"):
+        PacingConfig(request_interval_seconds=-0.001)
+    with pytest.raises(ValueError, match="download interval"):
+        PacingConfig(download_interval_seconds=-0.001)

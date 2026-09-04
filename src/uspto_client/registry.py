@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Literal
 
-EndpointStatus = Literal["implemented", "future", "out-of-scope"]
+EndpointStatus = Literal["implemented", "experimental", "future", "out-of-scope"]
 
 
 @dataclass(frozen=True)
@@ -202,6 +202,39 @@ PTAB_TRIAL_ENDPOINTS: tuple[Endpoint, ...] = (
     ),
 )
 
+ASSIGNMENT_CENTER_ENDPOINTS: tuple[Endpoint, ...] = (
+    Endpoint(
+        "assignment_center.search_patents",
+        ("POST",),
+        "/ipas/search/api/v3/public/search/patent",
+        "experimental",
+        "official Assignment Center public web application",
+        "Supports single-field and advanced patent-recordation searches.",
+    ),
+    Endpoint(
+        "assignment_center.get_reel_frame",
+        ("POST",),
+        "/ipas/search/api/v3/public/search/patent",
+        "experimental",
+        "official Assignment Center public web application",
+    ),
+    Endpoint(
+        "assignment_center.download_recordation",
+        ("GET",),
+        "/ipas/search/api/v3/public/download/patent/{reel}/{frame}",
+        "experimental",
+        "official Assignment Center public web application",
+    ),
+    Endpoint(
+        "assignment_center.export_patent_data",
+        ("POST",),
+        "/ipas/search/api/v3/public/patent/exportPublicPatentData",
+        "experimental",
+        "official Assignment Center public web application",
+        "The advertised public route returned HTTP 404 during 2026-09-04 verification.",
+    ),
+)
+
 FUTURE_ENDPOINTS: tuple[Endpoint, ...] = (
     Endpoint(
         "petition_decisions.search",
@@ -235,6 +268,7 @@ OUT_OF_SCOPE_ENDPOINTS: tuple[Endpoint, ...] = (
 ALL_ENDPOINTS = (
     APPLICATION_ENDPOINTS
     + PTAB_TRIAL_ENDPOINTS
+    + ASSIGNMENT_CENTER_ENDPOINTS
     + FUTURE_ENDPOINTS
     + OUT_OF_SCOPE_ENDPOINTS
 )

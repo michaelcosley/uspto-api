@@ -1,9 +1,9 @@
 # uspto-client
 
 `uspto-client` is a pure-Python, sync-first client library for USPTO Patent
-File Wrapper and Patent Trial and Appeal Board APIs. It supports patent
-applications plus PTAB AIA trial proceedings, documents, and decisions.
-Trademark APIs are out of scope.
+File Wrapper and Patent Trial and Appeal Board APIs. It also includes a
+separate experimental client for the public Assignment Center patent search
+service. Trademark APIs are out of scope.
 
 ## Status
 
@@ -65,6 +65,38 @@ client.ptab.trials.download_decisions_search_results(
     output_path="exports/",
 )
 ```
+
+Search PTAB appearances using explicit party/counsel fields:
+
+```python
+from uspto_client import patent_owner_counsel_query, petitioner_counsel_query
+
+owner_side = client.ptab.trials.search_proceedings(
+    q=patent_owner_counsel_query("Latham & Watkins"),
+)
+petitioner_side = client.ptab.trials.search_proceedings(
+    q=petitioner_counsel_query("Latham & Watkins"),
+)
+```
+
+The Assignment Center service does not use the Open Data Portal API key:
+
+```python
+from uspto_client import AssignmentCenterClient
+
+with AssignmentCenterClient() as assignments:
+    response = assignments.search_exact_assignee("EXAMPLE COMPANY, INC.")
+    for result in response.results:
+        for patent in result.properties:
+            print(patent.patent_number, patent.application_number)
+```
+
+Assignment Center search results are recorded transactions, not a current-owner
+determination. They may include security interests, name changes, corrections,
+and other non-title events, and a party-name search may return the surrounding
+transaction history for matched properties. Ownership analysis belongs in the
+consuming project. See
+[`docs/assignment-center.md`](docs/assignment-center.md).
 
 Structured search payloads are supported:
 
@@ -131,8 +163,10 @@ USPTO documents a burst limit of `1` request per API key. This client serializes
 requests by API key in-process so calls made through clients sharing the same
 key do not run concurrently.
 
-HTTP 429 responses are surfaced as `UsptoRateLimitError`. Automatic retry is
-disabled by default.
+Ordinary calls are spaced by at least 10 ms and serial downloads by at least
+50 ms by default. Both are configurable with `PacingConfig`. HTTP 429 responses
+are surfaced as `UsptoRateLimitError`; retries for 429, 5xx, and interrupted
+transport operations are opt-in through `RetryConfig`.
 
 ## Development
 

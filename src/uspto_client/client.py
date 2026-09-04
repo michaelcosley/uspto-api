@@ -24,9 +24,12 @@ from uspto_client.errors import (
 from uspto_client.models import DocumentDownload, UsptoResponse
 from uspto_client.ptab import PtabClient
 from uspto_client.rate_limit import (
+    DEFAULT_MONOTONIC,
+    MonotonicCallable,
+    PacingConfig,
     RetryConfig,
     SleepCallable,
-    get_api_key_lock,
+    get_request_coordinator,
     retry_after_delay,
 )
 
@@ -44,7 +47,9 @@ class UsptoClient:
         timeout: float = 30.0,
         transport: httpx.BaseTransport | None = None,
         retry_config: RetryConfig | None = None,
+        pacing_config: PacingConfig | None = None,
         sleep: SleepCallable = time.sleep,
+        monotonic: MonotonicCallable = DEFAULT_MONOTONIC,
     ) -> None:
         if not api_key:
             raise ValueError("api_key is required")
@@ -52,8 +57,12 @@ class UsptoClient:
         self.api_key = api_key
         self.base_url = base_url.rstrip("/")
         self.retry_config = retry_config or RetryConfig()
+        self.pacing_config = pacing_config or PacingConfig()
         self._sleep = sleep
-        self._lock = get_api_key_lock(api_key)
+        self._monotonic = monotonic
+        self._coordinator = get_request_coordinator(
+            f"open-data-portal:{self.base_url}:{api_key}"
+        )
         self._http = httpx.Client(
             base_url=self.base_url,
             timeout=timeout,
@@ -112,20 +121,36 @@ class UsptoClient:
         attempts = 0
         while True:
             attempts += 1
-            with self._lock:
-                response = self._http.request(
-                    method,
-                    path,
-                    params=_clean_mapping(params),
-                    json=_clean_mapping(json),
-                )
+            try:
+                with self._coordinator.lock:
+                    self._coordinator.wait(
+                        self.pacing_config.request_interval_seconds,
+                        sleep=self._sleep,
+                        monotonic=self._monotonic,
+                    )
+                    response = self._http.request(
+                        method,
+                        path,
+                        params=_clean_mapping(params),
+                        json=_clean_mapping(json),
+                    )
+            except httpx.TransportError:
+                if not self._should_retry_transport(attempts):
+                    raise
+                self._sleep(self.retry_config.backoff_delay(attempts))
+                continue
 
             if response.status_code == 429 and self._should_retry_429(attempts):
                 delay = retry_after_delay(
                     response.headers.get("Retry-After"),
                     minimum_seconds=self.retry_config.min_429_delay_seconds,
                 )
+                response.close()
                 self._sleep(delay)
+                continue
+            if response.status_code >= 500 and self._should_retry_5xx(attempts):
+                response.close()
+                self._sleep(self.retry_config.backoff_delay(attempts))
                 continue
 
             if response.is_error:
@@ -146,6 +171,17 @@ class UsptoClient:
             self.retry_config.retry_on_429 and attempts < self.retry_config.max_attempts
         )
 
+    def _should_retry_5xx(self, attempts: int) -> bool:
+        return (
+            self.retry_config.retry_on_5xx and attempts < self.retry_config.max_attempts
+        )
+
+    def _should_retry_transport(self, attempts: int) -> bool:
+        return (
+            self.retry_config.retry_on_transport_error
+            and attempts < self.retry_config.max_attempts
+        )
+
     def download(
         self,
         path: str,
@@ -160,15 +196,31 @@ class UsptoClient:
         attempts = 0
         while True:
             attempts += 1
-            with self._lock:
-                response = self._send_download_request(path, params=params)
+            try:
+                with self._coordinator.lock:
+                    self._coordinator.wait(
+                        self.pacing_config.download_interval_seconds,
+                        sleep=self._sleep,
+                        monotonic=self._monotonic,
+                    )
+                    response = self._send_download_request(path, params=params)
+            except httpx.TransportError:
+                if not self._should_retry_transport(attempts):
+                    raise
+                self._sleep(self.retry_config.backoff_delay(attempts))
+                continue
 
             if response.status_code == 429 and self._should_retry_429(attempts):
                 delay = retry_after_delay(
                     response.headers.get("Retry-After"),
                     minimum_seconds=self.retry_config.min_429_delay_seconds,
                 )
+                response.close()
                 self._sleep(delay)
+                continue
+            if response.status_code >= 500 and self._should_retry_5xx(attempts):
+                response.close()
+                self._sleep(self.retry_config.backoff_delay(attempts))
                 continue
 
             if response.is_error:
