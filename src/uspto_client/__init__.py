@@ -30,6 +30,7 @@ from uspto_client.assignment_models import (
     AssignmentSearchResult,
     AssignmentSearchSuccess,
 )
+from uspto_client.bulk import BulkFile, BulkProduct, BulkResponse
 from uspto_client.client import UsptoClient
 from uspto_client.errors import (
     UsptoAPIError,
@@ -39,6 +40,7 @@ from uspto_client.errors import (
     UsptoRateLimitError,
     UsptoServerError,
 )
+from uspto_client.library import DocumentSpec, Library, Release, Selection
 from uspto_client.models import (
     Pagination,
     RangeFilter,
@@ -165,15 +167,22 @@ __all__ = [
     "AssignmentSearchResponse",
     "AssignmentSearchResult",
     "AssignmentSearchSuccess",
+    "BulkFile",
+    "BulkProduct",
+    "BulkResponse",
     "BusinessEntityStatusCategory",
+    "DocumentSpec",
+    "Library",
     "PacingConfig",
     "Pagination",
     "PublicationCategory",
     "RangeFilter",
+    "Release",
     "RetryConfig",
     "SearchFilter",
     "SearchRequest",
     "SearchSort",
+    "Selection",
     "TrialDecisionData",
     "TrialDecisionResponse",
     "TrialDocument",

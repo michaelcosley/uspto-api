@@ -359,3 +359,12 @@ Observed response-shape details:
 The aggregate USPTO Swagger capture still references separate appeal and
 interference component files that are outside the current client scope. Add
 those contracts when those PTAB namespaces are implemented.
+
+## Bulk and portable library (0.4)
+
+`client.bulk.search`, `get_product`, `iter_files`, and `download_file` expose ODP
+product catalogs and streamed file downloads.
+
+`Library`, `Selection`, `Release`, and `DocumentSpec` are exported from
+`uspto_client`. See [portable-library.md](portable-library.md) for the library
+API and CLI, including collection, import, text indexing, backups and watchlists.

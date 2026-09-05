@@ -13,6 +13,7 @@ import httpx
 from pydantic import ValidationError
 
 from uspto_client.applications import ApplicationsClient
+from uspto_client.bulk import BulkClient
 from uspto_client.errors import (
     UsptoAPIError,
     UsptoBadRequestError,
@@ -74,6 +75,7 @@ class UsptoClient:
         )
         self.applications = ApplicationsClient(self)
         self.ptab = PtabClient(self)
+        self.bulk = BulkClient(self)
 
     def close(self) -> None:
         """Close the underlying HTTP client."""

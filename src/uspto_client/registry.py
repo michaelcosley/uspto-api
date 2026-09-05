@@ -235,6 +235,30 @@ ASSIGNMENT_CENTER_ENDPOINTS: tuple[Endpoint, ...] = (
     ),
 )
 
+BULK_ENDPOINTS: tuple[Endpoint, ...] = (
+    Endpoint(
+        "bulk.search",
+        ("GET",),
+        "/api/v1/datasets/products/search",
+        "implemented",
+        "docs/uspto-swagger-api.yaml",
+    ),
+    Endpoint(
+        "bulk.get_product",
+        ("GET",),
+        "/api/v1/datasets/products/{productIdentifier}",
+        "implemented",
+        "docs/uspto-swagger-api.yaml",
+    ),
+    Endpoint(
+        "bulk.download_file",
+        ("GET",),
+        "/api/v1/datasets/products/files/{productIdentifier}/{fileName}",
+        "implemented",
+        "docs/uspto-swagger-api.yaml",
+    ),
+)
+
 FUTURE_ENDPOINTS: tuple[Endpoint, ...] = (
     Endpoint(
         "petition_decisions.search",
@@ -243,14 +267,6 @@ FUTURE_ENDPOINTS: tuple[Endpoint, ...] = (
         "future",
         "docs/uspto-swagger-api.yaml",
         "Petition decisions require separate scope confirmation.",
-    ),
-    Endpoint(
-        "bulk_datasets.search",
-        ("GET",),
-        "/api/v1/datasets/products/search",
-        "future",
-        "docs/uspto-swagger-api.yaml",
-        "Bulk datasets are not part of the initial client surface.",
     ),
 )
 
@@ -269,6 +285,7 @@ ALL_ENDPOINTS = (
     APPLICATION_ENDPOINTS
     + PTAB_TRIAL_ENDPOINTS
     + ASSIGNMENT_CENTER_ENDPOINTS
+    + BULK_ENDPOINTS
     + FUTURE_ENDPOINTS
     + OUT_OF_SCOPE_ENDPOINTS
 )

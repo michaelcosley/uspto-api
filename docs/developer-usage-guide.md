@@ -526,3 +526,9 @@ Live calls require `USPTO_API_KEY` in the environment or `.env`.
 - Document download supports file URLs exposed by USPTO document metadata.
 - Nested response models are still intentionally loose until more real USPTO
   response shapes are collected.
+
+## Optional portable library
+
+See [portable-library.md](portable-library.md) for the opt-in SQLite API and CLI,
+[bulk-ingestion.md](bulk-ingestion.md) for selective imports, and
+[company-monitoring.md](company-monitoring.md) for assignment/watchlist workflows.

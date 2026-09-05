@@ -122,3 +122,16 @@ owner, discard non-assignment conveyances, resolve corporate-name variants, or
 decide whether a later transaction transferred title. Those are higher-level
 analysis functions for a consuming project, with review of the actual recorded
 documents where necessary.
+
+## Optional local portfolio index
+
+Since 0.4, the separate `Library` interface can retain assignment observations,
+index company/patent relationships, screen current-assignee candidates and record
+first-detected proceedings. See [company-monitoring.md](company-monitoring.md).
+These functions do not change the low-level AssignmentCenterClient contract or
+turn a recorded transaction into a legal title conclusion.
+
+USPTO announced that Assignment Center patent export searches moved to ODP on
+July 24, 2026. Existing experimental export behavior is retained for compatibility;
+use ODP bulk products or targeted searches for the new library workflow.
+Source: https://www.uspto.gov/system-status/20260707-assignment-center-patent-search-service-alert

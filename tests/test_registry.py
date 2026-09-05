@@ -3,6 +3,7 @@ from __future__ import annotations
 from uspto_client.registry import (
     APPLICATION_ENDPOINTS,
     ASSIGNMENT_CENTER_ENDPOINTS,
+    BULK_ENDPOINTS,
     FUTURE_ENDPOINTS,
     OUT_OF_SCOPE_ENDPOINTS,
     PTAB_TRIAL_ENDPOINTS,
@@ -72,3 +73,12 @@ def test_assignment_center_inventory_is_explicitly_experimental() -> None:
 def test_future_endpoint_families_are_not_marked_implemented() -> None:
     assert FUTURE_ENDPOINTS
     assert all(endpoint.status == "future" for endpoint in FUTURE_ENDPOINTS)
+
+
+def test_bulk_endpoint_inventory_is_implemented() -> None:
+    assert {endpoint.method_name for endpoint in BULK_ENDPOINTS} == {
+        "bulk.search",
+        "bulk.get_product",
+        "bulk.download_file",
+    }
+    assert all(endpoint.status == "implemented" for endpoint in BULK_ENDPOINTS)

@@ -1,13 +1,13 @@
 ---
 name: use-uspto-client
-description: Use the reusable Python uspto-client package to query USPTO Patent File Wrapper application data, PTAB AIA trial proceedings and filings, or public Assignment Center patent recordations. Trigger when a task needs these APIs, their typed models, search helpers, downloads, pacing, retries, or fixture-backed tests; do not use it to infer current patent ownership or provide legal title conclusions.
+description: Use the reusable Python uspto-client package to query USPTO Patent File Wrapper application data, PTAB AIA trial proceedings and filings, or public Assignment Center patent recordations. Trigger when a task needs these APIs, their typed models, search helpers, downloads, pacing, retries, or fixture-backed tests; use the optional Library for evidence-backed assignment candidates and watchlists, without presenting legal title conclusions.
 ---
 
 # Use USPTO Client
 
-Use this repository as an API boundary. Keep ownership-chain classification,
-client identification, docket reconciliation, and other project-specific
-analysis in the consuming project.
+Use the low-level API independently, or the opt-in portable Library for shared
+storage, bulk ingestion, readable documents and company watchlists. Keep legal
+title conclusions, case-specific reviews and docket deadlines in the consumer.
 
 ## Choose the service
 
@@ -58,3 +58,18 @@ ruff check .
 black --check .
 mypy src
 ```
+
+## Portable library workflows
+
+Read [the library guide](../../../docs/portable-library.md) for setup and
+[company monitoring](../../../docs/company-monitoring.md) for assignment matching.
+Bulk support is documented in [bulk ingestion](../../../docs/bulk-ingestion.md).
+
+- Initialization does not authorize a production backfill or consumer migration.
+- Preview bulk file sizes and choose a selection and byte budget before execution.
+- Treat weekly PFW products as snapshots, daily products as deltas; check gaps.
+- Distinguish recorded assignees, ownership candidates and reviewed title findings.
+- Match reviewed company aliases and preserve first-detected versus first-seen times.
+- Read-only extractors receive scratch PDFs; originals are never OCRed in place.
+- Full production archive compatibility and live discovery semantics require a
+  bounded pilot before a broad backfill or monitoring service is deployed.
