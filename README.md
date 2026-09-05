@@ -5,6 +5,23 @@ File Wrapper and Patent Trial and Appeal Board APIs. It also includes a
 separate experimental client for the public Assignment Center patent search
 service. Trademark APIs are out of scope.
 
+## Portable data library
+
+Version 0.4 adds an opt-in SQLite library with readable IPR/reexamination PDFs,
+selective PFW snapshot/delta imports, assignment indexing, company watchlists,
+first-detected proceeding matches, and page-text search.
+
+```console
+python -m pip install "uspto-client[library]"
+uspto-library --root data init
+```
+
+Start with the [portable library guide](docs/portable-library.md),
+[bulk ingestion guide](docs/bulk-ingestion.md), or
+[company monitoring workflow](docs/company-monitoring.md).
+Existing API calls remain independent of local storage. Initialization performs
+no network calls, bulk downloads, or migrations of another project's data.
+
 ## Status
 
 This project is in initial implementation. The public API is being built around

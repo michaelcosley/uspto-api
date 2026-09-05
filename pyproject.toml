@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "uspto-client"
-version = "0.3.0"
+version = "0.4.0"
 description = "A sync-first Python client for USPTO patent, PTAB, and assignment APIs."
 readme = "README.md"
 requires-python = ">=3.11"
@@ -16,7 +16,11 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+library = ["ijson>=3.3", "defusedxml>=0.7"]
 dev = [
+  "ijson>=3.3",
+  "defusedxml>=0.7",
+  "build>=1",
   "black>=24.0",
   "mypy>=1.8",
   "pytest>=8.0",
@@ -26,6 +30,9 @@ dev = [
   "respx>=0.21",
   "ruff>=0.5",
 ]
+
+[project.scripts]
+uspto-library = "uspto_client.library_cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/uspto_client"]

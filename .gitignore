@@ -21,3 +21,10 @@ pip-wheel-metadata/
 Thumbs.db
 .vscode/
 .idea/
+/data/
+*.sqlite3
+*.sqlite3-wal
+*.sqlite3-shm
+*.part
+*.part.json
+*.download.lock

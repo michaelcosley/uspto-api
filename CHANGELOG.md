@@ -1,3 +1,14 @@
+# 0.4.0
+
+- Add typed bulk product/file APIs and streamed, budgeted, resumable downloads.
+- Add opt-in portable SQLite library and CLI, selective PFW/PADX importers,
+  source observations, import receipts, coverage checks and backups.
+- Add readable document layouts, original/derivative provenance and FTS5 text.
+- Add reviewed company aliases, assignment history/candidate screening,
+  bounded proceeding discovery and immutable first-detection matches.
+- Preserve existing 0.3 API behavior; no legacy database or consumer migration.
+- Document production-validation limits and future adoption boundaries.
+
 # Changelog
 
 ## 0.3.0 - 2026-09-04
