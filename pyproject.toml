@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "uspto-client"
-version = "0.4.0"
+version = "0.4.2"
 description = "A sync-first Python client for USPTO patent, PTAB, and assignment APIs."
 readme = "README.md"
 requires-python = ">=3.11"

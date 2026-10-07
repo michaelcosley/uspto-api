@@ -281,3 +281,28 @@ def test_partial_assignment_groups_keep_previously_seen_patents(tmp_path: Path) 
             )
         assert len(lib.patent_history("9876543")) == 1
         assert len(lib.patent_history("9876544")) == 1
+
+
+def test_pfw_discovery_uses_structured_full_timestamp_range(tmp_path: Path) -> None:
+    def handle(request: httpx.Request) -> httpx.Response:
+        import json
+
+        body = json.loads(request.content)
+        assert request.method == "POST"
+        assert body["rangeFilters"] == [
+            {
+                "field": "lastIngestionDateTime",
+                "valueFrom": "2026-09-01T00:00:00",
+                "valueTo": "2026-09-02T23:59:59",
+            }
+        ]
+        assert "lastIngestionDateTime" not in body["q"]
+        return httpx.Response(200, json={"count": 0, "patentFileWrapperDataBag": []})
+
+    with (
+        Library(tmp_path) as lib,
+        UsptoClient(api_key="test", transport=httpx.MockTransport(handle)) as client,
+    ):
+        assert lib.discover(
+            client, date_from="2026-09-01", date_to="2026-09-02", kinds=("reexam",)
+        )["complete"]

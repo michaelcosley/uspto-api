@@ -461,8 +461,7 @@ def discover(
         queries.append(
             (
                 "pfw",
-                f"applicationMetaData.applicationTypeLabelName:({label_query}) "
-                f"AND lastIngestionDateTime:[{window_start} TO {window_end}]",
+                f"applicationMetaData.applicationTypeLabelName:({label_query})",
             )
         )
     if "ipr" in kinds:
@@ -489,7 +488,17 @@ def discover(
                 }
             if source == "pfw":
                 response = client.applications.search(
-                    q=query, offset=offset, limit=limit
+                    body={
+                        "q": query,
+                        "rangeFilters": [
+                            {
+                                "field": "lastIngestionDateTime",
+                                "valueFrom": date_from + "T00:00:00",
+                                "valueTo": date_to + "T23:59:59",
+                            }
+                        ],
+                        "pagination": {"offset": offset, "limit": limit},
+                    }
                 )
                 records = response.patent_file_wrapper_data_bag
                 count = response.count

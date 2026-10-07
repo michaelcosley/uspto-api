@@ -9,7 +9,7 @@ import re
 from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Protocol
 
 import httpx
 
@@ -33,7 +33,53 @@ def file_sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+class StreamingClient(Protocol):
+    """Public transport boundary for Library and bulk downloads.
+
+    A facade may implement this method to apply process coordination without
+    exposing the client's HTTP transport, credentials or retry internals.
+    """
+
+    def stream_download(
+        self,
+        url: str,
+        destination: Path,
+        *,
+        expected_size: int | None = None,
+        expected_sha256: str | None = None,
+        max_bytes: int | None = None,
+        resume: bool = True,
+        progress: Callable[[int, int | None], None] | None = None,
+        cancelled: Callable[[], bool] | None = None,
+    ) -> StreamDownload: ...
+
+
 def stream_download(
+    client: StreamingClient,
+    url: str,
+    destination: Path,
+    *,
+    expected_size: int | None = None,
+    expected_sha256: str | None = None,
+    max_bytes: int | None = None,
+    resume: bool = True,
+    progress: Callable[[int, int | None], None] | None = None,
+    cancelled: Callable[[], bool] | None = None,
+) -> StreamDownload:
+    """Download through the supplied client's public streaming boundary."""
+    return client.stream_download(
+        url,
+        destination,
+        expected_size=expected_size,
+        expected_sha256=expected_sha256,
+        max_bytes=max_bytes,
+        resume=resume,
+        progress=progress,
+        cancelled=cancelled,
+    )
+
+
+def _stream_download(
     client: UsptoClient,
     url: str,
     destination: Path,

@@ -53,6 +53,10 @@ class Library:
             .resolve()
         )
         self.store = SQLiteStorage(self.root / "databases" / "library.sqlite3")
+        from uspto_client.library_history import HistoricalCatalog
+
+        self.history = HistoricalCatalog(self.store, self.root)
+        self.history.backfill()
         for directory in (
             "config",
             "sources/bulk",
@@ -370,7 +374,8 @@ class Library:
             (
                 "INSERT INTO assignments VALUES(?,?,?,?,?) ON "
                 "CONFLICT(reel_frame) DO UPDATE SET "
-                "payload=excluded.payload,source_at=excluded.source_at,last_seen=excluded.last_seen"
+                "payload=excluded.payload,source_at=excluded.source"
+                "_at,last_seen=excluded.last_seen"
             ),
             (key, canonical(record), source_at, now, now),
         )
@@ -700,9 +705,14 @@ class Library:
                 (spec.source, spec.document_id, digest),
             )
             if previous:
-                existing = self._path(previous[0]["path"])
+                existing = self.history.resolve_path(previous[0]["path"])
                 if not existing.exists() or file_sha256(existing) != digest:
                     raise ValueError("Registered original is missing or changed")
+                self.history._version(spec.source, spec.document_id, digest)
+                self.history._attach(
+                    spec, digest, "", utc_now(), {"origin": "add_document"}
+                )
+                self.write_index(spec.proceeding)
                 return existing
             override = self.store.rows(
                 "SELECT description FROM naming_overrides WHERE source=? AND id=?",
@@ -743,6 +753,10 @@ class Library:
                 "INSERT INTO document_versions VALUES(?,?,?,?,?)",
                 (spec.source, spec.document_id, digest, relative.as_posix(), utc_now()),
             )
+            self.history._version(spec.source, spec.document_id, digest)
+            self.history._attach(
+                spec, digest, "", utc_now(), {"origin": "add_document"}
+            )
         self.write_index(spec.proceeding)
         return target
 
@@ -756,7 +770,8 @@ class Library:
                 (
                     "INSERT INTO naming_overrides VALUES(?,?,?,?,?) ON "
                     "CONFLICT(source,id) DO UPDATE SET "
-                    "description=excluded.description,reason=excluded.reason,updated_at=excluded.updated_at"
+                    "description=excluded.description,reason=excluded.r"
+                    "eason,updated_at=excluded.updated_at"
                 ),
                 (source, document_id, description, reason, utc_now()),
             )
@@ -846,6 +861,16 @@ class Library:
                     version,
                 ),
             )
+        self.history.add_derivative(
+            source,
+            document_id,
+            target,
+            original_hash=original_hash,
+            method=method,
+            version=version,
+            created_at=utc_now(),
+            provenance={"origin": "add_derivative"},
+        )
         return target
 
     def extract_text(
@@ -867,7 +892,7 @@ class Library:
         )
         if not rows:
             raise KeyError(document_id)
-        path = self._path(rows[0]["path"])
+        path = self.history.resolve_path(rows[0]["path"])
         before = file_sha256(path)
         import tempfile
 
@@ -949,9 +974,13 @@ class Library:
         }
         for row in self.store.rows(
             "SELECT hash,path FROM document_versions UNION SELECT hash,path "
-            "FROM derivatives"
+            "FROM derivatives UNION SELECT hash,path FROM "
+            "derivative_events UNION SELECT v.hash,l.path FROM "
+            "retained_locations l JOIN version_ids v "
+            "USING(version_id) UNION SELECT raw_sha256 AS "
+            "hash,raw_path AS path FROM source_snapshots"
         ):
-            path = self._path(row["path"])
+            path = self.history.resolve_path(row["path"])
             if not path.exists():
                 result["missing"].append(row["path"])
             elif file_sha256(path) != row["hash"]:
@@ -977,9 +1006,8 @@ class Library:
         with sqlite3.connect(source.as_uri() + "?mode=ro", uri=True) as connection:
             if connection.execute("PRAGMA integrity_check").fetchone()[0] != "ok":
                 raise ValueError("Backup failed integrity check")
-            if (
-                connection.execute("PRAGMA user_version").fetchone()[0]
-                != SCHEMA_VERSION
+            if connection.execute("PRAGMA user_version").fetchone()[0] not in range(
+                1, SCHEMA_VERSION + 1
             ):
                 raise ValueError("Unsupported backup schema version")
             if not connection.execute(
@@ -1013,22 +1041,26 @@ class Library:
         )
 
     def write_index(self, proceeding: str) -> list[Path]:
-        """Generate a readable docket index linking current originals."""
+        """Generate a readable docket index linking retained proceeding attachments."""
         import html
         from urllib.parse import quote
 
         entries = []
         folders: set[Path] = set()
         for row in self.store.rows(
-            "SELECT d.spec,v.path,d.source,d.id,d.current_hash FROM documents "
-            "d JOIN document_versions v ON d.source=v.source AND d.id=v.id "
-            "AND d.current_hash=v.hash"
+            (
+                "SELECT a.spec,v.path,a.source,a.id,a.hash FROM "
+                "document_attachments a JOIN document_versions v ON "
+                "a.source=v.source AND a.id=v.id AND a.hash=v.hash WHERE "
+                "a.proceeding=?"
+            ),
+            (proceeding,),
         ):
             spec = json.loads(row["spec"])
-            if spec["proceeding"] != proceeding:
-                continue
             relative = Path(row["path"])
-            folder = self.root / relative.parts[0] / relative.parts[1]
+            layout = DocumentSpec(**spec).relative_path()
+            folder = self._path(Path(*layout.parts[:2]))
+            folder.mkdir(parents=True, exist_ok=True)
             folders.add(folder)
             entries.append((folder, relative, spec))
         written = []
@@ -1039,9 +1071,11 @@ class Library:
             ):
                 if entry_folder != folder:
                     continue
-                href = quote(
-                    Path(os.path.relpath(self._path(relative), folder)).as_posix()
-                )
+                target = self.history.resolve_path(str(relative))
+                try:
+                    href = quote(Path(os.path.relpath(target, folder)).as_posix())
+                except ValueError:
+                    href = target.as_uri()
                 items.append(
                     f'<li><a href="{href}">{html.escape(relative.name)}</a></li>'
                 )

@@ -11,7 +11,7 @@ from typing import Protocol
 
 from uspto_client.library_models import Record, canonical, fingerprint, utc_now
 
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
 
 
 class RecordStorage(Protocol):
@@ -39,6 +39,7 @@ class SQLiteStorage:
         self.db.execute("PRAGMA foreign_keys=ON")
         self.db.execute("PRAGMA busy_timeout=30000")
         version = self.db.execute("PRAGMA user_version").fetchone()[0]
+        self.previous_schema_version = version
         if version > SCHEMA_VERSION:
             self.db.close()
             raise ValueError("Database was created by a newer uspto-client")
@@ -124,7 +125,29 @@ class SQLiteStorage:
             TEXT,document_id TEXT,pdf_hash TEXT,page_number INTEGER,field
             TEXT,value TEXT,method TEXT,version TEXT,review_status TEXT,created_at
             TEXT);
-            PRAGMA user_version=1;
+            CREATE TABLE IF NOT EXISTS version_ids(version_id TEXT
+                PRIMARY KEY,source TEXT,id TEXT,hash
+                TEXT,UNIQUE(source,id,hash));
+            CREATE TABLE IF NOT EXISTS retained_locations(version_id
+                TEXT,path TEXT,observed_at TEXT,provenance
+                TEXT,PRIMARY KEY(version_id,path,observed_at));
+            CREATE TABLE IF NOT EXISTS
+                document_attachments(attachment_id TEXT PRIMARY
+                KEY,source TEXT,id TEXT,proceeding TEXT,hash TEXT,role
+                TEXT,spec TEXT,observed_at TEXT);
+            CREATE TABLE IF NOT EXISTS history_events(event_id TEXT
+                PRIMARY KEY,kind TEXT,entity_id TEXT,payload TEXT);
+            CREATE TABLE IF NOT EXISTS derivative_events(derivative_id
+                TEXT PRIMARY KEY,source TEXT,id TEXT,original_hash
+                TEXT,hash TEXT,path TEXT,method TEXT,version
+                TEXT,created_at TEXT,provenance TEXT);
+            CREATE TABLE IF NOT EXISTS source_snapshots(snapshot_id
+                TEXT PRIMARY KEY,source TEXT,external_id TEXT,endpoint
+                TEXT,request TEXT,payload TEXT,observed_at
+                TEXT,source_at TEXT,raw_path TEXT,raw_sha256 TEXT);
+            CREATE TABLE IF NOT EXISTS active_text(source TEXT,id TEXT,
+                run_id TEXT,selection_provenance TEXT,PRIMARY KEY(source,id));
+            PRAGMA user_version=2;
 
         """)
         self.db.commit()
