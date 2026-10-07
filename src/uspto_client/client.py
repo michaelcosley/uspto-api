@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import time
-from collections.abc import Mapping
+from collections.abc import Callable, Mapping
 from email.message import Message
 from pathlib import Path
 from typing import Any, TypeVar, overload
@@ -33,6 +33,7 @@ from uspto_client.rate_limit import (
     get_request_coordinator,
     retry_after_delay,
 )
+from uspto_client.streaming import StreamDownload, _stream_download
 
 ResponseT = TypeVar("ResponseT", bound=UsptoResponse)
 
@@ -76,6 +77,35 @@ class UsptoClient:
         self.applications = ApplicationsClient(self)
         self.ptab = PtabClient(self)
         self.bulk = BulkClient(self)
+
+    def stream_download(
+        self,
+        url: str,
+        destination: Path,
+        *,
+        expected_size: int | None = None,
+        expected_sha256: str | None = None,
+        max_bytes: int | None = None,
+        resume: bool = True,
+        progress: Callable[[int, int | None], None] | None = None,
+        cancelled: Callable[[], bool] | None = None,
+    ) -> StreamDownload:
+        """Stream with this client's retry, pacing and credential policy.
+
+        Library integrations can wrap this public method to coordinate the
+        whole transfer, including retries, cancellation and validation.
+        """
+        return _stream_download(
+            self,
+            url,
+            destination,
+            expected_size=expected_size,
+            expected_sha256=expected_sha256,
+            max_bytes=max_bytes,
+            resume=resume,
+            progress=progress,
+            cancelled=cancelled,
+        )
 
     def close(self) -> None:
         """Close the underlying HTTP client."""
