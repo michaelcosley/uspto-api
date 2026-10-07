@@ -225,3 +225,38 @@ mypy src
 
 For a copy-friendly guide to using this package from another project, see
 [`docs/developer-usage-guide.md`](docs/developer-usage-guide.md).
+
+
+### Historical files and attachment history (0.4.2)
+
+Library schema 2 separates document versions from proceeding attachments. Reusing
+one official document in a second proceeding records both attachments, including
+when its bytes already exist. Version IDs include source, official ID and PDF
+hash; shared bytes never merge distinct source records. Existing schema-1 data
+upgrades in place when opened; only relationships actually recorded by schema 1
+can be recovered. Backfill is repeatable after interruption. Older client builds
+must not open a schema-2 database; retain the matching pre-upgrade database/files
+for rollback. Schema-1 backups can be restored into a new root by the new build.
+
+`library.history.register_document(path, spec, created_at=..., observed_at=...,
+provenance=..., expected_sha256=...)` registers an existing verified PDF without
+copying it. Explicit `make_current=True` selects the current PDF. The importer
+retains historical paths/times; an empty time means unknown. `history.add_text`
+accepts a specific PDF hash, method/version and original creation time. Equal
+text from different methods remains separate. Explicit text selection records
+its provenance without discarding other runs. `history.add_derivative` records
+the original hash, derivative hash/path, method/version and provenance, retaining
+multiple methods even when their output bytes match. The native `add_derivative`
+API also writes this history; its old derivatives table remains a compatibility
+projection.
+
+`history.import_source_snapshot` preserves source/request identity, historical
+times, retained raw-file hash/path and extra fetch provenance. Importing such
+observations never marks date coverage complete or confirms ownership. Assignment
+assessment remains a separate consumer decision. `history.export_manifest()` and
+`history.attachments(...)` support reconciliation and all-attachment reads.
+
+Registered external files remain dependent on their retained locations. A
+Library database backup does not copy these external files. Back up the matching
+source files and import crosswalk, and verify hashes before any authority change.
+Do not relocate or delete originals to make an import appear self-contained.
